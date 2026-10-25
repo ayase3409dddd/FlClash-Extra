@@ -181,6 +181,20 @@ String catgirlize(String text, String locale) {
   };
 }
 
+/// Rewrites only the persona catalogue of [text], with no ending or kaomoji.
+///
+/// Titles, labels and control copy go through this, so the catgirl mode reads
+/// in the wording without every button ending in a cat sound. Locales other
+/// than Chinese keep their title copy unchanged.
+String catgirlizeTitle(String text, String locale) {
+  if (text.isEmpty) return text;
+  final trimmed = text.trim();
+  if (trimmed.isEmpty || trimmed != text) return text;
+  if (_isKeptAsIs(trimmed)) return text;
+  if (_languageOf(locale) != _CatgirlLanguage.zh) return text;
+  return _applyZhPhrases(trimmed);
+}
+
 bool _isKeptAsIs(String text) {
   if (_fragmentEndingPattern.hasMatch(text)) return true;
   if (_catgirlMarkPattern.hasMatch(text)) return true;

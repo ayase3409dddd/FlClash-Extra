@@ -149,41 +149,36 @@ class _AppBackgroundState extends ConsumerState<AppBackground>
       return widget.child;
     }
     if (imageVisible && !File(path).existsSync()) {
+      final backdrop = ColoredBox(color: Theme.of(context).colorScheme.surface);
       return Stack(
         fit: StackFit.expand,
         children: [
-          ColoredBox(color: Theme.of(context).colorScheme.surface),
-          Wallpaper(visible: _target, child: widget.child),
+          backdrop,
+          Wallpaper(visible: _target, backdrop: backdrop, child: widget.child),
         ],
       );
     }
+    final backdrop = _backdrop(
+      context,
+      imageVisible: imageVisible,
+      advanced: advanced,
+      path: path,
+      fit: setting.fit,
+      imageDim: imageVisible
+          ? clampDouble(setting.brightness, 0, 1) * _maxDimStrength
+          : 0,
+      materialDim: advanced ? clampDouble(setting.materialDim, 0, 1) * 0.35 : 0,
+      blur: clampDouble(setting.blur, 0, _maxBlurSigma),
+    );
     return Stack(
       fit: StackFit.expand,
       children: [
         Positioned.fill(
           child: IgnorePointer(
-            child: FadeTransition(
-              opacity: _fade,
-              child: _backdrop(
-                context,
-                imageVisible: imageVisible,
-                advanced: advanced,
-                path: path,
-                fit: setting.fit,
-                imageDim: imageVisible
-                    ? clampDouble(setting.brightness, 0, 1) * _maxDimStrength
-                    : 0,
-                materialDim: advanced
-                    ? clampDouble(setting.materialDim, 0, 1) * 0.35
-                    : 0,
-                blur: advanced
-                    ? clampDouble(setting.materialBlur, 0, _maxBlurSigma)
-                    : clampDouble(setting.blur, 0, _maxBlurSigma),
-              ),
-            ),
+            child: FadeTransition(opacity: _fade, child: backdrop),
           ),
         ),
-        Wallpaper(visible: _target, child: widget.child),
+        Wallpaper(visible: _target, backdrop: backdrop, child: widget.child),
       ],
     );
   }

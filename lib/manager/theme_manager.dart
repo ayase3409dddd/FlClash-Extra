@@ -39,10 +39,16 @@ Widget _closeButtonIcon(BuildContext context) =>
 final _appThemes = <Brightness, ({Object inputs, ThemeData theme})>{};
 
 /// Shows the frosted backdrop through the surfaces without washing out text.
-const _frostedSurfaceAlpha = 0.84;
+const _frostedSurfaceMaxAlpha = 0.9;
 
-ColorScheme _frostedSurfaces(ColorScheme scheme) {
-  Color frosted(Color color) => color.withValues(alpha: _frostedSurfaceAlpha);
+const _frostedSurfaceMinAlpha = 0.55;
+
+ColorScheme _frostedSurfaces(ColorScheme scheme, double dim) {
+  final alpha = (_frostedSurfaceMaxAlpha - dim * 0.35).clamp(
+    _frostedSurfaceMinAlpha,
+    1.0,
+  );
+  Color frosted(Color color) => color.withValues(alpha: alpha);
   return scheme.copyWith(
     surface: frosted(scheme.surface),
     surfaceDim: frosted(scheme.surfaceDim),
@@ -63,9 +69,15 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final advancedMaterial = ref.watch(
     appSettingProvider.select((state) => state.advancedMaterialEnabled),
   );
+  final materialDim = ref.watch(
+    appSettingProvider.select((state) => state.advancedMaterialDim),
+  );
+  final materialBlur = ref.watch(
+    appSettingProvider.select((state) => state.advancedMaterialBlur),
+  );
   final opaqueColorScheme = ref.watch(genColorSchemeProvider(brightness));
   final colorScheme = advancedMaterial
-      ? _frostedSurfaces(opaqueColorScheme)
+      ? _frostedSurfaces(opaqueColorScheme, materialDim)
       : opaqueColorScheme;
   final locales = [
     ?getLocaleForString(locale),
@@ -75,6 +87,8 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
     platform: defaultTargetPlatform,
     fontFamily: fontFamily,
     advancedMaterial: advancedMaterial,
+    materialDim: materialDim,
+    materialBlur: materialBlur,
     colorScheme: colorScheme,
     locales: locales.join(','),
   );
@@ -85,7 +99,7 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
     return theme;
   }
   final elevated = advancedMaterial
-      ? _frostedSurfaces(opaqueColorScheme.elevated)
+      ? _frostedSurfaces(opaqueColorScheme.elevated, materialDim)
       : opaqueColorScheme.elevated;
   final theme = ThemeData(
     useMaterial3: true,
@@ -100,6 +114,12 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
     ),
     extensions: [
       if (brightness == Brightness.dark) ElevatedColorScheme(elevated),
+      if (advancedMaterial)
+        MaterialFrost(
+          enabled: true,
+          blur: materialBlur.clamp(0.0, 30.0),
+          dim: materialDim.clamp(0.0, 1.0),
+        ),
     ],
   ).withAppShapes.withAppSurfaces.withAppTypography;
   _appThemes[brightness] = (inputs: inputs, theme: theme);

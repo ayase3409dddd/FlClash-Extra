@@ -313,7 +313,7 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
   ) {
     final theme = Theme.of(context);
     final surface = SurfaceLevel.page.colorOf(theme.colorScheme);
-    final wallpaper = Wallpaper.visibleOf(context) && isFirst;
+    final wallpaper = Wallpaper.visibleOf(context);
     final routeSurface = wallpaper ? Colors.transparent : surface;
     final open = FadeTransition(
       opacity: _openOpacity,
@@ -330,7 +330,7 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
         ),
       ),
     );
-    return ListenableBuilder(
+    final container = ListenableBuilder(
       listenable: _closedChanges,
       builder: (BuildContext context, Widget? open) {
         return _ContainerTransition(
@@ -361,6 +361,17 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
         );
       },
       child: open,
+    );
+    final backdrop = isFirst ? null : Wallpaper.backdropOf(context);
+    if (backdrop == null) {
+      return container;
+    }
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Positioned.fill(child: backdrop),
+        container,
+      ],
     );
   }
 

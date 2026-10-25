@@ -4,7 +4,8 @@
 import 'package:fl_clash/common/catgirl_text.dart';
 import 'package:fl_clash/l10n/l10n.dart';
 
-/// Overrides every [AppLocalizations] accessor through [catgirlize].
+/// Overrides every [AppLocalizations] accessor through [catgirlize], or
+/// [catgirlizeTitle] for titles and labels.
 mixin CatgirlLocalizationOverrides on AppLocalizations {
   /// The localizations every override reads from.
   AppLocalizations get base;
@@ -13,253 +14,257 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get localeName;
 
   @override
-  String get rule => catgirlize(base.rule, localeName);
+  String get rule => catgirlizeTitle(base.rule, localeName);
 
   @override
-  String get rules => catgirlize(base.rules, localeName);
+  String get rules => catgirlizeTitle(base.rules, localeName);
 
   @override
-  String get global => catgirlize(base.global, localeName);
+  String get global => catgirlizeTitle(base.global, localeName);
 
   @override
-  String get direct => catgirlize(base.direct, localeName);
+  String get direct => catgirlizeTitle(base.direct, localeName);
 
   @override
-  String get dashboard => catgirlize(base.dashboard, localeName);
+  String get dashboard => catgirlizeTitle(base.dashboard, localeName);
 
   @override
-  String get proxies => catgirlize(base.proxies, localeName);
+  String get proxies => catgirlizeTitle(base.proxies, localeName);
 
   @override
-  String get profile => catgirlize(base.profile, localeName);
+  String get profile => catgirlizeTitle(base.profile, localeName);
 
   @override
-  String get profiles => catgirlize(base.profiles, localeName);
+  String get profiles => catgirlizeTitle(base.profiles, localeName);
 
   @override
-  String get tools => catgirlize(base.tools, localeName);
+  String get tools => catgirlizeTitle(base.tools, localeName);
 
   @override
-  String get logs => catgirlize(base.logs, localeName);
+  String get logs => catgirlizeTitle(base.logs, localeName);
 
   @override
-  String get resources => catgirlize(base.resources, localeName);
+  String get resources => catgirlizeTitle(base.resources, localeName);
 
   @override
-  String get trafficUsage => catgirlize(base.trafficUsage, localeName);
+  String get trafficUsage => catgirlizeTitle(base.trafficUsage, localeName);
 
   @override
-  String get networkSpeed => catgirlize(base.networkSpeed, localeName);
+  String get networkSpeed => catgirlizeTitle(base.networkSpeed, localeName);
 
   @override
-  String get outboundMode => catgirlize(base.outboundMode, localeName);
+  String get outboundMode => catgirlizeTitle(base.outboundMode, localeName);
 
   @override
-  String get serviceStatus => catgirlize(base.serviceStatus, localeName);
+  String get serviceStatus => catgirlizeTitle(base.serviceStatus, localeName);
 
   @override
   String get serviceRestricted =>
-      catgirlize(base.serviceRestricted, localeName);
+      catgirlizeTitle(base.serviceRestricted, localeName);
 
   @override
-  String get serviceAvailable => catgirlize(base.serviceAvailable, localeName);
+  String get serviceAvailable =>
+      catgirlizeTitle(base.serviceAvailable, localeName);
 
   @override
   String get serviceUnavailable =>
-      catgirlize(base.serviceUnavailable, localeName);
+      catgirlizeTitle(base.serviceUnavailable, localeName);
 
   @override
-  String get serviceFailed => catgirlize(base.serviceFailed, localeName);
+  String get serviceFailed => catgirlizeTitle(base.serviceFailed, localeName);
 
   @override
   String get serviceDisallowedIsp =>
-      catgirlize(base.serviceDisallowedIsp, localeName);
+      catgirlizeTitle(base.serviceDisallowedIsp, localeName);
 
   @override
-  String get serviceBlocked => catgirlize(base.serviceBlocked, localeName);
+  String get serviceBlocked => catgirlizeTitle(base.serviceBlocked, localeName);
 
   @override
   String get serviceUnsupportedRegion =>
-      catgirlize(base.serviceUnsupportedRegion, localeName);
+      catgirlizeTitle(base.serviceUnsupportedRegion, localeName);
 
   @override
   String get serviceOriginalsOnly =>
-      catgirlize(base.serviceOriginalsOnly, localeName);
+      catgirlizeTitle(base.serviceOriginalsOnly, localeName);
 
   @override
   String get serviceComingSoon =>
-      catgirlize(base.serviceComingSoon, localeName);
+      catgirlizeTitle(base.serviceComingSoon, localeName);
 
   @override
-  String get servicePending => catgirlize(base.servicePending, localeName);
+  String get servicePending => catgirlizeTitle(base.servicePending, localeName);
 
   @override
-  String get serviceManage => catgirlize(base.serviceManage, localeName);
+  String get serviceManage => catgirlizeTitle(base.serviceManage, localeName);
 
   @override
-  String get serviceCheckAll => catgirlize(base.serviceCheckAll, localeName);
+  String get serviceCheckAll =>
+      catgirlizeTitle(base.serviceCheckAll, localeName);
 
   @override
-  String get upload => catgirlize(base.upload, localeName);
+  String get upload => catgirlizeTitle(base.upload, localeName);
 
   @override
-  String get download => catgirlize(base.download, localeName);
+  String get download => catgirlizeTitle(base.download, localeName);
 
   @override
-  String get usedTraffic => catgirlize(base.usedTraffic, localeName);
+  String get usedTraffic => catgirlizeTitle(base.usedTraffic, localeName);
 
   @override
-  String get totalTraffic => catgirlize(base.totalTraffic, localeName);
+  String get totalTraffic => catgirlizeTitle(base.totalTraffic, localeName);
 
   @override
-  String get expireTime => catgirlize(base.expireTime, localeName);
+  String get expireTime => catgirlizeTitle(base.expireTime, localeName);
 
   @override
   String get nullProfileDesc => catgirlize(base.nullProfileDesc, localeName);
 
   @override
-  String get settings => catgirlize(base.settings, localeName);
+  String get settings => catgirlizeTitle(base.settings, localeName);
 
   @override
-  String get language => catgirlize(base.language, localeName);
+  String get language => catgirlizeTitle(base.language, localeName);
 
   @override
-  String get defaultText => catgirlize(base.defaultText, localeName);
+  String get defaultText => catgirlizeTitle(base.defaultText, localeName);
 
   @override
-  String get more => catgirlize(base.more, localeName);
+  String get more => catgirlizeTitle(base.more, localeName);
 
   @override
-  String get other => catgirlize(base.other, localeName);
+  String get other => catgirlizeTitle(base.other, localeName);
 
   @override
-  String get about => catgirlize(base.about, localeName);
+  String get about => catgirlizeTitle(base.about, localeName);
 
   @override
-  String get en => catgirlize(base.en, localeName);
+  String get en => catgirlizeTitle(base.en, localeName);
 
   @override
-  String get es => catgirlize(base.es, localeName);
+  String get es => catgirlizeTitle(base.es, localeName);
 
   @override
-  String get fr => catgirlize(base.fr, localeName);
+  String get fr => catgirlizeTitle(base.fr, localeName);
 
   @override
-  String get ja => catgirlize(base.ja, localeName);
+  String get ja => catgirlizeTitle(base.ja, localeName);
 
   @override
-  String get ko => catgirlize(base.ko, localeName);
+  String get ko => catgirlizeTitle(base.ko, localeName);
 
   @override
-  String get ru => catgirlize(base.ru, localeName);
+  String get ru => catgirlizeTitle(base.ru, localeName);
 
   @override
-  String get zhCN => catgirlize(base.zhCN, localeName);
+  String get zhCN => catgirlizeTitle(base.zhCN, localeName);
 
   @override
-  String get theme => catgirlize(base.theme, localeName);
+  String get theme => catgirlizeTitle(base.theme, localeName);
 
   @override
-  String get extend => catgirlize(base.extend, localeName);
+  String get extend => catgirlizeTitle(base.extend, localeName);
 
   @override
-  String get runtimeConfig => catgirlize(base.runtimeConfig, localeName);
+  String get runtimeConfig => catgirlizeTitle(base.runtimeConfig, localeName);
 
   @override
-  String get allowLan => catgirlize(base.allowLan, localeName);
+  String get allowLan => catgirlizeTitle(base.allowLan, localeName);
 
   @override
-  String get tun => catgirlize(base.tun, localeName);
+  String get tun => catgirlizeTitle(base.tun, localeName);
 
   @override
   String get tunDesc => catgirlize(base.tunDesc, localeName);
 
   @override
-  String get minimizeOnExit => catgirlize(base.minimizeOnExit, localeName);
+  String get minimizeOnExit => catgirlizeTitle(base.minimizeOnExit, localeName);
 
   @override
-  String get autoLaunch => catgirlize(base.autoLaunch, localeName);
+  String get autoLaunch => catgirlizeTitle(base.autoLaunch, localeName);
 
   @override
-  String get silentLaunch => catgirlize(base.silentLaunch, localeName);
+  String get silentLaunch => catgirlizeTitle(base.silentLaunch, localeName);
 
   @override
   String get silentLaunchDesc => catgirlize(base.silentLaunchDesc, localeName);
 
   @override
-  String get autoRun => catgirlize(base.autoRun, localeName);
+  String get autoRun => catgirlizeTitle(base.autoRun, localeName);
 
   @override
   String get autoRunDesc => catgirlize(base.autoRunDesc, localeName);
 
   @override
-  String get logcat => catgirlize(base.logcat, localeName);
+  String get logcat => catgirlizeTitle(base.logcat, localeName);
 
   @override
   String get logcatDesc => catgirlize(base.logcatDesc, localeName);
 
   @override
-  String get autoCheckUpdate => catgirlize(base.autoCheckUpdate, localeName);
+  String get autoCheckUpdate =>
+      catgirlizeTitle(base.autoCheckUpdate, localeName);
 
   @override
-  String get checkCertificate => catgirlize(base.checkCertificate, localeName);
+  String get checkCertificate =>
+      catgirlizeTitle(base.checkCertificate, localeName);
 
   @override
   String get checkCertificateDesc =>
       catgirlize(base.checkCertificateDesc, localeName);
 
   @override
-  String get accessControl => catgirlize(base.accessControl, localeName);
+  String get accessControl => catgirlizeTitle(base.accessControl, localeName);
 
   @override
   String get accessControlDesc =>
       catgirlize(base.accessControlDesc, localeName);
 
   @override
-  String get edit => catgirlize(base.edit, localeName);
+  String get edit => catgirlizeTitle(base.edit, localeName);
 
   @override
-  String get confirm => catgirlize(base.confirm, localeName);
+  String get confirm => catgirlizeTitle(base.confirm, localeName);
 
   @override
-  String get update => catgirlize(base.update, localeName);
+  String get update => catgirlizeTitle(base.update, localeName);
 
   @override
-  String get add => catgirlize(base.add, localeName);
+  String get add => catgirlizeTitle(base.add, localeName);
 
   @override
-  String get save => catgirlize(base.save, localeName);
+  String get save => catgirlizeTitle(base.save, localeName);
 
   @override
-  String get delete => catgirlize(base.delete, localeName);
+  String get delete => catgirlizeTitle(base.delete, localeName);
 
   @override
-  String get seconds => catgirlize(base.seconds, localeName);
+  String get seconds => catgirlizeTitle(base.seconds, localeName);
 
   @override
-  String get qrcode => catgirlize(base.qrcode, localeName);
+  String get qrcode => catgirlizeTitle(base.qrcode, localeName);
 
   @override
   String get qrcodeDesc => catgirlize(base.qrcodeDesc, localeName);
 
   @override
-  String get url => catgirlize(base.url, localeName);
+  String get url => catgirlizeTitle(base.url, localeName);
 
   @override
-  String get link => catgirlize(base.link, localeName);
+  String get link => catgirlizeTitle(base.link, localeName);
 
   @override
-  String get file => catgirlize(base.file, localeName);
+  String get file => catgirlizeTitle(base.file, localeName);
 
   @override
-  String get name => catgirlize(base.name, localeName);
+  String get name => catgirlizeTitle(base.name, localeName);
 
   @override
   String get profileNameNullValidationDesc =>
       catgirlize(base.profileNameNullValidationDesc, localeName);
 
   @override
-  String get rename => catgirlize(base.rename, localeName);
+  String get rename => catgirlizeTitle(base.rename, localeName);
 
   @override
   String get profileUrlNullValidationDesc =>
@@ -270,11 +275,11 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.profileUrlInvalidValidationDesc, localeName);
 
   @override
-  String get autoUpdate => catgirlize(base.autoUpdate, localeName);
+  String get autoUpdate => catgirlizeTitle(base.autoUpdate, localeName);
 
   @override
   String get autoUpdateInterval =>
-      catgirlize(base.autoUpdateInterval, localeName);
+      catgirlizeTitle(base.autoUpdateInterval, localeName);
 
   @override
   String get profileAutoUpdateIntervalNullValidationDesc =>
@@ -287,58 +292,58 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   );
 
   @override
-  String get themeMode => catgirlize(base.themeMode, localeName);
+  String get themeMode => catgirlizeTitle(base.themeMode, localeName);
 
   @override
-  String get themeColor => catgirlize(base.themeColor, localeName);
+  String get themeColor => catgirlizeTitle(base.themeColor, localeName);
 
   @override
-  String get preview => catgirlize(base.preview, localeName);
+  String get preview => catgirlizeTitle(base.preview, localeName);
 
   @override
-  String get auto => catgirlize(base.auto, localeName);
+  String get auto => catgirlizeTitle(base.auto, localeName);
 
   @override
-  String get light => catgirlize(base.light, localeName);
+  String get light => catgirlizeTitle(base.light, localeName);
 
   @override
-  String get dark => catgirlize(base.dark, localeName);
+  String get dark => catgirlizeTitle(base.dark, localeName);
 
   @override
-  String get importFromLink => catgirlize(base.importFromLink, localeName);
+  String get importFromLink => catgirlizeTitle(base.importFromLink, localeName);
 
   @override
-  String get sendFromPhone => catgirlize(base.sendFromPhone, localeName);
+  String get sendFromPhone => catgirlizeTitle(base.sendFromPhone, localeName);
 
   @override
   String get sendFromPhoneTip => catgirlize(base.sendFromPhoneTip, localeName);
 
   @override
   String get sendFromPhoneNoNetwork =>
-      catgirlize(base.sendFromPhoneNoNetwork, localeName);
+      catgirlizeTitle(base.sendFromPhoneNoNetwork, localeName);
 
   @override
   String get sendFromPhonePermissionDenied =>
-      catgirlize(base.sendFromPhonePermissionDenied, localeName);
+      catgirlizeTitle(base.sendFromPhonePermissionDenied, localeName);
 
   @override
   String get sendFromPhonePageTitle =>
-      catgirlize(base.sendFromPhonePageTitle, localeName);
+      catgirlizeTitle(base.sendFromPhonePageTitle, localeName);
 
   @override
   String get sendFromPhonePageHint =>
-      catgirlize(base.sendFromPhonePageHint, localeName);
+      catgirlizeTitle(base.sendFromPhonePageHint, localeName);
 
   @override
-  String get send => catgirlize(base.send, localeName);
+  String get send => catgirlizeTitle(base.send, localeName);
 
   @override
   String get sendFromPhonePageSent =>
-      catgirlize(base.sendFromPhonePageSent, localeName);
+      catgirlizeTitle(base.sendFromPhonePageSent, localeName);
 
   @override
   String get sendFromPhoneConfirmTitle =>
-      catgirlize(base.sendFromPhoneConfirmTitle, localeName);
+      catgirlizeTitle(base.sendFromPhoneConfirmTitle, localeName);
 
   @override
   String get shareQrcodeTip => catgirlize(base.shareQrcodeTip, localeName);
@@ -347,33 +352,35 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get qrcodeTooLongTip => catgirlize(base.qrcodeTooLongTip, localeName);
 
   @override
-  String get submit => catgirlize(base.submit, localeName);
+  String get submit => catgirlizeTitle(base.submit, localeName);
 
   @override
   String createProfileFromUrlTip(Object url) =>
       catgirlize(base.createProfileFromUrlTip(url), localeName);
 
   @override
-  String get create => catgirlize(base.create, localeName);
+  String get create => catgirlizeTitle(base.create, localeName);
 
   @override
   String get pleaseUploadValidQrcode =>
-      catgirlize(base.pleaseUploadValidQrcode, localeName);
+      catgirlizeTitle(base.pleaseUploadValidQrcode, localeName);
 
   @override
-  String get blacklistMode => catgirlize(base.blacklistMode, localeName);
+  String get blacklistMode => catgirlizeTitle(base.blacklistMode, localeName);
 
   @override
-  String get whitelistMode => catgirlize(base.whitelistMode, localeName);
+  String get whitelistMode => catgirlizeTitle(base.whitelistMode, localeName);
 
   @override
-  String get selectAll => catgirlize(base.selectAll, localeName);
+  String get selectAll => catgirlizeTitle(base.selectAll, localeName);
 
   @override
-  String get cancelSelectAll => catgirlize(base.cancelSelectAll, localeName);
+  String get cancelSelectAll =>
+      catgirlizeTitle(base.cancelSelectAll, localeName);
 
   @override
-  String get appAccessControl => catgirlize(base.appAccessControl, localeName);
+  String get appAccessControl =>
+      catgirlizeTitle(base.appAccessControl, localeName);
 
   @override
   String get accessControlAllowDesc =>
@@ -389,62 +396,62 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String accessControlSelectedCount(num count) =>
-      catgirlize(base.accessControlSelectedCount(count), localeName);
+      catgirlizeTitle(base.accessControlSelectedCount(count), localeName);
 
   @override
-  String get port => catgirlize(base.port, localeName);
+  String get port => catgirlizeTitle(base.port, localeName);
 
   @override
-  String get logLevel => catgirlize(base.logLevel, localeName);
+  String get logLevel => catgirlizeTitle(base.logLevel, localeName);
 
   @override
-  String get show => catgirlize(base.show, localeName);
+  String get show => catgirlizeTitle(base.show, localeName);
 
   @override
-  String get exit => catgirlize(base.exit, localeName);
+  String get exit => catgirlizeTitle(base.exit, localeName);
 
   @override
-  String get systemProxy => catgirlize(base.systemProxy, localeName);
+  String get systemProxy => catgirlizeTitle(base.systemProxy, localeName);
 
   @override
-  String get safeMode => catgirlize(base.safeMode, localeName);
+  String get safeMode => catgirlizeTitle(base.safeMode, localeName);
 
   @override
   String safeModeAppTitle(Object appName) =>
-      catgirlize(base.safeModeAppTitle(appName), localeName);
+      catgirlizeTitle(base.safeModeAppTitle(appName), localeName);
 
   @override
-  String get project => catgirlize(base.project, localeName);
+  String get project => catgirlizeTitle(base.project, localeName);
 
   @override
-  String get core => catgirlize(base.core, localeName);
+  String get core => catgirlizeTitle(base.core, localeName);
 
   @override
-  String get tabAnimation => catgirlize(base.tabAnimation, localeName);
+  String get tabAnimation => catgirlizeTitle(base.tabAnimation, localeName);
 
   @override
   String get tabAnimationSpeed =>
-      catgirlize(base.tabAnimationSpeed, localeName);
+      catgirlizeTitle(base.tabAnimationSpeed, localeName);
 
   @override
   String get tabAnimationSpeedDesc =>
       catgirlize(base.tabAnimationSpeedDesc, localeName);
 
   @override
-  String get desc => catgirlize(base.desc, localeName);
+  String get desc => catgirlizeTitle(base.desc, localeName);
 
   @override
-  String get startVpn => catgirlize(base.startVpn, localeName);
+  String get startVpn => catgirlizeTitle(base.startVpn, localeName);
 
   @override
-  String get stopVpn => catgirlize(base.stopVpn, localeName);
+  String get stopVpn => catgirlizeTitle(base.stopVpn, localeName);
 
   @override
   String get localNetworkDeniedTip =>
       catgirlize(base.localNetworkDeniedTip, localeName);
 
   @override
-  String get compatible => catgirlize(base.compatible, localeName);
+  String get compatible => catgirlizeTitle(base.compatible, localeName);
 
   @override
   String get notSelectedTip => catgirlize(base.notSelectedTip, localeName);
@@ -458,47 +465,48 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.databaseWriteFailedTip, localeName);
 
   @override
-  String get tip => catgirlize(base.tip, localeName);
+  String get tip => catgirlizeTitle(base.tip, localeName);
 
   @override
-  String get account => catgirlize(base.account, localeName);
+  String get account => catgirlizeTitle(base.account, localeName);
 
   @override
-  String get backup => catgirlize(base.backup, localeName);
+  String get backup => catgirlizeTitle(base.backup, localeName);
 
   @override
-  String get backupSuccess => catgirlize(base.backupSuccess, localeName);
+  String get backupSuccess => catgirlizeTitle(base.backupSuccess, localeName);
 
   @override
-  String get noInfo => catgirlize(base.noInfo, localeName);
+  String get noInfo => catgirlizeTitle(base.noInfo, localeName);
 
   @override
-  String get pleaseBindWebDAV => catgirlize(base.pleaseBindWebDAV, localeName);
+  String get pleaseBindWebDAV =>
+      catgirlizeTitle(base.pleaseBindWebDAV, localeName);
 
   @override
-  String get bind => catgirlize(base.bind, localeName);
+  String get bind => catgirlizeTitle(base.bind, localeName);
 
   @override
-  String get connectivity => catgirlize(base.connectivity, localeName);
+  String get connectivity => catgirlizeTitle(base.connectivity, localeName);
 
   @override
   String get webDAVConfiguration =>
-      catgirlize(base.webDAVConfiguration, localeName);
+      catgirlizeTitle(base.webDAVConfiguration, localeName);
 
   @override
-  String get address => catgirlize(base.address, localeName);
+  String get address => catgirlizeTitle(base.address, localeName);
 
   @override
-  String get addressHelp => catgirlize(base.addressHelp, localeName);
+  String get addressHelp => catgirlizeTitle(base.addressHelp, localeName);
 
   @override
   String get addressTip => catgirlize(base.addressTip, localeName);
 
   @override
-  String get password => catgirlize(base.password, localeName);
+  String get password => catgirlizeTitle(base.password, localeName);
 
   @override
-  String get authentication => catgirlize(base.authentication, localeName);
+  String get authentication => catgirlizeTitle(base.authentication, localeName);
 
   @override
   String get authenticationDesc =>
@@ -509,33 +517,34 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.authenticationSystemProxyDesc, localeName);
 
   @override
-  String get checkUpdate => catgirlize(base.checkUpdate, localeName);
+  String get checkUpdate => catgirlizeTitle(base.checkUpdate, localeName);
 
   @override
   String get discoverNewVersion =>
-      catgirlize(base.discoverNewVersion, localeName);
+      catgirlizeTitle(base.discoverNewVersion, localeName);
 
   @override
-  String get checkUpdateError => catgirlize(base.checkUpdateError, localeName);
+  String get checkUpdateError =>
+      catgirlizeTitle(base.checkUpdateError, localeName);
 
   @override
-  String get goDownload => catgirlize(base.goDownload, localeName);
+  String get goDownload => catgirlizeTitle(base.goDownload, localeName);
 
   @override
-  String get unknown => catgirlize(base.unknown, localeName);
+  String get unknown => catgirlizeTitle(base.unknown, localeName);
 
   @override
-  String get country => catgirlize(base.country, localeName);
+  String get country => catgirlizeTitle(base.country, localeName);
 
   @override
-  String get search => catgirlize(base.search, localeName);
+  String get search => catgirlizeTitle(base.search, localeName);
 
   @override
-  String get allowBypass => catgirlize(base.allowBypass, localeName);
+  String get allowBypass => catgirlizeTitle(base.allowBypass, localeName);
 
   @override
   String get externalController =>
-      catgirlize(base.externalController, localeName);
+      catgirlizeTitle(base.externalController, localeName);
 
   @override
   String get externalControllerDesc =>
@@ -543,139 +552,142 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get externalControllerSecret =>
-      catgirlize(base.externalControllerSecret, localeName);
+      catgirlizeTitle(base.externalControllerSecret, localeName);
 
   @override
   String get ipv6Desc => catgirlize(base.ipv6Desc, localeName);
 
   @override
-  String get app => catgirlize(base.app, localeName);
+  String get app => catgirlizeTitle(base.app, localeName);
 
   @override
-  String get general => catgirlize(base.general, localeName);
+  String get general => catgirlizeTitle(base.general, localeName);
 
   @override
   String get startupAndBackground =>
-      catgirlize(base.startupAndBackground, localeName);
+      catgirlizeTitle(base.startupAndBackground, localeName);
 
   @override
   String get requestsAndUpdates =>
-      catgirlize(base.requestsAndUpdates, localeName);
+      catgirlizeTitle(base.requestsAndUpdates, localeName);
 
   @override
   String get logsAndDiagnostics =>
-      catgirlize(base.logsAndDiagnostics, localeName);
+      catgirlizeTitle(base.logsAndDiagnostics, localeName);
 
   @override
-  String get userAgent => catgirlize(base.userAgent, localeName);
+  String get userAgent => catgirlizeTitle(base.userAgent, localeName);
 
   @override
-  String get unifiedDelay => catgirlize(base.unifiedDelay, localeName);
+  String get unifiedDelay => catgirlizeTitle(base.unifiedDelay, localeName);
 
   @override
-  String get tcpConcurrent => catgirlize(base.tcpConcurrent, localeName);
+  String get tcpConcurrent => catgirlizeTitle(base.tcpConcurrent, localeName);
 
   @override
-  String get geodataLoader => catgirlize(base.geodataLoader, localeName);
+  String get geodataLoader => catgirlizeTitle(base.geodataLoader, localeName);
 
   @override
-  String get requests => catgirlize(base.requests, localeName);
+  String get requests => catgirlizeTitle(base.requests, localeName);
 
   @override
-  String get recentRequests => catgirlize(base.recentRequests, localeName);
+  String get recentRequests => catgirlizeTitle(base.recentRequests, localeName);
 
   @override
-  String get findProcessMode => catgirlize(base.findProcessMode, localeName);
+  String get findProcessMode =>
+      catgirlizeTitle(base.findProcessMode, localeName);
 
   @override
-  String get init => catgirlize(base.init, localeName);
+  String get init => catgirlizeTitle(base.init, localeName);
 
   @override
-  String get infiniteTime => catgirlize(base.infiniteTime, localeName);
+  String get infiniteTime => catgirlizeTitle(base.infiniteTime, localeName);
 
   @override
-  String get connections => catgirlize(base.connections, localeName);
+  String get connections => catgirlizeTitle(base.connections, localeName);
 
   @override
-  String get liveConnections => catgirlize(base.liveConnections, localeName);
+  String get liveConnections =>
+      catgirlizeTitle(base.liveConnections, localeName);
 
   @override
-  String get inbound => catgirlize(base.inbound, localeName);
+  String get inbound => catgirlizeTitle(base.inbound, localeName);
 
   @override
-  String get intranetIP => catgirlize(base.intranetIP, localeName);
+  String get intranetIP => catgirlizeTitle(base.intranetIP, localeName);
 
   @override
-  String get view => catgirlize(base.view, localeName);
+  String get view => catgirlizeTitle(base.view, localeName);
 
   @override
-  String get cut => catgirlize(base.cut, localeName);
+  String get cut => catgirlizeTitle(base.cut, localeName);
 
   @override
-  String get copy => catgirlize(base.copy, localeName);
+  String get copy => catgirlizeTitle(base.copy, localeName);
 
   @override
   String get clipboardWriteFailed =>
-      catgirlize(base.clipboardWriteFailed, localeName);
+      catgirlizeTitle(base.clipboardWriteFailed, localeName);
 
   @override
-  String get paste => catgirlize(base.paste, localeName);
+  String get paste => catgirlizeTitle(base.paste, localeName);
 
   @override
-  String get testUrl => catgirlize(base.testUrl, localeName);
+  String get testUrl => catgirlizeTitle(base.testUrl, localeName);
 
   @override
-  String get delayTestTimeout => catgirlize(base.delayTestTimeout, localeName);
+  String get delayTestTimeout =>
+      catgirlizeTitle(base.delayTestTimeout, localeName);
 
   @override
-  String get sync => catgirlize(base.sync, localeName);
+  String get sync => catgirlizeTitle(base.sync, localeName);
 
   @override
-  String get exclude => catgirlize(base.exclude, localeName);
+  String get exclude => catgirlizeTitle(base.exclude, localeName);
 
   @override
-  String get compact => catgirlize(base.compact, localeName);
+  String get compact => catgirlizeTitle(base.compact, localeName);
 
   @override
-  String get tab => catgirlize(base.tab, localeName);
+  String get tab => catgirlizeTitle(base.tab, localeName);
 
   @override
-  String get list => catgirlize(base.list, localeName);
+  String get list => catgirlizeTitle(base.list, localeName);
 
   @override
-  String get delay => catgirlize(base.delay, localeName);
+  String get delay => catgirlizeTitle(base.delay, localeName);
 
   @override
-  String get style => catgirlize(base.style, localeName);
+  String get style => catgirlizeTitle(base.style, localeName);
 
   @override
-  String get size => catgirlize(base.size, localeName);
+  String get size => catgirlizeTitle(base.size, localeName);
 
   @override
-  String get sort => catgirlize(base.sort, localeName);
+  String get sort => catgirlizeTitle(base.sort, localeName);
 
   @override
-  String get columns => catgirlize(base.columns, localeName);
+  String get columns => catgirlizeTitle(base.columns, localeName);
 
   @override
-  String get proxyGroup => catgirlize(base.proxyGroup, localeName);
+  String get proxyGroup => catgirlizeTitle(base.proxyGroup, localeName);
 
   @override
-  String get go => catgirlize(base.go, localeName);
+  String get go => catgirlizeTitle(base.go, localeName);
 
   @override
-  String get externalLink => catgirlize(base.externalLink, localeName);
+  String get externalLink => catgirlizeTitle(base.externalLink, localeName);
 
   @override
   String get otherContributors =>
-      catgirlize(base.otherContributors, localeName);
+      catgirlizeTitle(base.otherContributors, localeName);
 
   @override
-  String get appIconDesign => catgirlize(base.appIconDesign, localeName);
+  String get appIconDesign => catgirlizeTitle(base.appIconDesign, localeName);
 
   @override
   String get autoCloseConnections =>
-      catgirlize(base.autoCloseConnections, localeName);
+      catgirlizeTitle(base.autoCloseConnections, localeName);
 
   @override
   String get autoCloseConnectionsDesc =>
@@ -683,23 +695,24 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get onlyStatisticsProxy =>
-      catgirlize(base.onlyStatisticsProxy, localeName);
+      catgirlizeTitle(base.onlyStatisticsProxy, localeName);
 
   @override
   String get showNotificationStopAction =>
-      catgirlize(base.showNotificationStopAction, localeName);
+      catgirlizeTitle(base.showNotificationStopAction, localeName);
 
   @override
-  String get pureBlackMode => catgirlize(base.pureBlackMode, localeName);
+  String get pureBlackMode => catgirlizeTitle(base.pureBlackMode, localeName);
 
   @override
-  String get sidebar => catgirlize(base.sidebar, localeName);
+  String get sidebar => catgirlizeTitle(base.sidebar, localeName);
 
   @override
-  String get backgroundBlur => catgirlize(base.backgroundBlur, localeName);
+  String get backgroundBlur => catgirlizeTitle(base.backgroundBlur, localeName);
 
   @override
-  String get advancedMaterial => catgirlize(base.advancedMaterial, localeName);
+  String get advancedMaterial =>
+      catgirlizeTitle(base.advancedMaterial, localeName);
 
   @override
   String get advancedMaterialDesc =>
@@ -707,109 +720,111 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get advancedMaterialDim =>
-      catgirlize(base.advancedMaterialDim, localeName);
+      catgirlizeTitle(base.advancedMaterialDim, localeName);
 
   @override
   String get advancedMaterialBlur =>
-      catgirlize(base.advancedMaterialBlur, localeName);
+      catgirlizeTitle(base.advancedMaterialBlur, localeName);
 
   @override
   String get sidebarBlurDesc => catgirlize(base.sidebarBlurDesc, localeName);
 
   @override
-  String get liquidGlass => catgirlize(base.liquidGlass, localeName);
+  String get liquidGlass => catgirlizeTitle(base.liquidGlass, localeName);
 
   @override
   String get keepAliveIntervalDesc =>
       catgirlize(base.keepAliveIntervalDesc, localeName);
 
   @override
-  String get entries => catgirlize(base.entries, localeName);
+  String get entries => catgirlizeTitle(base.entries, localeName);
 
   @override
-  String get local => catgirlize(base.local, localeName);
+  String get local => catgirlizeTitle(base.local, localeName);
 
   @override
-  String get remote => catgirlize(base.remote, localeName);
+  String get remote => catgirlizeTitle(base.remote, localeName);
 
   @override
-  String get mode => catgirlize(base.mode, localeName);
+  String get mode => catgirlizeTitle(base.mode, localeName);
 
   @override
-  String get time => catgirlize(base.time, localeName);
+  String get time => catgirlizeTitle(base.time, localeName);
 
   @override
-  String get source => catgirlize(base.source, localeName);
+  String get source => catgirlizeTitle(base.source, localeName);
 
   @override
-  String get action => catgirlize(base.action, localeName);
+  String get action => catgirlizeTitle(base.action, localeName);
 
   @override
   String get intelligentSelected =>
-      catgirlize(base.intelligentSelected, localeName);
+      catgirlizeTitle(base.intelligentSelected, localeName);
 
   @override
-  String get clipboardImport => catgirlize(base.clipboardImport, localeName);
+  String get clipboardImport =>
+      catgirlizeTitle(base.clipboardImport, localeName);
 
   @override
-  String get clipboardExport => catgirlize(base.clipboardExport, localeName);
+  String get clipboardExport =>
+      catgirlizeTitle(base.clipboardExport, localeName);
 
   @override
-  String get layout => catgirlize(base.layout, localeName);
+  String get layout => catgirlizeTitle(base.layout, localeName);
 
   @override
-  String get tight => catgirlize(base.tight, localeName);
+  String get tight => catgirlizeTitle(base.tight, localeName);
 
   @override
-  String get standard => catgirlize(base.standard, localeName);
+  String get standard => catgirlizeTitle(base.standard, localeName);
 
   @override
-  String get ultra => catgirlize(base.ultra, localeName);
+  String get ultra => catgirlizeTitle(base.ultra, localeName);
 
   @override
-  String get loose => catgirlize(base.loose, localeName);
+  String get loose => catgirlizeTitle(base.loose, localeName);
 
   @override
-  String get profilesSort => catgirlize(base.profilesSort, localeName);
+  String get profilesSort => catgirlizeTitle(base.profilesSort, localeName);
 
   @override
-  String get start => catgirlize(base.start, localeName);
+  String get start => catgirlizeTitle(base.start, localeName);
 
   @override
-  String get runTime => catgirlize(base.runTime, localeName);
+  String get runTime => catgirlizeTitle(base.runTime, localeName);
 
   @override
-  String get stop => catgirlize(base.stop, localeName);
+  String get stop => catgirlizeTitle(base.stop, localeName);
 
   @override
-  String get key => catgirlize(base.key, localeName);
+  String get key => catgirlizeTitle(base.key, localeName);
 
   @override
-  String get value => catgirlize(base.value, localeName);
+  String get value => catgirlizeTitle(base.value, localeName);
 
   @override
   String get vpnEnableDesc => catgirlize(base.vpnEnableDesc, localeName);
 
   @override
-  String get options => catgirlize(base.options, localeName);
+  String get options => catgirlizeTitle(base.options, localeName);
 
   @override
-  String get enabled => catgirlize(base.enabled, localeName);
+  String get enabled => catgirlizeTitle(base.enabled, localeName);
 
   @override
-  String get disabled => catgirlize(base.disabled, localeName);
+  String get disabled => catgirlizeTitle(base.disabled, localeName);
 
   @override
-  String get loopback => catgirlize(base.loopback, localeName);
+  String get loopback => catgirlizeTitle(base.loopback, localeName);
 
   @override
-  String get providers => catgirlize(base.providers, localeName);
+  String get providers => catgirlizeTitle(base.providers, localeName);
 
   @override
-  String get proxyProviders => catgirlize(base.proxyProviders, localeName);
+  String get proxyProviders => catgirlizeTitle(base.proxyProviders, localeName);
 
   @override
-  String get ruleProviders => catgirlize(base.ruleProviders, localeName);
+  String get ruleProviders => catgirlizeTitle(base.ruleProviders, localeName);
 
   @override
   String get providerUrlTip => catgirlize(base.providerUrlTip, localeName);
@@ -825,32 +840,33 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.ruleSetInvalidTip, localeName);
 
   @override
-  String get subscriptionInfo => catgirlize(base.subscriptionInfo, localeName);
+  String get subscriptionInfo =>
+      catgirlizeTitle(base.subscriptionInfo, localeName);
 
   @override
   String get ntpStatusDesc => catgirlize(base.ntpStatusDesc, localeName);
 
   @override
-  String get server => catgirlize(base.server, localeName);
+  String get server => catgirlizeTitle(base.server, localeName);
 
   @override
-  String get ntpInterval => catgirlize(base.ntpInterval, localeName);
+  String get ntpInterval => catgirlizeTitle(base.ntpInterval, localeName);
 
   @override
-  String get dialerProxy => catgirlize(base.dialerProxy, localeName);
+  String get dialerProxy => catgirlizeTitle(base.dialerProxy, localeName);
 
   @override
   String get dialerProxyDesc => catgirlize(base.dialerProxyDesc, localeName);
 
   @override
-  String get writeToSystem => catgirlize(base.writeToSystem, localeName);
+  String get writeToSystem => catgirlizeTitle(base.writeToSystem, localeName);
 
   @override
   String get writeToSystemDesc =>
       catgirlize(base.writeToSystemDesc, localeName);
 
   @override
-  String get sniffer => catgirlize(base.sniffer, localeName);
+  String get sniffer => catgirlizeTitle(base.sniffer, localeName);
 
   @override
   String get snifferStatusDesc =>
@@ -858,267 +874,275 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get overrideDestination =>
-      catgirlize(base.overrideDestination, localeName);
+      catgirlizeTitle(base.overrideDestination, localeName);
 
   @override
   String get overrideDestinationDesc =>
       catgirlize(base.overrideDestinationDesc, localeName);
 
   @override
-  String get forceDnsMapping => catgirlize(base.forceDnsMapping, localeName);
+  String get forceDnsMapping =>
+      catgirlizeTitle(base.forceDnsMapping, localeName);
 
   @override
   String get forceDnsMappingDesc =>
       catgirlize(base.forceDnsMappingDesc, localeName);
 
   @override
-  String get parsePureIp => catgirlize(base.parsePureIp, localeName);
+  String get parsePureIp => catgirlizeTitle(base.parsePureIp, localeName);
 
   @override
   String get parsePureIpDesc => catgirlize(base.parsePureIpDesc, localeName);
 
   @override
-  String get forceDomain => catgirlize(base.forceDomain, localeName);
+  String get forceDomain => catgirlizeTitle(base.forceDomain, localeName);
 
   @override
   String get forceDomainDesc => catgirlize(base.forceDomainDesc, localeName);
 
   @override
-  String get skipDomain => catgirlize(base.skipDomain, localeName);
+  String get skipDomain => catgirlizeTitle(base.skipDomain, localeName);
 
   @override
   String get skipDomainDesc => catgirlize(base.skipDomainDesc, localeName);
 
   @override
-  String get skipSrcAddress => catgirlize(base.skipSrcAddress, localeName);
+  String get skipSrcAddress => catgirlizeTitle(base.skipSrcAddress, localeName);
 
   @override
-  String get skipDstAddress => catgirlize(base.skipDstAddress, localeName);
+  String get skipDstAddress => catgirlizeTitle(base.skipDstAddress, localeName);
 
   @override
-  String get sniffProtocols => catgirlize(base.sniffProtocols, localeName);
+  String get sniffProtocols => catgirlizeTitle(base.sniffProtocols, localeName);
 
   @override
-  String get ports => catgirlize(base.ports, localeName);
+  String get ports => catgirlizeTitle(base.ports, localeName);
 
   @override
-  String get overrideEntries => catgirlize(base.overrideEntries, localeName);
+  String get overrideEntries =>
+      catgirlizeTitle(base.overrideEntries, localeName);
 
   @override
-  String get addOverrideEntry => catgirlize(base.addOverrideEntry, localeName);
+  String get addOverrideEntry =>
+      catgirlizeTitle(base.addOverrideEntry, localeName);
 
   @override
   String get dnsOverrideDesc => catgirlize(base.dnsOverrideDesc, localeName);
 
   @override
-  String get settingEntries => catgirlize(base.settingEntries, localeName);
+  String get settingEntries => catgirlizeTitle(base.settingEntries, localeName);
 
   @override
-  String get addSettingEntry => catgirlize(base.addSettingEntry, localeName);
+  String get addSettingEntry =>
+      catgirlizeTitle(base.addSettingEntry, localeName);
 
   @override
   String get profileSettingsDesc =>
       catgirlize(base.profileSettingsDesc, localeName);
 
   @override
-  String get healthCheck => catgirlize(base.healthCheck, localeName);
+  String get healthCheck => catgirlizeTitle(base.healthCheck, localeName);
 
   @override
-  String get discardChanges => catgirlize(base.discardChanges, localeName);
+  String get discardChanges => catgirlizeTitle(base.discardChanges, localeName);
 
   @override
-  String get quickEdit => catgirlize(base.quickEdit, localeName);
+  String get quickEdit => catgirlizeTitle(base.quickEdit, localeName);
 
   @override
-  String get status => catgirlize(base.status, localeName);
+  String get status => catgirlizeTitle(base.status, localeName);
 
   @override
   String get statusDesc => catgirlize(base.statusDesc, localeName);
 
   @override
-  String get respectRules => catgirlize(base.respectRules, localeName);
+  String get respectRules => catgirlizeTitle(base.respectRules, localeName);
 
   @override
   String get respectRulesDesc => catgirlize(base.respectRulesDesc, localeName);
 
   @override
-  String get dnsMode => catgirlize(base.dnsMode, localeName);
+  String get dnsMode => catgirlizeTitle(base.dnsMode, localeName);
 
   @override
-  String get fakeipRange => catgirlize(base.fakeipRange, localeName);
+  String get fakeipRange => catgirlizeTitle(base.fakeipRange, localeName);
 
   @override
-  String get fakeipFilter => catgirlize(base.fakeipFilter, localeName);
+  String get fakeipFilter => catgirlizeTitle(base.fakeipFilter, localeName);
 
   @override
-  String get useHosts => catgirlize(base.useHosts, localeName);
+  String get useHosts => catgirlizeTitle(base.useHosts, localeName);
 
   @override
-  String get useSystemHosts => catgirlize(base.useSystemHosts, localeName);
+  String get useSystemHosts => catgirlizeTitle(base.useSystemHosts, localeName);
 
   @override
-  String get fallbackFilter => catgirlize(base.fallbackFilter, localeName);
+  String get fallbackFilter => catgirlizeTitle(base.fallbackFilter, localeName);
 
   @override
-  String get domain => catgirlize(base.domain, localeName);
+  String get domain => catgirlizeTitle(base.domain, localeName);
 
   @override
   String get listenRoutingMark =>
-      catgirlize(base.listenRoutingMark, localeName);
+      catgirlizeTitle(base.listenRoutingMark, localeName);
 
   @override
   String get listenRoutingMarkDesc =>
       catgirlize(base.listenRoutingMarkDesc, localeName);
 
   @override
-  String get ipv6Timeout => catgirlize(base.ipv6Timeout, localeName);
+  String get ipv6Timeout => catgirlizeTitle(base.ipv6Timeout, localeName);
 
   @override
-  String get cacheAlgorithm => catgirlize(base.cacheAlgorithm, localeName);
+  String get cacheAlgorithm => catgirlizeTitle(base.cacheAlgorithm, localeName);
 
   @override
-  String get cacheMaxSize => catgirlize(base.cacheMaxSize, localeName);
+  String get cacheMaxSize => catgirlizeTitle(base.cacheMaxSize, localeName);
 
   @override
-  String get fakeipRange6 => catgirlize(base.fakeipRange6, localeName);
+  String get fakeipRange6 => catgirlizeTitle(base.fakeipRange6, localeName);
 
   @override
-  String get fakeipFilterMode => catgirlize(base.fakeipFilterMode, localeName);
+  String get fakeipFilterMode =>
+      catgirlizeTitle(base.fakeipFilterMode, localeName);
 
   @override
   String get fakeipFilterModeDesc =>
       catgirlize(base.fakeipFilterModeDesc, localeName);
 
   @override
-  String get fakeipTtl => catgirlize(base.fakeipTtl, localeName);
+  String get fakeipTtl => catgirlizeTitle(base.fakeipTtl, localeName);
 
   @override
-  String get reset => catgirlize(base.reset, localeName);
+  String get reset => catgirlizeTitle(base.reset, localeName);
 
   @override
-  String get actionView => catgirlize(base.actionView, localeName);
+  String get actionView => catgirlizeTitle(base.actionView, localeName);
 
   @override
-  String get actionStart => catgirlize(base.actionStart, localeName);
+  String get actionStart => catgirlizeTitle(base.actionStart, localeName);
 
   @override
-  String get actionMode => catgirlize(base.actionMode, localeName);
+  String get actionMode => catgirlizeTitle(base.actionMode, localeName);
 
   @override
-  String get actionProxy => catgirlize(base.actionProxy, localeName);
+  String get actionProxy => catgirlizeTitle(base.actionProxy, localeName);
 
   @override
-  String get actionTun => catgirlize(base.actionTun, localeName);
+  String get actionTun => catgirlizeTitle(base.actionTun, localeName);
 
   @override
-  String get actionRuleMode => catgirlize(base.actionRuleMode, localeName);
+  String get actionRuleMode => catgirlizeTitle(base.actionRuleMode, localeName);
 
   @override
-  String get actionGlobalMode => catgirlize(base.actionGlobalMode, localeName);
+  String get actionGlobalMode =>
+      catgirlizeTitle(base.actionGlobalMode, localeName);
 
   @override
-  String get actionDirectMode => catgirlize(base.actionDirectMode, localeName);
+  String get actionDirectMode =>
+      catgirlizeTitle(base.actionDirectMode, localeName);
 
   @override
-  String get actionDelayTest => catgirlize(base.actionDelayTest, localeName);
+  String get actionDelayTest =>
+      catgirlizeTitle(base.actionDelayTest, localeName);
 
   @override
   String get actionUpdateProfiles =>
-      catgirlize(base.actionUpdateProfiles, localeName);
+      catgirlizeTitle(base.actionUpdateProfiles, localeName);
 
   @override
-  String get disclaimer => catgirlize(base.disclaimer, localeName);
+  String get disclaimer => catgirlizeTitle(base.disclaimer, localeName);
 
   @override
   String get disclaimerDesc => catgirlize(base.disclaimerDesc, localeName);
 
   @override
   String get disclaimerSoftwareTitle =>
-      catgirlize(base.disclaimerSoftwareTitle, localeName);
+      catgirlizeTitle(base.disclaimerSoftwareTitle, localeName);
 
   @override
   String get disclaimerSoftwareContent =>
-      catgirlize(base.disclaimerSoftwareContent, localeName);
+      catgirlizeTitle(base.disclaimerSoftwareContent, localeName);
 
   @override
   String get disclaimerNoServiceStatement =>
-      catgirlize(base.disclaimerNoServiceStatement, localeName);
+      catgirlizeTitle(base.disclaimerNoServiceStatement, localeName);
 
   @override
   String get disclaimerUsageTitle =>
-      catgirlize(base.disclaimerUsageTitle, localeName);
+      catgirlizeTitle(base.disclaimerUsageTitle, localeName);
 
   @override
   String get disclaimerUsageContent =>
-      catgirlize(base.disclaimerUsageContent, localeName);
+      catgirlizeTitle(base.disclaimerUsageContent, localeName);
 
   @override
   String get disclaimerResponsibilityTitle =>
-      catgirlize(base.disclaimerResponsibilityTitle, localeName);
+      catgirlizeTitle(base.disclaimerResponsibilityTitle, localeName);
 
   @override
   String get disclaimerResponsibilityContent =>
-      catgirlize(base.disclaimerResponsibilityContent, localeName);
+      catgirlizeTitle(base.disclaimerResponsibilityContent, localeName);
 
   @override
   String get disclaimerThirdPartyTitle =>
-      catgirlize(base.disclaimerThirdPartyTitle, localeName);
+      catgirlizeTitle(base.disclaimerThirdPartyTitle, localeName);
 
   @override
   String get disclaimerThirdPartyContent =>
-      catgirlize(base.disclaimerThirdPartyContent, localeName);
+      catgirlizeTitle(base.disclaimerThirdPartyContent, localeName);
 
   @override
   String get disclaimerWarrantyTitle =>
-      catgirlize(base.disclaimerWarrantyTitle, localeName);
+      catgirlizeTitle(base.disclaimerWarrantyTitle, localeName);
 
   @override
   String get disclaimerWarrantyContent =>
-      catgirlize(base.disclaimerWarrantyContent, localeName);
+      catgirlizeTitle(base.disclaimerWarrantyContent, localeName);
 
   @override
   String get disclaimerLiabilityTitle =>
-      catgirlize(base.disclaimerLiabilityTitle, localeName);
+      catgirlizeTitle(base.disclaimerLiabilityTitle, localeName);
 
   @override
   String get disclaimerLiabilityContent =>
-      catgirlize(base.disclaimerLiabilityContent, localeName);
+      catgirlizeTitle(base.disclaimerLiabilityContent, localeName);
 
   @override
   String get disclaimerPrivacyTitle =>
-      catgirlize(base.disclaimerPrivacyTitle, localeName);
+      catgirlizeTitle(base.disclaimerPrivacyTitle, localeName);
 
   @override
   String get disclaimerPrivacyContent =>
-      catgirlize(base.disclaimerPrivacyContent, localeName);
+      catgirlizeTitle(base.disclaimerPrivacyContent, localeName);
 
   @override
   String get disclaimerLicenseTitle =>
-      catgirlize(base.disclaimerLicenseTitle, localeName);
+      catgirlizeTitle(base.disclaimerLicenseTitle, localeName);
 
   @override
   String get disclaimerLicenseContent =>
-      catgirlize(base.disclaimerLicenseContent, localeName);
+      catgirlizeTitle(base.disclaimerLicenseContent, localeName);
 
   @override
   String get disclaimerChangesTitle =>
-      catgirlize(base.disclaimerChangesTitle, localeName);
+      catgirlizeTitle(base.disclaimerChangesTitle, localeName);
 
   @override
   String get disclaimerChangesContent =>
-      catgirlize(base.disclaimerChangesContent, localeName);
+      catgirlizeTitle(base.disclaimerChangesContent, localeName);
 
   @override
   String get disclaimerAcceptTitle =>
-      catgirlize(base.disclaimerAcceptTitle, localeName);
+      catgirlizeTitle(base.disclaimerAcceptTitle, localeName);
 
   @override
   String get disclaimerAcceptContent =>
-      catgirlize(base.disclaimerAcceptContent, localeName);
+      catgirlizeTitle(base.disclaimerAcceptContent, localeName);
 
   @override
   String get disclaimerRestateTitle =>
-      catgirlize(base.disclaimerRestateTitle, localeName);
+      catgirlizeTitle(base.disclaimerRestateTitle, localeName);
 
   @override
   String get disclaimerRestateTip =>
@@ -1126,15 +1150,15 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get disclaimerRestateHint =>
-      catgirlize(base.disclaimerRestateHint, localeName);
+      catgirlizeTitle(base.disclaimerRestateHint, localeName);
 
   @override
   String get disclaimerRestateMismatch =>
-      catgirlize(base.disclaimerRestateMismatch, localeName);
+      catgirlizeTitle(base.disclaimerRestateMismatch, localeName);
 
   @override
   String get disclaimerAcknowledgeTitle =>
-      catgirlize(base.disclaimerAcknowledgeTitle, localeName);
+      catgirlizeTitle(base.disclaimerAcknowledgeTitle, localeName);
 
   @override
   String get disclaimerAcknowledgeTip =>
@@ -1142,77 +1166,80 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get disclaimerAcknowledgeLabel =>
-      catgirlize(base.disclaimerAcknowledgeLabel, localeName);
+      catgirlizeTitle(base.disclaimerAcknowledgeLabel, localeName);
 
   @override
-  String get agree => catgirlize(base.agree, localeName);
+  String get agree => catgirlizeTitle(base.agree, localeName);
 
   @override
-  String get hotkeyManagement => catgirlize(base.hotkeyManagement, localeName);
+  String get hotkeyManagement =>
+      catgirlizeTitle(base.hotkeyManagement, localeName);
 
   @override
   String get hotkeyDesc => catgirlize(base.hotkeyDesc, localeName);
 
   @override
-  String get hotkeyNotSet => catgirlize(base.hotkeyNotSet, localeName);
+  String get hotkeyNotSet => catgirlizeTitle(base.hotkeyNotSet, localeName);
 
   @override
-  String get pressKeyboard => catgirlize(base.pressKeyboard, localeName);
+  String get pressKeyboard => catgirlizeTitle(base.pressKeyboard, localeName);
 
   @override
   String hotkeyNeedsModifier(Object modifiers) =>
-      catgirlize(base.hotkeyNeedsModifier(modifiers), localeName);
+      catgirlizeTitle(base.hotkeyNeedsModifier(modifiers), localeName);
 
   @override
   String hotkeyConflictWith(Object action) =>
-      catgirlize(base.hotkeyConflictWith(action), localeName);
+      catgirlizeTitle(base.hotkeyConflictWith(action), localeName);
 
   @override
   String get hotkeyUnavailable =>
-      catgirlize(base.hotkeyUnavailable, localeName);
+      catgirlizeTitle(base.hotkeyUnavailable, localeName);
 
   @override
-  String get remove => catgirlize(base.remove, localeName);
+  String get remove => catgirlizeTitle(base.remove, localeName);
 
   @override
-  String get noNetwork => catgirlize(base.noNetwork, localeName);
+  String get noNetwork => catgirlizeTitle(base.noNetwork, localeName);
 
   @override
   String get ipv6InboundDesc => catgirlize(base.ipv6InboundDesc, localeName);
 
   @override
-  String get exportLogs => catgirlize(base.exportLogs, localeName);
+  String get exportLogs => catgirlizeTitle(base.exportLogs, localeName);
 
   @override
-  String get exportSuccess => catgirlize(base.exportSuccess, localeName);
+  String get exportSuccess => catgirlizeTitle(base.exportSuccess, localeName);
 
   @override
-  String get iconStyle => catgirlize(base.iconStyle, localeName);
+  String get iconStyle => catgirlizeTitle(base.iconStyle, localeName);
 
   @override
-  String get iconStyleFilled => catgirlize(base.iconStyleFilled, localeName);
+  String get iconStyleFilled =>
+      catgirlizeTitle(base.iconStyleFilled, localeName);
 
   @override
-  String get iconStylePlain => catgirlize(base.iconStylePlain, localeName);
+  String get iconStylePlain => catgirlizeTitle(base.iconStylePlain, localeName);
 
   @override
-  String get iconStyleHidden => catgirlize(base.iconStyleHidden, localeName);
+  String get iconStyleHidden =>
+      catgirlizeTitle(base.iconStyleHidden, localeName);
 
   @override
-  String get filter => catgirlize(base.filter, localeName);
+  String get filter => catgirlizeTitle(base.filter, localeName);
 
   @override
   String get hideTimeoutProxies =>
-      catgirlize(base.hideTimeoutProxies, localeName);
+      catgirlizeTitle(base.hideTimeoutProxies, localeName);
 
   @override
-  String get stackMode => catgirlize(base.stackMode, localeName);
+  String get stackMode => catgirlizeTitle(base.stackMode, localeName);
 
   @override
-  String get network => catgirlize(base.network, localeName);
+  String get network => catgirlizeTitle(base.network, localeName);
 
   @override
-  String get bypassDomain => catgirlize(base.bypassDomain, localeName);
+  String get bypassDomain => catgirlizeTitle(base.bypassDomain, localeName);
 
   @override
   String get bypassDomainDesc => catgirlize(base.bypassDomainDesc, localeName);
@@ -1221,86 +1248,88 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get resetTip => catgirlize(base.resetTip, localeName);
 
   @override
-  String get icon => catgirlize(base.icon, localeName);
+  String get icon => catgirlizeTitle(base.icon, localeName);
 
   @override
-  String get noData => catgirlize(base.noData, localeName);
+  String get noData => catgirlizeTitle(base.noData, localeName);
 
   @override
-  String get fontFamily => catgirlize(base.fontFamily, localeName);
+  String get fontFamily => catgirlizeTitle(base.fontFamily, localeName);
 
   @override
-  String get installedFonts => catgirlize(base.installedFonts, localeName);
+  String get installedFonts => catgirlizeTitle(base.installedFonts, localeName);
 
   @override
-  String get toggle => catgirlize(base.toggle, localeName);
+  String get toggle => catgirlizeTitle(base.toggle, localeName);
 
   @override
-  String get system => catgirlize(base.system, localeName);
+  String get system => catgirlizeTitle(base.system, localeName);
 
   @override
-  String get routeAddress => catgirlize(base.routeAddress, localeName);
+  String get routeAddress => catgirlizeTitle(base.routeAddress, localeName);
 
   @override
   String get interfaceNameMode =>
-      catgirlize(base.interfaceNameMode, localeName);
+      catgirlizeTitle(base.interfaceNameMode, localeName);
 
   @override
   String get interfaceNameModeClear =>
-      catgirlize(base.interfaceNameModeClear, localeName);
+      catgirlizeTitle(base.interfaceNameModeClear, localeName);
 
   @override
   String get interfaceNameModeFollow =>
-      catgirlize(base.interfaceNameModeFollow, localeName);
+      catgirlizeTitle(base.interfaceNameModeFollow, localeName);
 
   @override
   String get interfaceNameModeCustom =>
-      catgirlize(base.interfaceNameModeCustom, localeName);
+      catgirlizeTitle(base.interfaceNameModeCustom, localeName);
 
   @override
-  String get interfaceName => catgirlize(base.interfaceName, localeName);
+  String get interfaceName => catgirlizeTitle(base.interfaceName, localeName);
 
   @override
   String get interfaceNameDesc =>
       catgirlize(base.interfaceNameDesc, localeName);
 
   @override
-  String get copyEnvVar => catgirlize(base.copyEnvVar, localeName);
+  String get copyEnvVar => catgirlizeTitle(base.copyEnvVar, localeName);
 
   @override
-  String get memoryInfo => catgirlize(base.memoryInfo, localeName);
+  String get memoryInfo => catgirlizeTitle(base.memoryInfo, localeName);
 
   @override
-  String get total => catgirlize(base.total, localeName);
+  String get total => catgirlizeTitle(base.total, localeName);
 
   @override
-  String get releaseMemory => catgirlize(base.releaseMemory, localeName);
+  String get releaseMemory => catgirlizeTitle(base.releaseMemory, localeName);
 
   @override
   String get memoryCoreHeapInuse =>
-      catgirlize(base.memoryCoreHeapInuse, localeName);
+      catgirlizeTitle(base.memoryCoreHeapInuse, localeName);
 
   @override
   String get memoryCoreHeapIdle =>
-      catgirlize(base.memoryCoreHeapIdle, localeName);
+      catgirlizeTitle(base.memoryCoreHeapIdle, localeName);
 
   @override
-  String get memoryCoreStack => catgirlize(base.memoryCoreStack, localeName);
+  String get memoryCoreStack =>
+      catgirlizeTitle(base.memoryCoreStack, localeName);
 
   @override
   String get memoryCoreRuntime =>
-      catgirlize(base.memoryCoreRuntime, localeName);
+      catgirlizeTitle(base.memoryCoreRuntime, localeName);
 
   @override
   String get memoryCoreNotRunning =>
-      catgirlize(base.memoryCoreNotRunning, localeName);
+      catgirlizeTitle(base.memoryCoreNotRunning, localeName);
 
   @override
   String get memoryAppResident =>
-      catgirlize(base.memoryAppResident, localeName);
+      catgirlizeTitle(base.memoryAppResident, localeName);
 
   @override
-  String get memoryAppShared => catgirlize(base.memoryAppShared, localeName);
+  String get memoryAppShared =>
+      catgirlizeTitle(base.memoryAppShared, localeName);
 
   @override
   String get memoryEstimateDesc =>
@@ -1311,127 +1340,130 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.memoryEstimateSharedDesc, localeName);
 
   @override
-  String get memoryReleased => catgirlize(base.memoryReleased, localeName);
+  String get memoryReleased => catgirlizeTitle(base.memoryReleased, localeName);
 
   @override
   String memoryReleasedSize(Object size) =>
-      catgirlize(base.memoryReleasedSize(size), localeName);
+      catgirlizeTitle(base.memoryReleasedSize(size), localeName);
 
   @override
   String get releaseMemoryFailed =>
-      catgirlize(base.releaseMemoryFailed, localeName);
+      catgirlizeTitle(base.releaseMemoryFailed, localeName);
 
   @override
-  String get cancel => catgirlize(base.cancel, localeName);
+  String get cancel => catgirlizeTitle(base.cancel, localeName);
 
   @override
-  String get fileIsUpdate => catgirlize(base.fileIsUpdate, localeName);
+  String get fileIsUpdate => catgirlizeTitle(base.fileIsUpdate, localeName);
 
   @override
-  String get profileHasUpdate => catgirlize(base.profileHasUpdate, localeName);
+  String get profileHasUpdate =>
+      catgirlizeTitle(base.profileHasUpdate, localeName);
 
   @override
-  String get hasCacheChange => catgirlize(base.hasCacheChange, localeName);
+  String get hasCacheChange => catgirlizeTitle(base.hasCacheChange, localeName);
 
   @override
-  String get copySuccess => catgirlize(base.copySuccess, localeName);
+  String get copySuccess => catgirlizeTitle(base.copySuccess, localeName);
 
   @override
-  String get copyLink => catgirlize(base.copyLink, localeName);
+  String get copyLink => catgirlizeTitle(base.copyLink, localeName);
 
   @override
-  String get exportFile => catgirlize(base.exportFile, localeName);
+  String get exportFile => catgirlizeTitle(base.exportFile, localeName);
 
   @override
-  String get cacheCorrupt => catgirlize(base.cacheCorrupt, localeName);
+  String get cacheCorrupt => catgirlizeTitle(base.cacheCorrupt, localeName);
 
   @override
   String get detectionTip => catgirlize(base.detectionTip, localeName);
 
   @override
-  String get listen => catgirlize(base.listen, localeName);
+  String get listen => catgirlizeTitle(base.listen, localeName);
 
   @override
-  String get undo => catgirlize(base.undo, localeName);
+  String get undo => catgirlizeTitle(base.undo, localeName);
 
   @override
-  String get redo => catgirlize(base.redo, localeName);
+  String get redo => catgirlizeTitle(base.redo, localeName);
 
   @override
-  String get lineWrap => catgirlize(base.lineWrap, localeName);
+  String get lineWrap => catgirlizeTitle(base.lineWrap, localeName);
 
   @override
-  String get none => catgirlize(base.none, localeName);
+  String get none => catgirlizeTitle(base.none, localeName);
 
   @override
-  String get advancedConfig => catgirlize(base.advancedConfig, localeName);
+  String get advancedConfig => catgirlizeTitle(base.advancedConfig, localeName);
 
   @override
   String get advancedConfigDesc =>
       catgirlize(base.advancedConfigDesc, localeName);
 
   @override
-  String get addRule => catgirlize(base.addRule, localeName);
+  String get addRule => catgirlizeTitle(base.addRule, localeName);
 
   @override
-  String get content => catgirlize(base.content, localeName);
+  String get content => catgirlizeTitle(base.content, localeName);
 
   @override
-  String get ruleTarget => catgirlize(base.ruleTarget, localeName);
+  String get ruleTarget => catgirlizeTitle(base.ruleTarget, localeName);
 
   @override
-  String get matchTarget => catgirlize(base.matchTarget, localeName);
+  String get matchTarget => catgirlizeTitle(base.matchTarget, localeName);
 
   @override
-  String get followProfile => catgirlize(base.followProfile, localeName);
+  String get followProfile => catgirlizeTitle(base.followProfile, localeName);
 
   @override
-  String get sourceIp => catgirlize(base.sourceIp, localeName);
+  String get sourceIp => catgirlizeTitle(base.sourceIp, localeName);
 
   @override
-  String get noResolve => catgirlize(base.noResolve, localeName);
+  String get noResolve => catgirlizeTitle(base.noResolve, localeName);
 
   @override
-  String get saveChanges => catgirlize(base.saveChanges, localeName);
+  String get saveChanges => catgirlizeTitle(base.saveChanges, localeName);
 
   @override
-  String get applyNow => catgirlize(base.applyNow, localeName);
+  String get applyNow => catgirlizeTitle(base.applyNow, localeName);
 
   @override
-  String get applied => catgirlize(base.applied, localeName);
+  String get applied => catgirlizeTitle(base.applied, localeName);
 
   @override
-  String get cannotSave => catgirlize(base.cannotSave, localeName);
+  String get cannotSave => catgirlizeTitle(base.cannotSave, localeName);
 
   @override
   String get navigationBarStyle =>
-      catgirlize(base.navigationBarStyle, localeName);
+      catgirlizeTitle(base.navigationBarStyle, localeName);
 
   @override
   String get quickActionButton =>
-      catgirlize(base.quickActionButton, localeName);
+      catgirlizeTitle(base.quickActionButton, localeName);
 
   @override
   String get quickActionButtonDesc =>
       catgirlize(base.quickActionButtonDesc, localeName);
 
   @override
-  String get quickActionLeft => catgirlize(base.quickActionLeft, localeName);
+  String get quickActionLeft =>
+      catgirlizeTitle(base.quickActionLeft, localeName);
 
   @override
-  String get quickActionRight => catgirlize(base.quickActionRight, localeName);
+  String get quickActionRight =>
+      catgirlizeTitle(base.quickActionRight, localeName);
 
   @override
   String get quickActionTopLeft =>
-      catgirlize(base.quickActionTopLeft, localeName);
+      catgirlizeTitle(base.quickActionTopLeft, localeName);
 
   @override
   String get quickActionTopRight =>
-      catgirlize(base.quickActionTopRight, localeName);
+      catgirlizeTitle(base.quickActionTopRight, localeName);
 
   @override
   String get quickActionPosition =>
-      catgirlize(base.quickActionPosition, localeName);
+      catgirlizeTitle(base.quickActionPosition, localeName);
 
   @override
   String get quickActionPositionDesc =>
@@ -1439,98 +1471,101 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get navigationBarBottomMargin =>
-      catgirlize(base.navigationBarBottomMargin, localeName);
+      catgirlizeTitle(base.navigationBarBottomMargin, localeName);
 
   @override
-  String get floating => catgirlize(base.floating, localeName);
+  String get floating => catgirlizeTitle(base.floating, localeName);
 
   @override
-  String get docked => catgirlize(base.docked, localeName);
+  String get docked => catgirlizeTitle(base.docked, localeName);
 
   @override
-  String get slide => catgirlize(base.slide, localeName);
+  String get slide => catgirlizeTitle(base.slide, localeName);
 
   @override
-  String get fade => catgirlize(base.fade, localeName);
+  String get fade => catgirlizeTitle(base.fade, localeName);
 
   @override
-  String get pureBlack => catgirlize(base.pureBlack, localeName);
+  String get pureBlack => catgirlizeTitle(base.pureBlack, localeName);
 
   @override
-  String get customColor => catgirlize(base.customColor, localeName);
+  String get customColor => catgirlizeTitle(base.customColor, localeName);
 
   @override
-  String get colorStyle => catgirlize(base.colorStyle, localeName);
+  String get colorStyle => catgirlizeTitle(base.colorStyle, localeName);
 
   @override
-  String get background => catgirlize(base.background, localeName);
+  String get background => catgirlizeTitle(base.background, localeName);
 
   @override
   String get backgroundEnabled =>
-      catgirlize(base.backgroundEnabled, localeName);
+      catgirlizeTitle(base.backgroundEnabled, localeName);
 
   @override
   String get backgroundFitMode =>
-      catgirlize(base.backgroundFitMode, localeName);
+      catgirlizeTitle(base.backgroundFitMode, localeName);
 
   @override
   String get backgroundFitFill =>
-      catgirlize(base.backgroundFitFill, localeName);
+      catgirlizeTitle(base.backgroundFitFill, localeName);
 
   @override
   String get backgroundFitStretch =>
-      catgirlize(base.backgroundFitStretch, localeName);
+      catgirlizeTitle(base.backgroundFitStretch, localeName);
 
   @override
-  String get backgroundFitFit => catgirlize(base.backgroundFitFit, localeName);
+  String get backgroundFitFit =>
+      catgirlizeTitle(base.backgroundFitFit, localeName);
 
   @override
   String get backgroundDesc => catgirlize(base.backgroundDesc, localeName);
 
   @override
-  String get backgroundImage => catgirlize(base.backgroundImage, localeName);
+  String get backgroundImage =>
+      catgirlizeTitle(base.backgroundImage, localeName);
 
   @override
-  String get backgroundPick => catgirlize(base.backgroundPick, localeName);
+  String get backgroundPick => catgirlizeTitle(base.backgroundPick, localeName);
 
   @override
-  String get grid => catgirlize(base.grid, localeName);
+  String get grid => catgirlizeTitle(base.grid, localeName);
 
   @override
-  String get spectrum => catgirlize(base.spectrum, localeName);
+  String get spectrum => catgirlizeTitle(base.spectrum, localeName);
 
   @override
-  String get sliders => catgirlize(base.sliders, localeName);
+  String get sliders => catgirlizeTitle(base.sliders, localeName);
 
   @override
-  String get hue => catgirlize(base.hue, localeName);
+  String get hue => catgirlizeTitle(base.hue, localeName);
 
   @override
-  String get saturation => catgirlize(base.saturation, localeName);
+  String get saturation => catgirlizeTitle(base.saturation, localeName);
 
   @override
-  String get brightness => catgirlize(base.brightness, localeName);
+  String get brightness => catgirlizeTitle(base.brightness, localeName);
 
   @override
-  String get hex => catgirlize(base.hex, localeName);
+  String get hex => catgirlizeTitle(base.hex, localeName);
 
   @override
-  String get monochromeScheme => catgirlize(base.monochromeScheme, localeName);
+  String get monochromeScheme =>
+      catgirlizeTitle(base.monochromeScheme, localeName);
 
   @override
-  String get vividStyle => catgirlize(base.vividStyle, localeName);
+  String get vividStyle => catgirlizeTitle(base.vividStyle, localeName);
 
   @override
-  String get tintedStyle => catgirlize(base.tintedStyle, localeName);
+  String get tintedStyle => catgirlizeTitle(base.tintedStyle, localeName);
 
   @override
-  String get softStyle => catgirlize(base.softStyle, localeName);
+  String get softStyle => catgirlizeTitle(base.softStyle, localeName);
 
   @override
-  String get developerMode => catgirlize(base.developerMode, localeName);
+  String get developerMode => catgirlizeTitle(base.developerMode, localeName);
 
   @override
-  String get catgirlMode => catgirlize(base.catgirlMode, localeName);
+  String get catgirlMode => catgirlizeTitle(base.catgirlMode, localeName);
 
   @override
   String get catgirlModeDesc => catgirlize(base.catgirlModeDesc, localeName);
@@ -1540,16 +1575,16 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.developerModeEnableTip, localeName);
 
   @override
-  String get messageTest => catgirlize(base.messageTest, localeName);
+  String get messageTest => catgirlizeTitle(base.messageTest, localeName);
 
   @override
   String get messageTestTip => catgirlize(base.messageTestTip, localeName);
 
   @override
-  String get crashTest => catgirlize(base.crashTest, localeName);
+  String get crashTest => catgirlizeTitle(base.crashTest, localeName);
 
   @override
-  String get crashDetected => catgirlize(base.crashDetected, localeName);
+  String get crashDetected => catgirlizeTitle(base.crashDetected, localeName);
 
   @override
   String crashDetectedTip(Object name) =>
@@ -1557,46 +1592,48 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get launchInterrupted =>
-      catgirlize(base.launchInterrupted, localeName);
+      catgirlizeTitle(base.launchInterrupted, localeName);
 
   @override
   String get launchInterruptedTip =>
       catgirlize(base.launchInterruptedTip, localeName);
 
   @override
-  String get clearData => catgirlize(base.clearData, localeName);
+  String get clearData => catgirlizeTitle(base.clearData, localeName);
 
   @override
-  String get textScale => catgirlize(base.textScale, localeName);
+  String get textScale => catgirlizeTitle(base.textScale, localeName);
 
   @override
-  String get textScalePreview => catgirlize(base.textScalePreview, localeName);
+  String get textScalePreview =>
+      catgirlizeTitle(base.textScalePreview, localeName);
 
   @override
-  String get followSystem => catgirlize(base.followSystem, localeName);
+  String get followSystem => catgirlizeTitle(base.followSystem, localeName);
 
   @override
-  String get internet => catgirlize(base.internet, localeName);
+  String get internet => catgirlizeTitle(base.internet, localeName);
 
   @override
-  String get systemApp => catgirlize(base.systemApp, localeName);
+  String get systemApp => catgirlizeTitle(base.systemApp, localeName);
 
   @override
-  String get noNetworkApp => catgirlize(base.noNetworkApp, localeName);
+  String get noNetworkApp => catgirlizeTitle(base.noNetworkApp, localeName);
 
   @override
-  String get restoreStrategy => catgirlize(base.restoreStrategy, localeName);
+  String get restoreStrategy =>
+      catgirlizeTitle(base.restoreStrategy, localeName);
 
   @override
   String get restoreStrategyOverride =>
-      catgirlize(base.restoreStrategyOverride, localeName);
+      catgirlizeTitle(base.restoreStrategyOverride, localeName);
 
   @override
   String get restoreStrategyCompatible =>
-      catgirlize(base.restoreStrategyCompatible, localeName);
+      catgirlizeTitle(base.restoreStrategyCompatible, localeName);
 
   @override
-  String get logsTest => catgirlize(base.logsTest, localeName);
+  String get logsTest => catgirlizeTitle(base.logsTest, localeName);
 
   @override
   String emptyTip(Object label) => catgirlize(base.emptyTip(label), localeName);
@@ -1616,7 +1653,7 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.numberRangeTip(label, min, max), localeName);
 
   @override
-  String get interval => catgirlize(base.interval, localeName);
+  String get interval => catgirlizeTitle(base.interval, localeName);
 
   @override
   String existsTip(Object label) =>
@@ -1627,10 +1664,10 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.maxLengthTip(label, max), localeName);
 
   @override
-  String get singleAdd => catgirlize(base.singleAdd, localeName);
+  String get singleAdd => catgirlizeTitle(base.singleAdd, localeName);
 
   @override
-  String get batchAdd => catgirlize(base.batchAdd, localeName);
+  String get batchAdd => catgirlizeTitle(base.batchAdd, localeName);
 
   @override
   String get batchListInputTip =>
@@ -1640,10 +1677,10 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get batchMapInputTip => catgirlize(base.batchMapInputTip, localeName);
 
   @override
-  String get singleImport => catgirlize(base.singleImport, localeName);
+  String get singleImport => catgirlizeTitle(base.singleImport, localeName);
 
   @override
-  String get batchImport => catgirlize(base.batchImport, localeName);
+  String get batchImport => catgirlizeTitle(base.batchImport, localeName);
 
   @override
   String get batchUrlInputTip => catgirlize(base.batchUrlInputTip, localeName);
@@ -1676,29 +1713,29 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String nullTip(Object label) => catgirlize(base.nullTip(label), localeName);
 
   @override
-  String get script => catgirlize(base.script, localeName);
+  String get script => catgirlizeTitle(base.script, localeName);
 
   @override
-  String get color => catgirlize(base.color, localeName);
+  String get color => catgirlizeTitle(base.color, localeName);
 
   @override
-  String get unnamed => catgirlize(base.unnamed, localeName);
+  String get unnamed => catgirlizeTitle(base.unnamed, localeName);
 
   @override
   String get pleaseEnterScriptName =>
-      catgirlize(base.pleaseEnterScriptName, localeName);
+      catgirlizeTitle(base.pleaseEnterScriptName, localeName);
 
   @override
-  String get mixedPort => catgirlize(base.mixedPort, localeName);
+  String get mixedPort => catgirlizeTitle(base.mixedPort, localeName);
 
   @override
-  String get socksPort => catgirlize(base.socksPort, localeName);
+  String get socksPort => catgirlizeTitle(base.socksPort, localeName);
 
   @override
-  String get redirPort => catgirlize(base.redirPort, localeName);
+  String get redirPort => catgirlizeTitle(base.redirPort, localeName);
 
   @override
-  String get tproxyPort => catgirlize(base.tproxyPort, localeName);
+  String get tproxyPort => catgirlizeTitle(base.tproxyPort, localeName);
 
   @override
   String portTip(Object label) => catgirlize(base.portTip(label), localeName);
@@ -1707,74 +1744,79 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get portConflictTip => catgirlize(base.portConflictTip, localeName);
 
   @override
-  String get import => catgirlize(base.import, localeName);
+  String get import => catgirlizeTitle(base.import, localeName);
 
   @override
-  String get importFile => catgirlize(base.importFile, localeName);
+  String get importFile => catgirlizeTitle(base.importFile, localeName);
 
   @override
-  String get importUrl => catgirlize(base.importUrl, localeName);
+  String get importUrl => catgirlizeTitle(base.importUrl, localeName);
 
   @override
-  String get startFromScratch => catgirlize(base.startFromScratch, localeName);
+  String get startFromScratch =>
+      catgirlizeTitle(base.startFromScratch, localeName);
 
   @override
-  String get autoSetSystemDns => catgirlize(base.autoSetSystemDns, localeName);
+  String get autoSetSystemDns =>
+      catgirlizeTitle(base.autoSetSystemDns, localeName);
 
   @override
-  String details(Object label) => catgirlize(base.details(label), localeName);
+  String details(Object label) =>
+      catgirlizeTitle(base.details(label), localeName);
 
   @override
-  String get creationTime => catgirlize(base.creationTime, localeName);
+  String get creationTime => catgirlizeTitle(base.creationTime, localeName);
 
   @override
-  String get process => catgirlize(base.process, localeName);
+  String get process => catgirlizeTitle(base.process, localeName);
 
   @override
-  String get host => catgirlize(base.host, localeName);
+  String get host => catgirlizeTitle(base.host, localeName);
 
   @override
-  String get destination => catgirlize(base.destination, localeName);
+  String get destination => catgirlizeTitle(base.destination, localeName);
 
   @override
-  String get destinationGeoIP => catgirlize(base.destinationGeoIP, localeName);
+  String get destinationGeoIP =>
+      catgirlizeTitle(base.destinationGeoIP, localeName);
 
   @override
-  String get destinationIPASN => catgirlize(base.destinationIPASN, localeName);
+  String get destinationIPASN =>
+      catgirlizeTitle(base.destinationIPASN, localeName);
 
   @override
-  String get specialProxy => catgirlize(base.specialProxy, localeName);
+  String get specialProxy => catgirlizeTitle(base.specialProxy, localeName);
 
   @override
-  String get specialRules => catgirlize(base.specialRules, localeName);
+  String get specialRules => catgirlizeTitle(base.specialRules, localeName);
 
   @override
   String get remoteDestination =>
-      catgirlize(base.remoteDestination, localeName);
+      catgirlizeTitle(base.remoteDestination, localeName);
 
   @override
-  String get networkType => catgirlize(base.networkType, localeName);
+  String get networkType => catgirlizeTitle(base.networkType, localeName);
 
   @override
-  String get proxyChains => catgirlize(base.proxyChains, localeName);
+  String get proxyChains => catgirlizeTitle(base.proxyChains, localeName);
 
   @override
-  String get log => catgirlize(base.log, localeName);
+  String get log => catgirlizeTitle(base.log, localeName);
 
   @override
-  String get connection => catgirlize(base.connection, localeName);
+  String get connection => catgirlizeTitle(base.connection, localeName);
 
   @override
-  String get request => catgirlize(base.request, localeName);
+  String get request => catgirlizeTitle(base.request, localeName);
 
   @override
-  String get connected => catgirlize(base.connected, localeName);
+  String get connected => catgirlizeTitle(base.connected, localeName);
 
   @override
-  String get disconnected => catgirlize(base.disconnected, localeName);
+  String get disconnected => catgirlizeTitle(base.disconnected, localeName);
 
   @override
-  String get connecting => catgirlize(base.connecting, localeName);
+  String get connecting => catgirlizeTitle(base.connecting, localeName);
 
   @override
   String get restartCoreTip => catgirlize(base.restartCoreTip, localeName);
@@ -1784,19 +1826,20 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.forceRestartCoreTip, localeName);
 
   @override
-  String get dnsHijacking => catgirlize(base.dnsHijacking, localeName);
+  String get dnsHijacking => catgirlizeTitle(base.dnsHijacking, localeName);
 
   @override
-  String get coreStatus => catgirlize(base.coreStatus, localeName);
+  String get coreStatus => catgirlizeTitle(base.coreStatus, localeName);
 
   @override
-  String get appendSystemDns => catgirlize(base.appendSystemDns, localeName);
+  String get appendSystemDns =>
+      catgirlizeTitle(base.appendSystemDns, localeName);
 
   @override
-  String get editRule => catgirlize(base.editRule, localeName);
+  String get editRule => catgirlizeTitle(base.editRule, localeName);
 
   @override
-  String get extendMode => catgirlize(base.extendMode, localeName);
+  String get extendMode => catgirlizeTitle(base.extendMode, localeName);
 
   @override
   String get standardModeDesc => catgirlize(base.standardModeDesc, localeName);
@@ -1805,136 +1848,141 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get scriptModeDesc => catgirlize(base.scriptModeDesc, localeName);
 
   @override
-  String get addedRules => catgirlize(base.addedRules, localeName);
+  String get addedRules => catgirlizeTitle(base.addedRules, localeName);
 
   @override
   String get controlGlobalAddedRules =>
-      catgirlize(base.controlGlobalAddedRules, localeName);
+      catgirlizeTitle(base.controlGlobalAddedRules, localeName);
 
   @override
-  String get quickActions => catgirlize(base.quickActions, localeName);
+  String get quickActions => catgirlizeTitle(base.quickActions, localeName);
 
   @override
   String get rulePresetBlockQuic =>
-      catgirlize(base.rulePresetBlockQuic, localeName);
+      catgirlizeTitle(base.rulePresetBlockQuic, localeName);
 
   @override
   String get rulePresetBlockStun =>
-      catgirlize(base.rulePresetBlockStun, localeName);
+      catgirlizeTitle(base.rulePresetBlockStun, localeName);
 
   @override
   String get rulePresetBlockDot =>
-      catgirlize(base.rulePresetBlockDot, localeName);
+      catgirlizeTitle(base.rulePresetBlockDot, localeName);
 
   @override
   String get rulePresetBlockLoopback =>
-      catgirlize(base.rulePresetBlockLoopback, localeName);
+      catgirlizeTitle(base.rulePresetBlockLoopback, localeName);
 
   @override
   String get rulePresetSystemServicesDirect =>
-      catgirlize(base.rulePresetSystemServicesDirect, localeName);
+      catgirlizeTitle(base.rulePresetSystemServicesDirect, localeName);
 
   @override
   String get rulePresetBittorrentDirect =>
-      catgirlize(base.rulePresetBittorrentDirect, localeName);
+      catgirlizeTitle(base.rulePresetBittorrentDirect, localeName);
 
   @override
   String get rulePresetLanDirect =>
-      catgirlize(base.rulePresetLanDirect, localeName);
+      catgirlizeTitle(base.rulePresetLanDirect, localeName);
 
   @override
-  String get extendScript => catgirlize(base.extendScript, localeName);
+  String get extendScript => catgirlizeTitle(base.extendScript, localeName);
 
   @override
   String get goToConfigureScript =>
-      catgirlize(base.goToConfigureScript, localeName);
+      catgirlizeTitle(base.goToConfigureScript, localeName);
 
   @override
   String get goToConfigureAddedRules =>
-      catgirlize(base.goToConfigureAddedRules, localeName);
+      catgirlizeTitle(base.goToConfigureAddedRules, localeName);
 
   @override
-  String get editGlobalRules => catgirlize(base.editGlobalRules, localeName);
+  String get editGlobalRules =>
+      catgirlizeTitle(base.editGlobalRules, localeName);
 
   @override
   String get confirmForceCrashCore =>
-      catgirlize(base.confirmForceCrashCore, localeName);
+      catgirlizeTitle(base.confirmForceCrashCore, localeName);
 
   @override
   String get confirmClearAllData =>
-      catgirlize(base.confirmClearAllData, localeName);
+      catgirlizeTitle(base.confirmClearAllData, localeName);
 
   @override
-  String get loading => catgirlize(base.loading, localeName);
+  String get loading => catgirlizeTitle(base.loading, localeName);
 
   @override
-  String yearsAgo(num count) => catgirlize(base.yearsAgo(count), localeName);
+  String yearsAgo(num count) =>
+      catgirlizeTitle(base.yearsAgo(count), localeName);
 
   @override
-  String monthsAgo(num count) => catgirlize(base.monthsAgo(count), localeName);
+  String monthsAgo(num count) =>
+      catgirlizeTitle(base.monthsAgo(count), localeName);
 
   @override
-  String daysAgo(num count) => catgirlize(base.daysAgo(count), localeName);
+  String daysAgo(num count) => catgirlizeTitle(base.daysAgo(count), localeName);
 
   @override
-  String hoursAgo(num count) => catgirlize(base.hoursAgo(count), localeName);
+  String hoursAgo(num count) =>
+      catgirlizeTitle(base.hoursAgo(count), localeName);
 
   @override
   String minutesAgo(num count) =>
-      catgirlize(base.minutesAgo(count), localeName);
+      catgirlizeTitle(base.minutesAgo(count), localeName);
 
   @override
-  String get justNow => catgirlize(base.justNow, localeName);
+  String get justNow => catgirlizeTitle(base.justNow, localeName);
 
   @override
   String yearsAgoShort(num count) =>
-      catgirlize(base.yearsAgoShort(count), localeName);
+      catgirlizeTitle(base.yearsAgoShort(count), localeName);
 
   @override
   String monthsAgoShort(num count) =>
-      catgirlize(base.monthsAgoShort(count), localeName);
+      catgirlizeTitle(base.monthsAgoShort(count), localeName);
 
   @override
   String daysAgoShort(num count) =>
-      catgirlize(base.daysAgoShort(count), localeName);
+      catgirlizeTitle(base.daysAgoShort(count), localeName);
 
   @override
   String hoursAgoShort(num count) =>
-      catgirlize(base.hoursAgoShort(count), localeName);
+      catgirlizeTitle(base.hoursAgoShort(count), localeName);
 
   @override
   String minutesAgoShort(num count) =>
-      catgirlize(base.minutesAgoShort(count), localeName);
+      catgirlizeTitle(base.minutesAgoShort(count), localeName);
 
   @override
-  String get noLongerRemind => catgirlize(base.noLongerRemind, localeName);
+  String get noLongerRemind => catgirlizeTitle(base.noLongerRemind, localeName);
 
   @override
-  String get turnOn => catgirlize(base.turnOn, localeName);
+  String get turnOn => catgirlizeTitle(base.turnOn, localeName);
 
   @override
-  String get turnOff => catgirlize(base.turnOff, localeName);
+  String get turnOff => catgirlizeTitle(base.turnOff, localeName);
 
   @override
   String get vpnConfigChangeDetected =>
-      catgirlize(base.vpnConfigChangeDetected, localeName);
+      catgirlizeTitle(base.vpnConfigChangeDetected, localeName);
 
   @override
-  String get restart => catgirlize(base.restart, localeName);
+  String get restart => catgirlizeTitle(base.restart, localeName);
 
   @override
-  String get speedStatistics => catgirlize(base.speedStatistics, localeName);
+  String get speedStatistics =>
+      catgirlizeTitle(base.speedStatistics, localeName);
 
   @override
   String get resetPageChangesTip =>
       catgirlize(base.resetPageChangesTip, localeName);
 
   @override
-  String get customProfile => catgirlize(base.customProfile, localeName);
+  String get customProfile => catgirlizeTitle(base.customProfile, localeName);
 
   @override
   String get customProfileResources =>
-      catgirlize(base.customProfileResources, localeName);
+      catgirlizeTitle(base.customProfileResources, localeName);
 
   @override
   String get customProfileResourcesDesc =>
@@ -1942,129 +1990,132 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get unknownNetworkError =>
-      catgirlize(base.unknownNetworkError, localeName);
+      catgirlizeTitle(base.unknownNetworkError, localeName);
 
   @override
   String get backupFromNewerVersion =>
-      catgirlize(base.backupFromNewerVersion, localeName);
+      catgirlizeTitle(base.backupFromNewerVersion, localeName);
 
   @override
   String get networkTimeoutError =>
-      catgirlize(base.networkTimeoutError, localeName);
+      catgirlizeTitle(base.networkTimeoutError, localeName);
 
   @override
   String get networkHostLookupError =>
-      catgirlize(base.networkHostLookupError, localeName);
+      catgirlizeTitle(base.networkHostLookupError, localeName);
 
   @override
-  String get monochromeIcon => catgirlize(base.monochromeIcon, localeName);
+  String get monochromeIcon => catgirlizeTitle(base.monochromeIcon, localeName);
 
   @override
   String get networkConnectionError =>
-      catgirlize(base.networkConnectionError, localeName);
+      catgirlizeTitle(base.networkConnectionError, localeName);
 
   @override
-  String get networkTlsError => catgirlize(base.networkTlsError, localeName);
+  String get networkTlsError =>
+      catgirlizeTitle(base.networkTlsError, localeName);
 
   @override
   String get networkCancelledError =>
-      catgirlize(base.networkCancelledError, localeName);
+      catgirlizeTitle(base.networkCancelledError, localeName);
 
   @override
   String networkAccessDeniedError(Object code) =>
-      catgirlize(base.networkAccessDeniedError(code), localeName);
+      catgirlizeTitle(base.networkAccessDeniedError(code), localeName);
 
   @override
   String networkNotFoundError(Object code) =>
-      catgirlize(base.networkNotFoundError(code), localeName);
+      catgirlizeTitle(base.networkNotFoundError(code), localeName);
 
   @override
   String get networkRateLimitedError =>
-      catgirlize(base.networkRateLimitedError, localeName);
+      catgirlizeTitle(base.networkRateLimitedError, localeName);
 
   @override
   String networkServerError(Object code) =>
-      catgirlize(base.networkServerError(code), localeName);
+      catgirlizeTitle(base.networkServerError(code), localeName);
 
   @override
   String networkBadResponseError(Object code) =>
-      catgirlize(base.networkBadResponseError(code), localeName);
+      catgirlizeTitle(base.networkBadResponseError(code), localeName);
 
   @override
   String networkRequestFailed(Object detail) =>
-      catgirlize(base.networkRequestFailed(detail), localeName);
+      catgirlizeTitle(base.networkRequestFailed(detail), localeName);
 
   @override
   String get invalidBackupFile =>
-      catgirlize(base.invalidBackupFile, localeName);
+      catgirlizeTitle(base.invalidBackupFile, localeName);
 
   @override
-  String get pruneCache => catgirlize(base.pruneCache, localeName);
+  String get pruneCache => catgirlizeTitle(base.pruneCache, localeName);
 
   @override
-  String get backupAndRestore => catgirlize(base.backupAndRestore, localeName);
+  String get backupAndRestore =>
+      catgirlizeTitle(base.backupAndRestore, localeName);
 
   @override
-  String get restore => catgirlize(base.restore, localeName);
+  String get restore => catgirlizeTitle(base.restore, localeName);
 
   @override
-  String get restoreSuccess => catgirlize(base.restoreSuccess, localeName);
+  String get restoreSuccess => catgirlizeTitle(base.restoreSuccess, localeName);
 
   @override
   String get restoreOnlyConfig =>
-      catgirlize(base.restoreOnlyConfig, localeName);
+      catgirlizeTitle(base.restoreOnlyConfig, localeName);
 
   @override
-  String get restoreAllData => catgirlize(base.restoreAllData, localeName);
+  String get restoreAllData => catgirlizeTitle(base.restoreAllData, localeName);
 
   @override
-  String get addProfile => catgirlize(base.addProfile, localeName);
+  String get addProfile => catgirlizeTitle(base.addProfile, localeName);
 
   @override
-  String get delayTest => catgirlize(base.delayTest, localeName);
+  String get delayTest => catgirlizeTitle(base.delayTest, localeName);
 
   @override
-  String get proxyGroupEmpty => catgirlize(base.proxyGroupEmpty, localeName);
+  String get proxyGroupEmpty =>
+      catgirlizeTitle(base.proxyGroupEmpty, localeName);
 
   @override
   String get confirmExitWindow =>
-      catgirlize(base.confirmExitWindow, localeName);
+      catgirlizeTitle(base.confirmExitWindow, localeName);
 
   @override
-  String get optional => catgirlize(base.optional, localeName);
+  String get optional => catgirlizeTitle(base.optional, localeName);
 
   @override
-  String get maxFailedTimes => catgirlize(base.maxFailedTimes, localeName);
+  String get maxFailedTimes => catgirlizeTitle(base.maxFailedTimes, localeName);
 
   @override
-  String get testInterval => catgirlize(base.testInterval, localeName);
+  String get testInterval => catgirlizeTitle(base.testInterval, localeName);
 
   @override
-  String get excludeFilter => catgirlize(base.excludeFilter, localeName);
+  String get excludeFilter => catgirlizeTitle(base.excludeFilter, localeName);
 
   @override
-  String get expectedStatus => catgirlize(base.expectedStatus, localeName);
+  String get expectedStatus => catgirlizeTitle(base.expectedStatus, localeName);
 
   @override
-  String get strategy => catgirlize(base.strategy, localeName);
+  String get strategy => catgirlizeTitle(base.strategy, localeName);
 
   @override
-  String get tolerance => catgirlize(base.tolerance, localeName);
+  String get tolerance => catgirlizeTitle(base.tolerance, localeName);
 
   @override
   String get inputProxyGroupName =>
-      catgirlize(base.inputProxyGroupName, localeName);
+      catgirlizeTitle(base.inputProxyGroupName, localeName);
 
   @override
   String get helperCorruptTip => catgirlize(base.helperCorruptTip, localeName);
 
   @override
   String get tunAuthorizationFailed =>
-      catgirlize(base.tunAuthorizationFailed, localeName);
+      catgirlizeTitle(base.tunAuthorizationFailed, localeName);
 
   @override
   String get sudoPasswordTitle =>
-      catgirlize(base.sudoPasswordTitle, localeName);
+      catgirlizeTitle(base.sudoPasswordTitle, localeName);
 
   @override
   String coreBlockedByPolicyTip(Object code) =>
@@ -2075,77 +2126,78 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.coreBlockedBySmartAppControlTip, localeName);
 
   @override
-  String get hideFromList => catgirlize(base.hideFromList, localeName);
+  String get hideFromList => catgirlizeTitle(base.hideFromList, localeName);
 
   @override
-  String get testWhenUsed => catgirlize(base.testWhenUsed, localeName);
+  String get testWhenUsed => catgirlizeTitle(base.testWhenUsed, localeName);
 
   @override
-  String get disableUDP => catgirlize(base.disableUDP, localeName);
+  String get disableUDP => catgirlizeTitle(base.disableUDP, localeName);
 
   @override
   String get confirmDeleteProxyGroup =>
-      catgirlize(base.confirmDeleteProxyGroup, localeName);
+      catgirlizeTitle(base.confirmDeleteProxyGroup, localeName);
 
   @override
-  String get ruleEmpty => catgirlize(base.ruleEmpty, localeName);
+  String get ruleEmpty => catgirlizeTitle(base.ruleEmpty, localeName);
 
   @override
-  String get inputRuleContent => catgirlize(base.inputRuleContent, localeName);
+  String get inputRuleContent =>
+      catgirlizeTitle(base.inputRuleContent, localeName);
 
   @override
-  String get ruleSet => catgirlize(base.ruleSet, localeName);
+  String get ruleSet => catgirlizeTitle(base.ruleSet, localeName);
 
   @override
-  String get selectRuleSet => catgirlize(base.selectRuleSet, localeName);
+  String get selectRuleSet => catgirlizeTitle(base.selectRuleSet, localeName);
 
   @override
-  String get splitStrategy => catgirlize(base.splitStrategy, localeName);
+  String get splitStrategy => catgirlizeTitle(base.splitStrategy, localeName);
 
   @override
   String get selectSplitStrategy =>
-      catgirlize(base.selectSplitStrategy, localeName);
+      catgirlizeTitle(base.selectSplitStrategy, localeName);
 
   @override
   String get noResolveHostname =>
-      catgirlize(base.noResolveHostname, localeName);
+      catgirlizeTitle(base.noResolveHostname, localeName);
 
   @override
-  String get matchSourceIp => catgirlize(base.matchSourceIp, localeName);
+  String get matchSourceIp => catgirlizeTitle(base.matchSourceIp, localeName);
 
   @override
-  String get basicInfo => catgirlize(base.basicInfo, localeName);
+  String get basicInfo => catgirlizeTitle(base.basicInfo, localeName);
 
   @override
   String get additionalParameters =>
-      catgirlize(base.additionalParameters, localeName);
+      catgirlizeTitle(base.additionalParameters, localeName);
 
   @override
-  String get proxyType => catgirlize(base.proxyType, localeName);
+  String get proxyType => catgirlizeTitle(base.proxyType, localeName);
 
   @override
-  String get basicStrategy => catgirlize(base.basicStrategy, localeName);
+  String get basicStrategy => catgirlizeTitle(base.basicStrategy, localeName);
 
   @override
-  String get editProxy => catgirlize(base.editProxy, localeName);
+  String get editProxy => catgirlizeTitle(base.editProxy, localeName);
 
   @override
-  String get addNodes => catgirlize(base.addNodes, localeName);
+  String get addNodes => catgirlizeTitle(base.addNodes, localeName);
 
   @override
-  String get addProxyGroup => catgirlize(base.addProxyGroup, localeName);
+  String get addProxyGroup => catgirlizeTitle(base.addProxyGroup, localeName);
 
   @override
-  String get editProxyGroup => catgirlize(base.editProxyGroup, localeName);
+  String get editProxyGroup => catgirlizeTitle(base.editProxyGroup, localeName);
 
   @override
-  String get iconUrl => catgirlize(base.iconUrl, localeName);
+  String get iconUrl => catgirlizeTitle(base.iconUrl, localeName);
 
   @override
-  String get iconRecords => catgirlize(base.iconRecords, localeName);
+  String get iconRecords => catgirlizeTitle(base.iconRecords, localeName);
 
   @override
-  String get custom => catgirlize(base.custom, localeName);
+  String get custom => catgirlizeTitle(base.custom, localeName);
 
   @override
   String get ruleActionDomainDesc =>
@@ -2295,80 +2347,81 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.ruleActionMatchDesc, localeName);
 
   @override
-  String get contentNotEmpty => catgirlize(base.contentNotEmpty, localeName);
+  String get contentNotEmpty =>
+      catgirlizeTitle(base.contentNotEmpty, localeName);
 
   @override
   String get splitStrategyNotEmpty =>
-      catgirlize(base.splitStrategyNotEmpty, localeName);
+      catgirlizeTitle(base.splitStrategyNotEmpty, localeName);
 
   @override
-  String get timeout => catgirlize(base.timeout, localeName);
+  String get timeout => catgirlizeTitle(base.timeout, localeName);
 
   @override
-  String get delayFailed => catgirlize(base.delayFailed, localeName);
+  String get delayFailed => catgirlizeTitle(base.delayFailed, localeName);
 
   @override
   String invalidSubRule(Object subRule) =>
-      catgirlize(base.invalidSubRule(subRule), localeName);
+      catgirlizeTitle(base.invalidSubRule(subRule), localeName);
 
   @override
   String invalidPolicy(Object target) =>
-      catgirlize(base.invalidPolicy(target), localeName);
+      catgirlizeTitle(base.invalidPolicy(target), localeName);
 
   @override
   String invalidProxyProvider(Object providerName) =>
-      catgirlize(base.invalidProxyProvider(providerName), localeName);
+      catgirlizeTitle(base.invalidProxyProvider(providerName), localeName);
 
   @override
   String invalidRuleSet(Object ruleSet) =>
-      catgirlize(base.invalidRuleSet(ruleSet), localeName);
+      catgirlizeTitle(base.invalidRuleSet(ruleSet), localeName);
 
   @override
   String get invalidNetworkContent =>
-      catgirlize(base.invalidNetworkContent, localeName);
+      catgirlizeTitle(base.invalidNetworkContent, localeName);
 
   @override
   String get invalidRangeContent =>
-      catgirlize(base.invalidRangeContent, localeName);
+      catgirlizeTitle(base.invalidRangeContent, localeName);
 
   @override
   String get invalidDscpContent =>
-      catgirlize(base.invalidDscpContent, localeName);
+      catgirlizeTitle(base.invalidDscpContent, localeName);
 
   @override
   String get invalidCidrContent =>
-      catgirlize(base.invalidCidrContent, localeName);
+      catgirlizeTitle(base.invalidCidrContent, localeName);
 
   @override
   String get invalidPortRangeContent =>
-      catgirlize(base.invalidPortRangeContent, localeName);
+      catgirlizeTitle(base.invalidPortRangeContent, localeName);
 
   @override
   String get invalidHostContent =>
-      catgirlize(base.invalidHostContent, localeName);
+      catgirlizeTitle(base.invalidHostContent, localeName);
 
   @override
   String get invalidListenContent =>
-      catgirlize(base.invalidListenContent, localeName);
+      catgirlizeTitle(base.invalidListenContent, localeName);
 
   @override
   String invalidProxy(Object proxyName) =>
-      catgirlize(base.invalidProxy(proxyName), localeName);
+      catgirlizeTitle(base.invalidProxy(proxyName), localeName);
 
   @override
   String get locationPermissionRequired =>
-      catgirlize(base.locationPermissionRequired, localeName);
+      catgirlizeTitle(base.locationPermissionRequired, localeName);
 
   @override
   String locationPermissionGuide(Object appName) =>
-      catgirlize(base.locationPermissionGuide(appName), localeName);
+      catgirlizeTitle(base.locationPermissionGuide(appName), localeName);
 
   @override
-  String get prerequisites => catgirlize(base.prerequisites, localeName);
+  String get prerequisites => catgirlizeTitle(base.prerequisites, localeName);
 
   @override
   String get ignoreBatteryOptimization =>
-      catgirlize(base.ignoreBatteryOptimization, localeName);
+      catgirlizeTitle(base.ignoreBatteryOptimization, localeName);
 
   @override
   String get batteryOptimizationDesc =>
@@ -2376,174 +2429,179 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get locationPermission =>
-      catgirlize(base.locationPermission, localeName);
+      catgirlizeTitle(base.locationPermission, localeName);
 
   @override
   String get locationPermissionDesc =>
       catgirlize(base.locationPermissionDesc, localeName);
 
   @override
-  String get excludeSsids => catgirlize(base.excludeSsids, localeName);
+  String get excludeSsids => catgirlizeTitle(base.excludeSsids, localeName);
 
   @override
   String get excludeSsidsDesc => catgirlize(base.excludeSsidsDesc, localeName);
 
   @override
-  String get ssidsEmpty => catgirlize(base.ssidsEmpty, localeName);
+  String get ssidsEmpty => catgirlizeTitle(base.ssidsEmpty, localeName);
 
   @override
-  String get onDemand => catgirlize(base.onDemand, localeName);
+  String get onDemand => catgirlizeTitle(base.onDemand, localeName);
 
   @override
   String get onDemandDesc => catgirlize(base.onDemandDesc, localeName);
 
   @override
   String get locationPermissionDeniedMessage =>
-      catgirlize(base.locationPermissionDeniedMessage, localeName);
+      catgirlizeTitle(base.locationPermissionDeniedMessage, localeName);
 
   @override
-  String get addSsid => catgirlize(base.addSsid, localeName);
+  String get addSsid => catgirlizeTitle(base.addSsid, localeName);
 
   @override
-  String get editSsid => catgirlize(base.editSsid, localeName);
+  String get editSsid => catgirlizeTitle(base.editSsid, localeName);
 
   @override
-  String get authorized => catgirlize(base.authorized, localeName);
+  String get authorized => catgirlizeTitle(base.authorized, localeName);
 
   @override
-  String get tapToAuthorize => catgirlize(base.tapToAuthorize, localeName);
+  String get tapToAuthorize => catgirlizeTitle(base.tapToAuthorize, localeName);
 
   @override
-  String get suspended => catgirlize(base.suspended, localeName);
+  String get suspended => catgirlizeTitle(base.suspended, localeName);
 
   @override
   String get resourceUpdateInterval =>
-      catgirlize(base.resourceUpdateInterval, localeName);
+      catgirlizeTitle(base.resourceUpdateInterval, localeName);
 
   @override
   String get resourceUpdateIntervalTip =>
       catgirlize(base.resourceUpdateIntervalTip, localeName);
 
   @override
-  String get hours => catgirlize(base.hours, localeName);
+  String get hours => catgirlizeTitle(base.hours, localeName);
 
   @override
-  String get minutes => catgirlize(base.minutes, localeName);
+  String get minutes => catgirlizeTitle(base.minutes, localeName);
 
   @override
-  String get geoResources => catgirlize(base.geoResources, localeName);
+  String get geoResources => catgirlizeTitle(base.geoResources, localeName);
 
   @override
   String geoSkipped(Object name) =>
-      catgirlize(base.geoSkipped(name), localeName);
+      catgirlizeTitle(base.geoSkipped(name), localeName);
 
   @override
   String geoUpdated(Object name) =>
-      catgirlize(base.geoUpdated(name), localeName);
+      catgirlizeTitle(base.geoUpdated(name), localeName);
 
   @override
   String secondsCount(num count) =>
-      catgirlize(base.secondsCount(count), localeName);
+      catgirlizeTitle(base.secondsCount(count), localeName);
 
   @override
   String proxiesCount(num count, Object label) =>
-      catgirlize(base.proxiesCount(count, label), localeName);
+      catgirlizeTitle(base.proxiesCount(count, label), localeName);
 
   @override
   String rulesCount(num count, Object label) =>
-      catgirlize(base.rulesCount(count, label), localeName);
+      catgirlizeTitle(base.rulesCount(count, label), localeName);
 
   @override
   String proxyGroupsCount(num count, Object label) =>
-      catgirlize(base.proxyGroupsCount(count, label), localeName);
+      catgirlizeTitle(base.proxyGroupsCount(count, label), localeName);
 
   @override
   String get changelogBreaking =>
-      catgirlize(base.changelogBreaking, localeName);
+      catgirlizeTitle(base.changelogBreaking, localeName);
 
   @override
   String get changelogFeatures =>
-      catgirlize(base.changelogFeatures, localeName);
+      catgirlizeTitle(base.changelogFeatures, localeName);
 
   @override
-  String get changelogFixes => catgirlize(base.changelogFixes, localeName);
+  String get changelogFixes => catgirlizeTitle(base.changelogFixes, localeName);
 
   @override
   String get changelogPerformance =>
-      catgirlize(base.changelogPerformance, localeName);
+      catgirlizeTitle(base.changelogPerformance, localeName);
 
   @override
-  String get changelogReverts => catgirlize(base.changelogReverts, localeName);
+  String get changelogReverts =>
+      catgirlizeTitle(base.changelogReverts, localeName);
 
   @override
-  String get close => catgirlize(base.close, localeName);
+  String get close => catgirlizeTitle(base.close, localeName);
 
   @override
-  String get back => catgirlize(base.back, localeName);
+  String get back => catgirlizeTitle(base.back, localeName);
 
   @override
-  String get minimize => catgirlize(base.minimize, localeName);
+  String get minimize => catgirlizeTitle(base.minimize, localeName);
 
   @override
-  String get maximize => catgirlize(base.maximize, localeName);
+  String get maximize => catgirlizeTitle(base.maximize, localeName);
 
   @override
-  String get unmaximize => catgirlize(base.unmaximize, localeName);
+  String get unmaximize => catgirlizeTitle(base.unmaximize, localeName);
 
   @override
-  String get pinWindow => catgirlize(base.pinWindow, localeName);
+  String get pinWindow => catgirlizeTitle(base.pinWindow, localeName);
 
   @override
-  String get unpinWindow => catgirlize(base.unpinWindow, localeName);
+  String get unpinWindow => catgirlizeTitle(base.unpinWindow, localeName);
 
   @override
-  String get exitFullScreen => catgirlize(base.exitFullScreen, localeName);
+  String get exitFullScreen => catgirlizeTitle(base.exitFullScreen, localeName);
 
   @override
-  String get torch => catgirlize(base.torch, localeName);
+  String get torch => catgirlizeTitle(base.torch, localeName);
 
   @override
-  String get pickFromAlbum => catgirlize(base.pickFromAlbum, localeName);
+  String get pickFromAlbum => catgirlizeTitle(base.pickFromAlbum, localeName);
 
   @override
-  String get blockConnection => catgirlize(base.blockConnection, localeName);
+  String get blockConnection =>
+      catgirlizeTitle(base.blockConnection, localeName);
 
   @override
-  String get closeConnections => catgirlize(base.closeConnections, localeName);
+  String get closeConnections =>
+      catgirlizeTitle(base.closeConnections, localeName);
 
   @override
-  String get scrollToSelected => catgirlize(base.scrollToSelected, localeName);
+  String get scrollToSelected =>
+      catgirlizeTitle(base.scrollToSelected, localeName);
 
   @override
-  String get showMore => catgirlize(base.showMore, localeName);
+  String get showMore => catgirlizeTitle(base.showMore, localeName);
 
   @override
-  String get showLess => catgirlize(base.showLess, localeName);
+  String get showLess => catgirlizeTitle(base.showLess, localeName);
 
   @override
-  String get previousMatch => catgirlize(base.previousMatch, localeName);
+  String get previousMatch => catgirlizeTitle(base.previousMatch, localeName);
 
   @override
-  String get nextMatch => catgirlize(base.nextMatch, localeName);
+  String get nextMatch => catgirlizeTitle(base.nextMatch, localeName);
 
   @override
-  String get clearSearch => catgirlize(base.clearSearch, localeName);
+  String get clearSearch => catgirlizeTitle(base.clearSearch, localeName);
 
   @override
-  String get noSearchResults => catgirlize(base.noSearchResults, localeName);
+  String get noSearchResults =>
+      catgirlizeTitle(base.noSearchResults, localeName);
 
   @override
-  String get showPassword => catgirlize(base.showPassword, localeName);
+  String get showPassword => catgirlizeTitle(base.showPassword, localeName);
 
   @override
-  String get hidePassword => catgirlize(base.hidePassword, localeName);
+  String get hidePassword => catgirlizeTitle(base.hidePassword, localeName);
 
   @override
-  String get authorize => catgirlize(base.authorize, localeName);
+  String get authorize => catgirlizeTitle(base.authorize, localeName);
 
   @override
   String get installedAppsPermissionRequired =>
-      catgirlize(base.installedAppsPermissionRequired, localeName);
+      catgirlizeTitle(base.installedAppsPermissionRequired, localeName);
 
   @override
   String get installedAppsPermissionDesc =>
@@ -2551,102 +2609,106 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get installedAppsPermissionDeniedMessage =>
-      catgirlize(base.installedAppsPermissionDeniedMessage, localeName);
+      catgirlizeTitle(base.installedAppsPermissionDeniedMessage, localeName);
 
   @override
-  String get outboundIp => catgirlize(base.outboundIp, localeName);
+  String get outboundIp => catgirlizeTitle(base.outboundIp, localeName);
 
   @override
-  String get ipAddress => catgirlize(base.ipAddress, localeName);
+  String get ipAddress => catgirlizeTitle(base.ipAddress, localeName);
 
   @override
-  String get ipQualityLevel => catgirlize(base.ipQualityLevel, localeName);
+  String get ipQualityLevel => catgirlizeTitle(base.ipQualityLevel, localeName);
 
   @override
-  String get ipQualityGood => catgirlize(base.ipQualityGood, localeName);
+  String get ipQualityGood => catgirlizeTitle(base.ipQualityGood, localeName);
 
   @override
-  String get ipQualityNormal => catgirlize(base.ipQualityNormal, localeName);
+  String get ipQualityNormal =>
+      catgirlizeTitle(base.ipQualityNormal, localeName);
 
   @override
-  String get ipQualityRisky => catgirlize(base.ipQualityRisky, localeName);
+  String get ipQualityRisky => catgirlizeTitle(base.ipQualityRisky, localeName);
 
   @override
-  String get ipType => catgirlize(base.ipType, localeName);
+  String get ipType => catgirlizeTitle(base.ipType, localeName);
 
   @override
   String get ipTypeResidential =>
-      catgirlize(base.ipTypeResidential, localeName);
+      catgirlizeTitle(base.ipTypeResidential, localeName);
 
   @override
-  String get ipTypeMobile => catgirlize(base.ipTypeMobile, localeName);
+  String get ipTypeMobile => catgirlizeTitle(base.ipTypeMobile, localeName);
 
   @override
-  String get ipTypeBusiness => catgirlize(base.ipTypeBusiness, localeName);
+  String get ipTypeBusiness => catgirlizeTitle(base.ipTypeBusiness, localeName);
 
   @override
-  String get ipTypeHosting => catgirlize(base.ipTypeHosting, localeName);
+  String get ipTypeHosting => catgirlizeTitle(base.ipTypeHosting, localeName);
 
   @override
-  String get ipFlags => catgirlize(base.ipFlags, localeName);
+  String get ipFlags => catgirlizeTitle(base.ipFlags, localeName);
 
   @override
-  String get ipFlagProxy => catgirlize(base.ipFlagProxy, localeName);
+  String get ipFlagProxy => catgirlizeTitle(base.ipFlagProxy, localeName);
 
   @override
-  String get ipFlagVpn => catgirlize(base.ipFlagVpn, localeName);
+  String get ipFlagVpn => catgirlizeTitle(base.ipFlagVpn, localeName);
 
   @override
-  String get ipFlagTor => catgirlize(base.ipFlagTor, localeName);
+  String get ipFlagTor => catgirlizeTitle(base.ipFlagTor, localeName);
 
   @override
-  String get ipFlagAbuser => catgirlize(base.ipFlagAbuser, localeName);
+  String get ipFlagAbuser => catgirlizeTitle(base.ipFlagAbuser, localeName);
 
   @override
-  String get ipOrganization => catgirlize(base.ipOrganization, localeName);
+  String get ipOrganization => catgirlizeTitle(base.ipOrganization, localeName);
 
   @override
-  String get ipAsn => catgirlize(base.ipAsn, localeName);
+  String get ipAsn => catgirlizeTitle(base.ipAsn, localeName);
 
   @override
-  String get ipQualitySource => catgirlize(base.ipQualitySource, localeName);
+  String get ipQualitySource =>
+      catgirlizeTitle(base.ipQualitySource, localeName);
 
   @override
-  String get ipQualitySources => catgirlize(base.ipQualitySources, localeName);
+  String get ipQualitySources =>
+      catgirlizeTitle(base.ipQualitySources, localeName);
 
   @override
-  String get ipQualityFailed => catgirlize(base.ipQualityFailed, localeName);
+  String get ipQualityFailed =>
+      catgirlizeTitle(base.ipQualityFailed, localeName);
 
   @override
-  String get ipQualityRetry => catgirlize(base.ipQualityRetry, localeName);
+  String get ipQualityRetry => catgirlizeTitle(base.ipQualityRetry, localeName);
 
   @override
-  String get ipSourceNoType => catgirlize(base.ipSourceNoType, localeName);
+  String get ipSourceNoType => catgirlizeTitle(base.ipSourceNoType, localeName);
 
   @override
   String get ipSourceRateLimited =>
-      catgirlize(base.ipSourceRateLimited, localeName);
+      catgirlizeTitle(base.ipSourceRateLimited, localeName);
 
   @override
   String get ipSourceIpMismatch =>
-      catgirlize(base.ipSourceIpMismatch, localeName);
+      catgirlizeTitle(base.ipSourceIpMismatch, localeName);
 
   @override
-  String get hideIp => catgirlize(base.hideIp, localeName);
+  String get hideIp => catgirlizeTitle(base.hideIp, localeName);
 
   @override
   String get editorUnavailable =>
-      catgirlize(base.editorUnavailable, localeName);
+      catgirlizeTitle(base.editorUnavailable, localeName);
 
   @override
-  String get replace => catgirlize(base.replace, localeName);
+  String get replace => catgirlizeTitle(base.replace, localeName);
 
   @override
-  String get replaceAll => catgirlize(base.replaceAll, localeName);
+  String get replaceAll => catgirlizeTitle(base.replaceAll, localeName);
 
   @override
   String get cameraPermissionRequired =>
-      catgirlize(base.cameraPermissionRequired, localeName);
+      catgirlizeTitle(base.cameraPermissionRequired, localeName);
 
   @override
   String get cameraPermissionDesc =>
@@ -2654,158 +2716,163 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get cameraUnavailable =>
-      catgirlize(base.cameraUnavailable, localeName);
+      catgirlizeTitle(base.cameraUnavailable, localeName);
 
   @override
-  String get retry => catgirlize(base.retry, localeName);
+  String get retry => catgirlizeTitle(base.retry, localeName);
 
   @override
   String get invalidProfileQrcode =>
-      catgirlize(base.invalidProfileQrcode, localeName);
+      catgirlizeTitle(base.invalidProfileQrcode, localeName);
 
   @override
-  String get dnsQueries => catgirlize(base.dnsQueries, localeName);
+  String get dnsQueries => catgirlizeTitle(base.dnsQueries, localeName);
 
   @override
-  String get recordType => catgirlize(base.recordType, localeName);
+  String get recordType => catgirlizeTitle(base.recordType, localeName);
 
   @override
-  String get answers => catgirlize(base.answers, localeName);
+  String get answers => catgirlizeTitle(base.answers, localeName);
 
   @override
-  String get responseCode => catgirlize(base.responseCode, localeName);
+  String get responseCode => catgirlizeTitle(base.responseCode, localeName);
 
   @override
-  String get error => catgirlize(base.error, localeName);
+  String get error => catgirlizeTitle(base.error, localeName);
 
   @override
-  String get initiator => catgirlize(base.initiator, localeName);
+  String get initiator => catgirlizeTitle(base.initiator, localeName);
 
   @override
-  String get cache => catgirlize(base.cache, localeName);
+  String get cache => catgirlizeTitle(base.cache, localeName);
 
   @override
-  String get yes => catgirlize(base.yes, localeName);
+  String get yes => catgirlizeTitle(base.yes, localeName);
 
   @override
-  String get no => catgirlize(base.no, localeName);
+  String get no => catgirlizeTitle(base.no, localeName);
 
   @override
   String get nonTextProviderFile =>
-      catgirlize(base.nonTextProviderFile, localeName);
+      catgirlizeTitle(base.nonTextProviderFile, localeName);
 
   @override
-  String get addCustomProxy => catgirlize(base.addCustomProxy, localeName);
+  String get addCustomProxy => catgirlizeTitle(base.addCustomProxy, localeName);
 
   @override
-  String get definitionNotMap => catgirlize(base.definitionNotMap, localeName);
+  String get definitionNotMap =>
+      catgirlizeTitle(base.definitionNotMap, localeName);
 
   @override
-  String get ruleTextInvalid => catgirlize(base.ruleTextInvalid, localeName);
+  String get ruleTextInvalid =>
+      catgirlizeTitle(base.ruleTextInvalid, localeName);
 
   @override
-  String get ruleListInvalid => catgirlize(base.ruleListInvalid, localeName);
+  String get ruleListInvalid =>
+      catgirlizeTitle(base.ruleListInvalid, localeName);
 
   @override
   String get shareLinksInvalid =>
-      catgirlize(base.shareLinksInvalid, localeName);
+      catgirlizeTitle(base.shareLinksInvalid, localeName);
 
   @override
   String shareLinkUnreadable(Object link) =>
-      catgirlize(base.shareLinkUnreadable(link), localeName);
+      catgirlizeTitle(base.shareLinkUnreadable(link), localeName);
 
   @override
   String proxiesProfileLabel(Object name, Object count) =>
-      catgirlize(base.proxiesProfileLabel(name, count), localeName);
+      catgirlizeTitle(base.proxiesProfileLabel(name, count), localeName);
 
   @override
   String get singleShareLinkOnly =>
-      catgirlize(base.singleShareLinkOnly, localeName);
+      catgirlizeTitle(base.singleShareLinkOnly, localeName);
 
   @override
-  String get username => catgirlize(base.username, localeName);
+  String get username => catgirlizeTitle(base.username, localeName);
 
   @override
-  String get emptyFallback => catgirlize(base.emptyFallback, localeName);
+  String get emptyFallback => catgirlizeTitle(base.emptyFallback, localeName);
 
   @override
-  String get defaultSelected => catgirlize(base.defaultSelected, localeName);
+  String get defaultSelected =>
+      catgirlizeTitle(base.defaultSelected, localeName);
 
   @override
-  String get hashByInUser => catgirlize(base.hashByInUser, localeName);
+  String get hashByInUser => catgirlizeTitle(base.hashByInUser, localeName);
 
   @override
-  String get appProxiesEmpty => catgirlize(base.appProxiesEmpty, localeName);
+  String get appProxiesEmpty =>
+      catgirlizeTitle(base.appProxiesEmpty, localeName);
 
   @override
-  String get nodes => catgirlize(base.nodes, localeName);
+  String get nodes => catgirlizeTitle(base.nodes, localeName);
 
   @override
-  String get localProxies => catgirlize(base.localProxies, localeName);
+  String get localProxies => catgirlizeTitle(base.localProxies, localeName);
 
   @override
   String get customIssueEmptyName =>
-      catgirlize(base.customIssueEmptyName, localeName);
+      catgirlizeTitle(base.customIssueEmptyName, localeName);
 
   @override
   String customIssueReservedName(Object name) =>
-      catgirlize(base.customIssueReservedName(name), localeName);
+      catgirlizeTitle(base.customIssueReservedName(name), localeName);
 
   @override
   String customIssueDuplicateName(Object name) =>
-      catgirlize(base.customIssueDuplicateName(name), localeName);
+      catgirlizeTitle(base.customIssueDuplicateName(name), localeName);
 
   @override
   String customIssueCoreRejected(Object message) =>
-      catgirlize(base.customIssueCoreRejected(message), localeName);
+      catgirlizeTitle(base.customIssueCoreRejected(message), localeName);
 
   @override
   String customIssueMissingProxies(Object names) =>
-      catgirlize(base.customIssueMissingProxies(names), localeName);
+      catgirlizeTitle(base.customIssueMissingProxies(names), localeName);
 
   @override
   String customIssueMissingProviders(Object names) =>
-      catgirlize(base.customIssueMissingProviders(names), localeName);
+      catgirlizeTitle(base.customIssueMissingProviders(names), localeName);
 
   @override
   String get customIssueNoProxySource =>
-      catgirlize(base.customIssueNoProxySource, localeName);
+      catgirlizeTitle(base.customIssueNoProxySource, localeName);
 
   @override
   String customIssueGroupLoop(Object path) =>
-      catgirlize(base.customIssueGroupLoop(path), localeName);
+      catgirlizeTitle(base.customIssueGroupLoop(path), localeName);
 
   @override
   String customIssueInvalidEmptyFallback(Object name) =>
-      catgirlize(base.customIssueInvalidEmptyFallback(name), localeName);
+      catgirlizeTitle(base.customIssueInvalidEmptyFallback(name), localeName);
 
   @override
   String customIssueInvalidFilter(Object name, Object message) =>
-      catgirlize(base.customIssueInvalidFilter(name, message), localeName);
+      catgirlizeTitle(base.customIssueInvalidFilter(name, message), localeName);
 
   @override
   String customIssueMissingDialer(Object name) =>
-      catgirlize(base.customIssueMissingDialer(name), localeName);
+      catgirlizeTitle(base.customIssueMissingDialer(name), localeName);
 
   @override
   String customIssueDialerLoop(Object proxy, Object target) =>
-      catgirlize(base.customIssueDialerLoop(proxy, target), localeName);
+      catgirlizeTitle(base.customIssueDialerLoop(proxy, target), localeName);
 
   @override
   String dialerProxyLoopStopped(Object name) =>
-      catgirlize(base.dialerProxyLoopStopped(name), localeName);
+      catgirlizeTitle(base.dialerProxyLoopStopped(name), localeName);
 
   @override
   String customIssuesSummary(Object count) =>
-      catgirlize(base.customIssuesSummary(count), localeName);
+      catgirlizeTitle(base.customIssuesSummary(count), localeName);
 
   @override
   String providerInUse(Object label, Object profiles) =>
-      catgirlize(base.providerInUse(label, profiles), localeName);
+      catgirlizeTitle(base.providerInUse(label, profiles), localeName);
 
   @override
   String proxyGroupInUse(Object label) =>
-      catgirlize(base.proxyGroupInUse(label), localeName);
+      catgirlizeTitle(base.proxyGroupInUse(label), localeName);
 
   @override
   String proxiesRemovedTip(Object removed) =>
@@ -2816,56 +2883,57 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.proxiesReplacedTip(removed, added), localeName);
 
   @override
-  String get fontSize => catgirlize(base.fontSize, localeName);
+  String get fontSize => catgirlizeTitle(base.fontSize, localeName);
 
   @override
-  String get large => catgirlize(base.large, localeName);
+  String get large => catgirlizeTitle(base.large, localeName);
 
   @override
-  String get extraLarge => catgirlize(base.extraLarge, localeName);
+  String get extraLarge => catgirlizeTitle(base.extraLarge, localeName);
 
   @override
-  String get switchProfile => catgirlize(base.switchProfile, localeName);
+  String get switchProfile => catgirlizeTitle(base.switchProfile, localeName);
 
   @override
-  String get lastUpdated => catgirlize(base.lastUpdated, localeName);
+  String get lastUpdated => catgirlizeTitle(base.lastUpdated, localeName);
 
   @override
-  String get filters => catgirlize(base.filters, localeName);
+  String get filters => catgirlizeTitle(base.filters, localeName);
 
   @override
-  String get label => catgirlize(base.label, localeName);
+  String get label => catgirlizeTitle(base.label, localeName);
 
   @override
-  String get regex => catgirlize(base.regex, localeName);
+  String get regex => catgirlizeTitle(base.regex, localeName);
 
   @override
-  String get matchCase => catgirlize(base.matchCase, localeName);
+  String get matchCase => catgirlizeTitle(base.matchCase, localeName);
 
   @override
-  String get iconSets => catgirlize(base.iconSets, localeName);
+  String get iconSets => catgirlizeTitle(base.iconSets, localeName);
 
   @override
-  String get invalidIconSet => catgirlize(base.invalidIconSet, localeName);
+  String get invalidIconSet => catgirlizeTitle(base.invalidIconSet, localeName);
 
   @override
-  String get recommendedIcons => catgirlize(base.recommendedIcons, localeName);
+  String get recommendedIcons =>
+      catgirlizeTitle(base.recommendedIcons, localeName);
 
   @override
-  String get localImage => catgirlize(base.localImage, localeName);
+  String get localImage => catgirlizeTitle(base.localImage, localeName);
 
   @override
   String get iconSetsEmptyTip => catgirlize(base.iconSetsEmptyTip, localeName);
 
   @override
-  String get outbound => catgirlize(base.outbound, localeName);
+  String get outbound => catgirlizeTitle(base.outbound, localeName);
 
   @override
-  String get strictRoute => catgirlize(base.strictRoute, localeName);
+  String get strictRoute => catgirlizeTitle(base.strictRoute, localeName);
 
   @override
   String get congestionController =>
-      catgirlize(base.congestionController, localeName);
+      catgirlizeTitle(base.congestionController, localeName);
 
   @override
   String get congestionControllerDesc =>
@@ -2873,31 +2941,32 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get routeExcludeAddress =>
-      catgirlize(base.routeExcludeAddress, localeName);
+      catgirlizeTitle(base.routeExcludeAddress, localeName);
 
   @override
-  String get keepAliveIdle => catgirlize(base.keepAliveIdle, localeName);
+  String get keepAliveIdle => catgirlizeTitle(base.keepAliveIdle, localeName);
 
   @override
-  String get disableKeepAlive => catgirlize(base.disableKeepAlive, localeName);
+  String get disableKeepAlive =>
+      catgirlizeTitle(base.disableKeepAlive, localeName);
 
   @override
-  String get routingMark => catgirlize(base.routingMark, localeName);
+  String get routingMark => catgirlizeTitle(base.routingMark, localeName);
 
   @override
   String get strictRouteDesc => catgirlize(base.strictRouteDesc, localeName);
 
   @override
-  String get initFailed => catgirlize(base.initFailed, localeName);
+  String get initFailed => catgirlizeTitle(base.initFailed, localeName);
 
   @override
   String get initFailedTip => catgirlize(base.initFailedTip, localeName);
 
   @override
-  String get errorDetails => catgirlize(base.errorDetails, localeName);
+  String get errorDetails => catgirlizeTitle(base.errorDetails, localeName);
 
   @override
-  String get stackTrace => catgirlize(base.stackTrace, localeName);
+  String get stackTrace => catgirlizeTitle(base.stackTrace, localeName);
 
   @override
   String get clearDataAndExitTip =>
@@ -2905,11 +2974,11 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String clearDataFailed(Object detail) =>
-      catgirlize(base.clearDataFailed(detail), localeName);
+      catgirlizeTitle(base.clearDataFailed(detail), localeName);
 
   @override
   String get bypassPrivateRoute =>
-      catgirlize(base.bypassPrivateRoute, localeName);
+      catgirlizeTitle(base.bypassPrivateRoute, localeName);
 
   @override
   String get bypassPrivateRouteDesc =>
@@ -2917,54 +2986,56 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get disableIcmpForwarding =>
-      catgirlize(base.disableIcmpForwarding, localeName);
+      catgirlizeTitle(base.disableIcmpForwarding, localeName);
 
   @override
   String get disableIcmpForwardingDesc =>
       catgirlize(base.disableIcmpForwardingDesc, localeName);
 
   @override
-  String get excludeInterface => catgirlize(base.excludeInterface, localeName);
+  String get excludeInterface =>
+      catgirlizeTitle(base.excludeInterface, localeName);
 
   @override
   String get excludeInterfaceDesc =>
       catgirlize(base.excludeInterfaceDesc, localeName);
 
   @override
-  String get includeInterface => catgirlize(base.includeInterface, localeName);
+  String get includeInterface =>
+      catgirlizeTitle(base.includeInterface, localeName);
 
   @override
   String get includeInterfaceDesc =>
       catgirlize(base.includeInterfaceDesc, localeName);
 
   @override
-  String get includeUid => catgirlize(base.includeUid, localeName);
+  String get includeUid => catgirlizeTitle(base.includeUid, localeName);
 
   @override
   String get includeUidDesc => catgirlize(base.includeUidDesc, localeName);
 
   @override
-  String get excludeUid => catgirlize(base.excludeUid, localeName);
+  String get excludeUid => catgirlizeTitle(base.excludeUid, localeName);
 
   @override
   String get excludeUidDesc => catgirlize(base.excludeUidDesc, localeName);
 
   @override
-  String get excludeSrcPort => catgirlize(base.excludeSrcPort, localeName);
+  String get excludeSrcPort => catgirlizeTitle(base.excludeSrcPort, localeName);
 
   @override
   String get excludeSrcPortDesc =>
       catgirlize(base.excludeSrcPortDesc, localeName);
 
   @override
-  String get excludeDstPort => catgirlize(base.excludeDstPort, localeName);
+  String get excludeDstPort => catgirlizeTitle(base.excludeDstPort, localeName);
 
   @override
   String get excludeDstPortDesc =>
       catgirlize(base.excludeDstPortDesc, localeName);
 
   @override
-  String get udpTimeout => catgirlize(base.udpTimeout, localeName);
+  String get udpTimeout => catgirlizeTitle(base.udpTimeout, localeName);
 
   @override
   String get udpTimeoutDesc => catgirlize(base.udpTimeoutDesc, localeName);
@@ -2985,178 +3056,183 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String settingsCount(num count) =>
-      catgirlize(base.settingsCount(count), localeName);
+      catgirlizeTitle(base.settingsCount(count), localeName);
 
   @override
   String sectionsInEffect(Object count) =>
-      catgirlize(base.sectionsInEffect(count), localeName);
+      catgirlizeTitle(base.sectionsInEffect(count), localeName);
 
   @override
   String itemsCount(num count) =>
-      catgirlize(base.itemsCount(count), localeName);
+      catgirlizeTitle(base.itemsCount(count), localeName);
 
   @override
-  String get additionalPrefix => catgirlize(base.additionalPrefix, localeName);
+  String get additionalPrefix =>
+      catgirlizeTitle(base.additionalPrefix, localeName);
 
   @override
-  String get additionalSuffix => catgirlize(base.additionalSuffix, localeName);
+  String get additionalSuffix =>
+      catgirlizeTitle(base.additionalSuffix, localeName);
 
   @override
-  String get skipCertVerify => catgirlize(base.skipCertVerify, localeName);
+  String get skipCertVerify => catgirlizeTitle(base.skipCertVerify, localeName);
 
   @override
-  String get ipVersion => catgirlize(base.ipVersion, localeName);
+  String get ipVersion => catgirlizeTitle(base.ipVersion, localeName);
 
   @override
-  String get addFilters => catgirlize(base.addFilters, localeName);
+  String get addFilters => catgirlizeTitle(base.addFilters, localeName);
 
   @override
   String failedItem(Object label, Object message) =>
-      catgirlize(base.failedItem(label, message), localeName);
+      catgirlizeTitle(base.failedItem(label, message), localeName);
 
   @override
   String failedCount(Object count) =>
-      catgirlize(base.failedCount(count), localeName);
+      catgirlizeTitle(base.failedCount(count), localeName);
 
   @override
   String get importConfigInvalid =>
-      catgirlize(base.importConfigInvalid, localeName);
+      catgirlizeTitle(base.importConfigInvalid, localeName);
 
   @override
   String get importConfigReplaceTip =>
       catgirlize(base.importConfigReplaceTip, localeName);
 
   @override
-  String get networkName => catgirlize(base.networkName, localeName);
+  String get networkName => catgirlizeTitle(base.networkName, localeName);
 
   @override
-  String get networkSecret => catgirlize(base.networkSecret, localeName);
+  String get networkSecret => catgirlizeTitle(base.networkSecret, localeName);
 
   @override
-  String get peers => catgirlize(base.peers, localeName);
+  String get peers => catgirlizeTitle(base.peers, localeName);
 
   @override
-  String get virtualIpv4 => catgirlize(base.virtualIpv4, localeName);
+  String get virtualIpv4 => catgirlizeTitle(base.virtualIpv4, localeName);
 
   @override
-  String get hostname => catgirlize(base.hostname, localeName);
+  String get hostname => catgirlizeTitle(base.hostname, localeName);
 
   @override
-  String get exitNodes => catgirlize(base.exitNodes, localeName);
+  String get exitNodes => catgirlizeTitle(base.exitNodes, localeName);
 
   @override
-  String get cipher => catgirlize(base.cipher, localeName);
+  String get cipher => catgirlizeTitle(base.cipher, localeName);
 
   @override
-  String get protocol => catgirlize(base.protocol, localeName);
+  String get protocol => catgirlizeTitle(base.protocol, localeName);
 
   @override
-  String get protocolParam => catgirlize(base.protocolParam, localeName);
+  String get protocolParam => catgirlizeTitle(base.protocolParam, localeName);
 
   @override
-  String get obfs => catgirlize(base.obfs, localeName);
+  String get obfs => catgirlizeTitle(base.obfs, localeName);
 
   @override
-  String get obfsParam => catgirlize(base.obfsParam, localeName);
+  String get obfsParam => catgirlizeTitle(base.obfsParam, localeName);
 
   @override
-  String get obfsPassword => catgirlize(base.obfsPassword, localeName);
+  String get obfsPassword => catgirlizeTitle(base.obfsPassword, localeName);
 
   @override
-  String get obfsMode => catgirlize(base.obfsMode, localeName);
+  String get obfsMode => catgirlizeTitle(base.obfsMode, localeName);
 
   @override
-  String get obfsHost => catgirlize(base.obfsHost, localeName);
+  String get obfsHost => catgirlizeTitle(base.obfsHost, localeName);
 
   @override
-  String get plugin => catgirlize(base.plugin, localeName);
+  String get plugin => catgirlizeTitle(base.plugin, localeName);
 
   @override
-  String get pluginMode => catgirlize(base.pluginMode, localeName);
+  String get pluginMode => catgirlizeTitle(base.pluginMode, localeName);
 
   @override
-  String get pluginHost => catgirlize(base.pluginHost, localeName);
+  String get pluginHost => catgirlizeTitle(base.pluginHost, localeName);
 
   @override
-  String get pluginPath => catgirlize(base.pluginPath, localeName);
+  String get pluginPath => catgirlizeTitle(base.pluginPath, localeName);
 
   @override
-  String get pluginUsername => catgirlize(base.pluginUsername, localeName);
+  String get pluginUsername => catgirlizeTitle(base.pluginUsername, localeName);
 
   @override
-  String get pluginPassword => catgirlize(base.pluginPassword, localeName);
+  String get pluginPassword => catgirlizeTitle(base.pluginPassword, localeName);
 
   @override
-  String get pluginCipher => catgirlize(base.pluginCipher, localeName);
+  String get pluginCipher => catgirlizeTitle(base.pluginCipher, localeName);
 
   @override
-  String get privateKey => catgirlize(base.privateKey, localeName);
+  String get privateKey => catgirlizeTitle(base.privateKey, localeName);
 
   @override
-  String get publicKey => catgirlize(base.publicKey, localeName);
+  String get publicKey => catgirlizeTitle(base.publicKey, localeName);
 
   @override
   String get privateKeyPassphrase =>
-      catgirlize(base.privateKeyPassphrase, localeName);
+      catgirlizeTitle(base.privateKeyPassphrase, localeName);
 
   @override
-  String get preSharedKey => catgirlize(base.preSharedKey, localeName);
+  String get preSharedKey => catgirlizeTitle(base.preSharedKey, localeName);
 
   @override
-  String get secretKey => catgirlize(base.secretKey, localeName);
+  String get secretKey => catgirlizeTitle(base.secretKey, localeName);
 
   @override
-  String get transport => catgirlize(base.transport, localeName);
+  String get transport => catgirlizeTitle(base.transport, localeName);
 
   @override
-  String get uploadBandwidth => catgirlize(base.uploadBandwidth, localeName);
+  String get uploadBandwidth =>
+      catgirlizeTitle(base.uploadBandwidth, localeName);
 
   @override
   String get downloadBandwidth =>
-      catgirlize(base.downloadBandwidth, localeName);
+      catgirlizeTitle(base.downloadBandwidth, localeName);
 
   @override
-  String get protocolVersion => catgirlize(base.protocolVersion, localeName);
+  String get protocolVersion =>
+      catgirlizeTitle(base.protocolVersion, localeName);
 
   @override
-  String get portHopping => catgirlize(base.portHopping, localeName);
+  String get portHopping => catgirlizeTitle(base.portHopping, localeName);
 
   @override
-  String get hopInterval => catgirlize(base.hopInterval, localeName);
+  String get hopInterval => catgirlizeTitle(base.hopInterval, localeName);
 
   @override
   String get congestionControl =>
-      catgirlize(base.congestionControl, localeName);
+      catgirlizeTitle(base.congestionControl, localeName);
 
   @override
-  String get udpRelayMode => catgirlize(base.udpRelayMode, localeName);
+  String get udpRelayMode => catgirlizeTitle(base.udpRelayMode, localeName);
 
   @override
-  String get allowedIps => catgirlize(base.allowedIps, localeName);
+  String get allowedIps => catgirlizeTitle(base.allowedIps, localeName);
 
   @override
-  String get remoteDnsResolve => catgirlize(base.remoteDnsResolve, localeName);
+  String get remoteDnsResolve =>
+      catgirlizeTitle(base.remoteDnsResolve, localeName);
 
   @override
   String get clientFingerprint =>
-      catgirlize(base.clientFingerprint, localeName);
+      catgirlizeTitle(base.clientFingerprint, localeName);
 
   @override
-  String get requestHeaders => catgirlize(base.requestHeaders, localeName);
+  String get requestHeaders => catgirlizeTitle(base.requestHeaders, localeName);
 
   @override
   String transportHeaders(Object transport) =>
-      catgirlize(base.transportHeaders(transport), localeName);
+      catgirlizeTitle(base.transportHeaders(transport), localeName);
 
   @override
-  String get required => catgirlize(base.required, localeName);
+  String get required => catgirlizeTitle(base.required, localeName);
 
   @override
-  String get ageSecretKey => catgirlize(base.ageSecretKey, localeName);
+  String get ageSecretKey => catgirlizeTitle(base.ageSecretKey, localeName);
 
   @override
   String get ageEncryptedProfile =>
-      catgirlize(base.ageEncryptedProfile, localeName);
+      catgirlizeTitle(base.ageEncryptedProfile, localeName);
 
   @override
   String get ageSecretKeyRequiredTip =>
@@ -3167,105 +3243,108 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.currentOutboundDesc, localeName);
 
   @override
-  String get running => catgirlize(base.running, localeName);
+  String get running => catgirlizeTitle(base.running, localeName);
 
   @override
-  String get notRunning => catgirlize(base.notRunning, localeName);
+  String get notRunning => catgirlizeTitle(base.notRunning, localeName);
 
   @override
   String trafficPeak(Object value) =>
-      catgirlize(base.trafficPeak(value), localeName);
+      catgirlizeTitle(base.trafficPeak(value), localeName);
 
   @override
   String trafficTotal(Object value) =>
-      catgirlize(base.trafficTotal(value), localeName);
+      catgirlizeTitle(base.trafficTotal(value), localeName);
 
   @override
-  String get ipQualityShort => catgirlize(base.ipQualityShort, localeName);
+  String get ipQualityShort => catgirlizeTitle(base.ipQualityShort, localeName);
 
   @override
-  String get ipTypeUnknown => catgirlize(base.ipTypeUnknown, localeName);
+  String get ipTypeUnknown => catgirlizeTitle(base.ipTypeUnknown, localeName);
 
   @override
-  String get tapIconToRetry => catgirlize(base.tapIconToRetry, localeName);
+  String get tapIconToRetry => catgirlizeTitle(base.tapIconToRetry, localeName);
 
   @override
-  String get networkTakeover => catgirlize(base.networkTakeover, localeName);
+  String get networkTakeover =>
+      catgirlizeTitle(base.networkTakeover, localeName);
 
   @override
-  String portValue(Object port) => catgirlize(base.portValue(port), localeName);
+  String portValue(Object port) =>
+      catgirlizeTitle(base.portValue(port), localeName);
 
   @override
   String serviceAbnormalCount(num count) =>
-      catgirlize(base.serviceAbnormalCount(count), localeName);
+      catgirlizeTitle(base.serviceAbnormalCount(count), localeName);
 
   @override
   String get serviceAllAvailable =>
-      catgirlize(base.serviceAllAvailable, localeName);
+      catgirlizeTitle(base.serviceAllAvailable, localeName);
 
   @override
   String get serviceShownOnDashboard =>
-      catgirlize(base.serviceShownOnDashboard, localeName);
+      catgirlizeTitle(base.serviceShownOnDashboard, localeName);
 
   @override
   String groupTimeoutCount(Object count) =>
-      catgirlize(base.groupTimeoutCount(count), localeName);
+      catgirlizeTitle(base.groupTimeoutCount(count), localeName);
 
   @override
-  String get groupCountUnit => catgirlize(base.groupCountUnit, localeName);
+  String get groupCountUnit => catgirlizeTitle(base.groupCountUnit, localeName);
 
   @override
   String groupCount(num count) =>
-      catgirlize(base.groupCount(count), localeName);
+      catgirlizeTitle(base.groupCount(count), localeName);
 
   @override
   String get proxyGroupsAfterStart =>
-      catgirlize(base.proxyGroupsAfterStart, localeName);
+      catgirlizeTitle(base.proxyGroupsAfterStart, localeName);
 
   @override
-  String get usedShort => catgirlize(base.usedShort, localeName);
+  String get usedShort => catgirlizeTitle(base.usedShort, localeName);
 
   @override
   String profileUpdatedAt(Object time) =>
-      catgirlize(base.profileUpdatedAt(time), localeName);
+      catgirlizeTitle(base.profileUpdatedAt(time), localeName);
 
   @override
   String profileExpiresIn(Object date, num days) =>
-      catgirlize(base.profileExpiresIn(date, days), localeName);
+      catgirlizeTitle(base.profileExpiresIn(date, days), localeName);
 
   @override
   String profileDaysLeft(num days) =>
-      catgirlize(base.profileDaysLeft(days), localeName);
+      catgirlizeTitle(base.profileDaysLeft(days), localeName);
 
   @override
-  String get target => catgirlize(base.target, localeName);
+  String get target => catgirlizeTitle(base.target, localeName);
 
   @override
-  String get outboundExit => catgirlize(base.outboundExit, localeName);
+  String get outboundExit => catgirlizeTitle(base.outboundExit, localeName);
 
   @override
-  String get duration => catgirlize(base.duration, localeName);
+  String get duration => catgirlizeTitle(base.duration, localeName);
 
   @override
-  String get traffic => catgirlize(base.traffic, localeName);
+  String get traffic => catgirlizeTitle(base.traffic, localeName);
 
   @override
-  String get totalDownload => catgirlize(base.totalDownload, localeName);
+  String get totalDownload => catgirlizeTitle(base.totalDownload, localeName);
 
   @override
-  String get totalUpload => catgirlize(base.totalUpload, localeName);
+  String get totalUpload => catgirlizeTitle(base.totalUpload, localeName);
 
   @override
-  String get initiatorShort => catgirlize(base.initiatorShort, localeName);
+  String get initiatorShort => catgirlizeTitle(base.initiatorShort, localeName);
 
   @override
-  String get result => catgirlize(base.result, localeName);
+  String get result => catgirlizeTitle(base.result, localeName);
 
   @override
-  String get elapsed => catgirlize(base.elapsed, localeName);
+  String get elapsed => catgirlizeTitle(base.elapsed, localeName);
 
   @override
-  String get connectionStats => catgirlize(base.connectionStats, localeName);
+  String get connectionStats =>
+      catgirlizeTitle(base.connectionStats, localeName);
 
   @override
   String get connectionStatsDesc =>
@@ -3275,55 +3354,59 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get memoryInfoDesc => catgirlize(base.memoryInfoDesc, localeName);
 
   @override
-  String get editDashboard => catgirlize(base.editDashboard, localeName);
+  String get editDashboard => catgirlizeTitle(base.editDashboard, localeName);
 
   @override
-  String get done => catgirlize(base.done, localeName);
+  String get done => catgirlizeTitle(base.done, localeName);
 
   @override
   String get dashboardAddableSection =>
-      catgirlize(base.dashboardAddableSection, localeName);
+      catgirlizeTitle(base.dashboardAddableSection, localeName);
 
   @override
   String customImportDroppedSubRules(num count, Object label) =>
-      catgirlize(base.customImportDroppedSubRules(count, label), localeName);
+      catgirlizeTitle(
+        base.customImportDroppedSubRules(count, label),
+        localeName,
+      );
 
   @override
-  String get autoInclude => catgirlize(base.autoInclude, localeName);
+  String get autoInclude => catgirlizeTitle(base.autoInclude, localeName);
 
   @override
   String get allReferencedProxies =>
-      catgirlize(base.allReferencedProxies, localeName);
+      catgirlizeTitle(base.allReferencedProxies, localeName);
 
   @override
   String get allReferencedProxyProviders =>
-      catgirlize(base.allReferencedProxyProviders, localeName);
+      catgirlizeTitle(base.allReferencedProxyProviders, localeName);
 
   @override
-  String get clearDnsCache => catgirlize(base.clearDnsCache, localeName);
+  String get clearDnsCache => catgirlizeTitle(base.clearDnsCache, localeName);
 
   @override
-  String get dnsCacheCleared => catgirlize(base.dnsCacheCleared, localeName);
+  String get dnsCacheCleared =>
+      catgirlizeTitle(base.dnsCacheCleared, localeName);
 
   @override
   String get clearDnsCacheFailed =>
-      catgirlize(base.clearDnsCacheFailed, localeName);
+      catgirlizeTitle(base.clearDnsCacheFailed, localeName);
 
   @override
-  String get select => catgirlize(base.select, localeName);
+  String get select => catgirlizeTitle(base.select, localeName);
 
   @override
-  String get preferred => catgirlize(base.preferred, localeName);
+  String get preferred => catgirlizeTitle(base.preferred, localeName);
 
   @override
   String get addToLocalProxies =>
-      catgirlize(base.addToLocalProxies, localeName);
+      catgirlizeTitle(base.addToLocalProxies, localeName);
 
   @override
   String addedToLocalProxies(Object name) =>
-      catgirlize(base.addedToLocalProxies(name), localeName);
+      catgirlizeTitle(base.addedToLocalProxies(name), localeName);
 
   @override
   String alreadyInLocalProxies(Object name) =>
-      catgirlize(base.alreadyInLocalProxies(name), localeName);
+      catgirlizeTitle(base.alreadyInLocalProxies(name), localeName);
 }

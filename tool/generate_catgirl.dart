@@ -10,6 +10,12 @@ final _methodPattern = RegExp(
 );
 final _parameterPattern = RegExp(r'([A-Za-z_][A-Za-z0-9_]*)\s*(?:=.*)?$');
 
+/// Accessors whose copy is annotation text: those get the full catgirl ending.
+final _annotationPattern = RegExp(r'(?:Desc|Tip|Tips|Footer|Note|Notes)$');
+
+String _rewriter(String name) =>
+    _annotationPattern.hasMatch(name) ? 'catgirlize' : 'catgirlizeTitle';
+
 Future<void> main() async {
   final root = _repoRoot();
   final source = File(_join(root, _sourcePath));
@@ -36,7 +42,8 @@ Future<void> main() async {
       final name = getter[1]!;
       overrides.add(
         '  @override\n'
-        '  String get $name => catgirlize(base.$name, localeName);\n',
+        '  String get $name => '
+        '${_rewriter(name)}(base.$name, localeName);\n',
       );
       getters++;
       continue;
@@ -49,7 +56,7 @@ Future<void> main() async {
       overrides.add(
         '  @override\n'
         '  String $name($signature) => '
-        'catgirlize(base.$name($arguments), localeName);\n',
+        '${_rewriter(name)}(base.$name($arguments), localeName);\n',
       );
       methods++;
       continue;
@@ -70,7 +77,8 @@ Future<void> main() async {
     "import 'package:fl_clash/common/catgirl_text.dart';\n"
     "import 'package:fl_clash/l10n/l10n.dart';\n"
     '\n'
-    '/// Overrides every [AppLocalizations] accessor through [catgirlize].\n'
+    '/// Overrides every [AppLocalizations] accessor through [catgirlize], or\n'
+    '/// [catgirlizeTitle] for titles and labels.\n'
     'mixin $_mixinName on AppLocalizations {\n'
     '  /// The localizations every override reads from.\n'
     '  AppLocalizations get base;\n'

@@ -138,15 +138,18 @@ void main() {
       expect(wrapper.localeName, 'zh_CN');
       expect(identical(wrapper.base, AppLocalizations.current), isTrue);
       expect(wrapper.base.settings, '设置');
-      expect(wrapper.settings, catgirlize('设置', 'zh_CN'));
+      final title = wrapper.settings;
+      expect(title, contains('猫窝设置'));
+      expect(title, isNot(contains('喵')));
       expect(
         wrapper.secondsCount(30),
-        catgirlize(wrapper.base.secondsCount(30), 'zh_CN'),
+        catgirlizeTitle(wrapper.base.secondsCount(30), 'zh_CN'),
       );
       expect(
         wrapper.emptyTip('名称'),
         catgirlize(wrapper.base.emptyTip('名称'), 'zh_CN'),
       );
+      expect(wrapper.backgroundDesc, contains('喵'));
     });
   });
 

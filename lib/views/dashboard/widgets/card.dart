@@ -59,25 +59,28 @@ class DashboardCard extends StatelessWidget {
     return Semantics(
       container: true,
       label: semanticLabel,
-      child: Container(
-        clipBehavior: clipBehavior,
-        decoration: ShapeDecoration(
-          color: DashboardColors.of(context).card,
-          shape: shape,
-          shadows: DashboardShadows.e1(context),
-        ),
-        child: Material(
-          type: MaterialType.transparency,
-          child: onTap == null
-              ? content
-              : FocusRing(
-                  shape: shape,
-                  child: InkWell(
-                    customBorder: shape,
-                    onTap: onTap,
-                    child: content,
+      child: Frosted(
+        shape: shape,
+        child: Container(
+          clipBehavior: clipBehavior,
+          decoration: ShapeDecoration(
+            color: DashboardColors.of(context).card,
+            shape: shape,
+            shadows: DashboardShadows.e1(context),
+          ),
+          child: Material(
+            type: MaterialType.transparency,
+            child: onTap == null
+                ? content
+                : FocusRing(
+                    shape: shape,
+                    child: InkWell(
+                      customBorder: shape,
+                      onTap: onTap,
+                      child: content,
+                    ),
                   ),
-                ),
+          ),
         ),
       ),
     );
