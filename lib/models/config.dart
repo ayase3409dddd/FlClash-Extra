@@ -264,22 +264,6 @@ abstract class AppSettingProps with _$AppSettingProps {
     /// The floating bar's gap to the bottom edge, in logical pixels. Null
     /// keeps the bar clear of the system inset instead of an explicit value.
     double? floatingNavigationBarBottomMargin,
-    @Default(false) bool backgroundEnabled,
-    String? backgroundImagePath,
-
-    /// How the background picture meets the screen.
-    @Default(BackgroundFitMode.fill) BackgroundFitMode backgroundFitMode,
-
-    /// Dims the background picture, 0 to 1.
-    @Default(0.35) double backgroundBrightness,
-
-    /// Blurs the background picture, in logical pixels.
-    @Default(0.0) double backgroundBlur,
-
-    /// Frosted-glass surfaces instead of the flat opaque ones.
-    @Default(false) bool advancedMaterialEnabled,
-    @Default(0.35) double advancedMaterialOpacity,
-    @Default(12.0) double advancedMaterialBlur,
     @Default(true) bool autoCheckUpdate,
     @Default(true)
     @JsonKey(readValue: _readSidebarExpanded)

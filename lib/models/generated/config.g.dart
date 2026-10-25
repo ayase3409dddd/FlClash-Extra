@@ -49,22 +49,6 @@ _AppSettingProps _$AppSettingPropsFromJson(
       QuickActionPosition.right,
   floatingNavigationBarBottomMargin:
       (json['floatingNavigationBarBottomMargin'] as num?)?.toDouble(),
-  backgroundEnabled: json['backgroundEnabled'] as bool? ?? false,
-  backgroundImagePath: json['backgroundImagePath'] as String?,
-  backgroundFitMode:
-      $enumDecodeNullable(
-        _$BackgroundFitModeEnumMap,
-        json['backgroundFitMode'],
-      ) ??
-      BackgroundFitMode.fill,
-  backgroundBrightness:
-      (json['backgroundBrightness'] as num?)?.toDouble() ?? 0.35,
-  backgroundBlur: (json['backgroundBlur'] as num?)?.toDouble() ?? 0.0,
-  advancedMaterialEnabled: json['advancedMaterialEnabled'] as bool? ?? false,
-  advancedMaterialOpacity:
-      (json['advancedMaterialOpacity'] as num?)?.toDouble() ?? 0.35,
-  advancedMaterialBlur:
-      (json['advancedMaterialBlur'] as num?)?.toDouble() ?? 12.0,
   autoCheckUpdate: json['autoCheckUpdate'] as bool? ?? true,
   sidebarExpanded:
       _readSidebarExpanded(json, 'sidebarExpanded') as bool? ?? true,
@@ -140,14 +124,6 @@ Map<String, dynamic> _$AppSettingPropsToJson(
       _$QuickActionPositionEnumMap[instance.quickActionPosition]!,
   'floatingNavigationBarBottomMargin':
       instance.floatingNavigationBarBottomMargin,
-  'backgroundEnabled': instance.backgroundEnabled,
-  'backgroundImagePath': instance.backgroundImagePath,
-  'backgroundFitMode': _$BackgroundFitModeEnumMap[instance.backgroundFitMode]!,
-  'backgroundBrightness': instance.backgroundBrightness,
-  'backgroundBlur': instance.backgroundBlur,
-  'advancedMaterialEnabled': instance.advancedMaterialEnabled,
-  'advancedMaterialOpacity': instance.advancedMaterialOpacity,
-  'advancedMaterialBlur': instance.advancedMaterialBlur,
   'autoCheckUpdate': instance.autoCheckUpdate,
   'sidebarExpanded': instance.sidebarExpanded,
   'acceptedDisclaimerVersion': instance.acceptedDisclaimerVersion,
@@ -179,12 +155,6 @@ const _$QuickActionPositionEnumMap = {
   QuickActionPosition.right: 'right',
   QuickActionPosition.topLeft: 'topLeft',
   QuickActionPosition.topRight: 'topRight',
-};
-
-const _$BackgroundFitModeEnumMap = {
-  BackgroundFitMode.fill: 'fill',
-  BackgroundFitMode.stretch: 'stretch',
-  BackgroundFitMode.fit: 'fit',
 };
 
 const _$RestoreStrategyEnumMap = {

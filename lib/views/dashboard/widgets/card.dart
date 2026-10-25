@@ -59,28 +59,25 @@ class DashboardCard extends StatelessWidget {
     return Semantics(
       container: true,
       label: semanticLabel,
-      child: Frosted(
-        shape: shape,
-        child: Container(
-          clipBehavior: clipBehavior,
-          decoration: ShapeDecoration(
-            color: DashboardColors.of(context).card,
-            shape: shape,
-            shadows: DashboardShadows.e1(context),
-          ),
-          child: Material(
-            type: MaterialType.transparency,
-            child: onTap == null
-                ? content
-                : FocusRing(
-                    shape: shape,
-                    child: InkWell(
-                      customBorder: shape,
-                      onTap: onTap,
-                      child: content,
-                    ),
+      child: Container(
+        clipBehavior: clipBehavior,
+        decoration: ShapeDecoration(
+          color: DashboardColors.of(context).card,
+          shape: shape,
+          shadows: DashboardShadows.e1(context),
+        ),
+        child: Material(
+          type: MaterialType.transparency,
+          child: onTap == null
+              ? content
+              : FocusRing(
+                  shape: shape,
+                  child: InkWell(
+                    customBorder: shape,
+                    onTap: onTap,
+                    child: content,
                   ),
-          ),
+                ),
         ),
       ),
     );
@@ -405,23 +402,20 @@ class DashboardConnectedButton extends StatelessWidget {
             return FocusRing(
               shape: shape,
               standsOff: selected,
-              child: Frosted(
-                shape: shape,
-                child: Container(
-                  clipBehavior: Clip.antiAlias,
-                  decoration: ShapeDecoration(
-                    color: Color.lerp(background, colorScheme.primary, amount),
-                    shape: shape,
-                  ),
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: InkWell(
-                      customBorder: shape,
-                      splashFactory: NoSplash.splashFactory,
-                      highlightColor: Colors.transparent,
-                      onTap: onTap,
-                      child: child,
-                    ),
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: Color.lerp(background, colorScheme.primary, amount),
+                  shape: shape,
+                ),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    customBorder: shape,
+                    splashFactory: NoSplash.splashFactory,
+                    highlightColor: Colors.transparent,
+                    onTap: onTap,
+                    child: child,
                   ),
                 ),
               ),
@@ -461,35 +455,31 @@ class DashboardChip extends StatelessWidget {
       DashboardChipTone.ok => (colors.okContainer, colors.onOkContainer),
       DashboardChipTone.warn => (colors.warnContainer, colors.onWarnContainer),
     };
-    return Frosted(
-      shape: AppShape.full,
-      force: true,
-      child: Container(
-        height: large ? 28 : 24,
-        padding: EdgeInsets.symmetric(horizontal: large ? 12 : 10),
-        decoration: ShapeDecoration(color: background, shape: AppShape.full),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 6,
-          children: [
-            if (dot)
-              DecoratedBox(
-                decoration: ShapeDecoration(
-                  color: foreground,
-                  shape: AppShape.circle,
-                ),
-                child: const SizedBox.square(dimension: 6),
+    return Container(
+      height: large ? 28 : 24,
+      padding: EdgeInsets.symmetric(horizontal: large ? 12 : 10),
+      decoration: ShapeDecoration(color: background, shape: AppShape.full),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 6,
+        children: [
+          if (dot)
+            DecoratedBox(
+              decoration: ShapeDecoration(
+                color: foreground,
+                shape: AppShape.circle,
               ),
-            Text(
-              label,
-              maxLines: 1,
-              style: AppTextStyle.caption1
-                  .of(context, emphasized: true)
-                  .toTabular
-                  .copyWith(color: foreground),
+              child: const SizedBox.square(dimension: 6),
             ),
-          ],
-        ),
+          Text(
+            label,
+            maxLines: 1,
+            style: AppTextStyle.caption1
+                .of(context, emphasized: true)
+                .toTabular
+                .copyWith(color: foreground),
+          ),
+        ],
       ),
     );
   }
@@ -518,32 +508,28 @@ class DashboardBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     final shape = AppShape.all(radius);
     final content = Padding(padding: padding, child: child);
-    return Frosted(
-      shape: shape,
-      force: true,
-      child: Container(
-        decoration: ShapeDecoration(
-          color: color ?? DashboardColors.of(context).tone,
-          shape: shape,
-        ),
-        child: onTap == null
-            ? content
-            : Material(
-                type: MaterialType.transparency,
-                child: Semantics(
-                  button: true,
-                  label: semanticLabel,
-                  child: FocusRing(
-                    shape: shape,
-                    child: InkWell(
-                      customBorder: shape,
-                      onTap: onTap,
-                      child: content,
-                    ),
+    return Container(
+      decoration: ShapeDecoration(
+        color: color ?? DashboardColors.of(context).tone,
+        shape: shape,
+      ),
+      child: onTap == null
+          ? content
+          : Material(
+              type: MaterialType.transparency,
+              child: Semantics(
+                button: true,
+                label: semanticLabel,
+                child: FocusRing(
+                  shape: shape,
+                  child: InkWell(
+                    customBorder: shape,
+                    onTap: onTap,
+                    child: content,
                   ),
                 ),
               ),
-      ),
+            ),
     );
   }
 }

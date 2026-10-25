@@ -299,18 +299,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "Advanced configuration holds network, DNS, added rules, and scripts.",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage(
-      "Advanced material",
-    ),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
-      "Material blur",
-    ),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Turns the opaque surfaces into frosted glass; tune its transparency and blur.",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
-      "Material transparency",
-    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Encrypted profile",
     ),
@@ -376,18 +364,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Auto-update interval",
     ),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
-    "background": MessageLookupByLibrary.simpleMessage("Background"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage("Background blur"),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "Puts a picture behind the interface; brightness and blur keep the text readable.",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("Enabled"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("Fill"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("Fit"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage("Background fit"),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("Stretch"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage("Background image"),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("Choose image"),
     "backup": MessageLookupByLibrary.simpleMessage("Backup"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage(
       "Backup and restore",

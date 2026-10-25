@@ -315,16 +315,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "La configuration avancée regroupe le réseau, le DNS, les règles ajoutées et les scripts.",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage("Matériau avancé"),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
-      "Flou du matériau",
-    ),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Transforme les surfaces opaques en verre dépoli ; réglez sa transparence et son flou.",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
-      "Transparence du matériau",
-    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Profil chiffré",
     ),
@@ -398,24 +388,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Intervalle de mise à jour automatique",
     ),
     "back": MessageLookupByLibrary.simpleMessage("Retour"),
-    "background": MessageLookupByLibrary.simpleMessage("Arrière-plan"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage(
-      "Flou de l\'arrière-plan",
+      "Flou d’arrière-plan",
     ),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "Place une image derrière l\'interface ; luminosité et flou préservent la lisibilité.",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("Activé"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("Remplir"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("Ajuster"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage(
-      "Ajustement du fond",
-    ),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("Étirer"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage(
-      "Image d\'arrière-plan",
-    ),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("Choisir une image"),
     "backup": MessageLookupByLibrary.simpleMessage("Sauvegarde"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage(
       "Sauvegarde et restauration",

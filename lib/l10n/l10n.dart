@@ -1651,56 +1651,6 @@ class AppLocalizations {
     return Intl.message('Sidebar', name: 'sidebar', desc: '', args: []);
   }
 
-  /// `Background blur`
-  String get backgroundBlur {
-    return Intl.message(
-      'Background blur',
-      name: 'backgroundBlur',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Advanced material`
-  String get advancedMaterial {
-    return Intl.message(
-      'Advanced material',
-      name: 'advancedMaterial',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Turns the opaque surfaces into frosted glass; tune its transparency and blur.`
-  String get advancedMaterialDesc {
-    return Intl.message(
-      'Turns the opaque surfaces into frosted glass; tune its transparency and blur.',
-      name: 'advancedMaterialDesc',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Material transparency`
-  String get advancedMaterialOpacity {
-    return Intl.message(
-      'Material transparency',
-      name: 'advancedMaterialOpacity',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Material blur`
-  String get advancedMaterialBlur {
-    return Intl.message(
-      'Material blur',
-      name: 'advancedMaterialBlur',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Background blur lets the desktop behind the window show through the sidebar.`
   String get sidebarBlurDesc {
     return Intl.message(
@@ -3581,81 +3531,6 @@ class AppLocalizations {
     return Intl.message('Color style', name: 'colorStyle', desc: '', args: []);
   }
 
-  /// `Background`
-  String get background {
-    return Intl.message('Background', name: 'background', desc: '', args: []);
-  }
-
-  /// `Enabled`
-  String get backgroundEnabled {
-    return Intl.message(
-      'Enabled',
-      name: 'backgroundEnabled',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Background fit`
-  String get backgroundFitMode {
-    return Intl.message(
-      'Background fit',
-      name: 'backgroundFitMode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fill`
-  String get backgroundFitFill {
-    return Intl.message('Fill', name: 'backgroundFitFill', desc: '', args: []);
-  }
-
-  /// `Stretch`
-  String get backgroundFitStretch {
-    return Intl.message(
-      'Stretch',
-      name: 'backgroundFitStretch',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fit`
-  String get backgroundFitFit {
-    return Intl.message('Fit', name: 'backgroundFitFit', desc: '', args: []);
-  }
-
-  /// `Puts a picture behind the interface; brightness and blur keep the text readable.`
-  String get backgroundDesc {
-    return Intl.message(
-      'Puts a picture behind the interface; brightness and blur keep the text readable.',
-      name: 'backgroundDesc',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Background image`
-  String get backgroundImage {
-    return Intl.message(
-      'Background image',
-      name: 'backgroundImage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Choose image`
-  String get backgroundPick {
-    return Intl.message(
-      'Choose image',
-      name: 'backgroundPick',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Grid`
   String get grid {
     return Intl.message('Grid', name: 'grid', desc: '', args: []);
@@ -3684,6 +3559,16 @@ class AppLocalizations {
   /// `Brightness`
   String get brightness {
     return Intl.message('Brightness', name: 'brightness', desc: '', args: []);
+  }
+
+  /// `Background blur`
+  String get backgroundBlur {
+    return Intl.message(
+      'Background blur',
+      name: 'backgroundBlur',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Hex`

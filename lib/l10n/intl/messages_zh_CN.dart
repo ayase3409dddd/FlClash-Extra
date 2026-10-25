@@ -256,12 +256,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "进阶配置包含网络、DNS、附加规则与脚本。",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage("高级材质"),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("材质模糊"),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "将不透明的界面换成磨砂玻璃，可调节透明度与模糊程度。",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage("材质透明度"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("配置已加密"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 私钥"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(
@@ -307,18 +301,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoUpdate": MessageLookupByLibrary.simpleMessage("自动更新"),
     "autoUpdateInterval": MessageLookupByLibrary.simpleMessage("自动更新间隔"),
     "back": MessageLookupByLibrary.simpleMessage("返回"),
-    "background": MessageLookupByLibrary.simpleMessage("背景"),
-    "backgroundBlur": MessageLookupByLibrary.simpleMessage("模糊度"),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "为界面设置背景图片，可调节亮度与模糊度保证可读性。",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("启用"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("填充"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("适应"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage("背景适应模式"),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("拉伸"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage("背景图片"),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("选择图片"),
+    "backgroundBlur": MessageLookupByLibrary.simpleMessage("背景模糊"),
     "backup": MessageLookupByLibrary.simpleMessage("备份"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage("备份与恢复"),
     "backupFromNewerVersion": MessageLookupByLibrary.simpleMessage(

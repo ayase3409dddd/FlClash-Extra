@@ -303,18 +303,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "Расширенная конфигурация включает сеть, DNS, добавленные правила и скрипты.",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage(
-      "Продвинутый материал",
-    ),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
-      "Размытие материала",
-    ),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Превращает непрозрачные поверхности в матовое стекло; настройте прозрачность и размытие.",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
-      "Прозрачность материала",
-    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Зашифрованный профиль",
     ),
@@ -386,22 +374,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Интервал автообновления",
     ),
     "back": MessageLookupByLibrary.simpleMessage("Назад"),
-    "background": MessageLookupByLibrary.simpleMessage("Фон"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage("Размытие фона"),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "Помещает изображение за интерфейсом; яркость и размытие сохраняют читаемость.",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("Включено"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("Заполнить"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("Вписать"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage("Подгонка фона"),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("Растянуть"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage(
-      "Фоновое изображение",
-    ),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage(
-      "Выбрать изображение",
-    ),
     "backup": MessageLookupByLibrary.simpleMessage("Резервное копирование"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage(
       "Резервное копирование и восстановление",

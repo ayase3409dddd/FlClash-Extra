@@ -11,7 +11,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 
 import 'fade_box.dart';
-import 'frosted.dart';
 import 'scaffold.dart';
 import 'text.dart';
 
@@ -257,13 +256,9 @@ class CommonCard extends StatelessWidget {
             child: button,
           );
 
-    final frosted = Frosted(
-      shape: shape ?? AppShape.all(radius ?? AppCorner.md),
-      child: card,
-    );
     return switch (enterAnimated) {
-      true => FadeScaleEnterBox(child: frosted),
-      false => frosted,
+      true => FadeScaleEnterBox(child: card),
+      false => card,
     };
   }
 }

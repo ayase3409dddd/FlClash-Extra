@@ -149,7 +149,7 @@ void main() {
         wrapper.emptyTip('名称'),
         catgirlize(wrapper.base.emptyTip('名称'), 'zh_CN'),
       );
-      expect(wrapper.backgroundDesc, contains('喵'));
+      expect(wrapper.logcatDesc, contains('喵'));
     });
   });
 

@@ -43,20 +43,6 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final fontFamily = ref.watch(
     themeSettingProvider.select((state) => state.fontFamily),
   );
-  final advancedMaterial = ref.watch(
-    appSettingProvider.select((state) => state.advancedMaterialEnabled),
-  );
-  final materialOpacity = ref.watch(
-    appSettingProvider.select((state) => state.advancedMaterialOpacity),
-  );
-  final materialBlur = ref.watch(
-    appSettingProvider.select((state) => state.advancedMaterialBlur),
-  );
-  // The material is a surface treatment: the scheme and every liquid-glass
-  // component keep their colors, only the surface levels turn translucent.
-  SurfaceLevel.materialOpacity = advancedMaterial
-      ? materialOpacity.clamp(0.0, 1.0)
-      : 0;
   final colorScheme = ref.watch(genColorSchemeProvider(brightness));
   final locales = [
     ?getLocaleForString(locale),
@@ -65,9 +51,6 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final inputs = (
     platform: defaultTargetPlatform,
     fontFamily: fontFamily,
-    advancedMaterial: advancedMaterial,
-    materialOpacity: materialOpacity,
-    materialBlur: materialBlur,
     colorScheme: colorScheme,
     locales: locales.join(','),
   );
@@ -91,12 +74,6 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
     extensions: [
       if (brightness == Brightness.dark)
         ElevatedColorScheme(colorScheme.elevated),
-      if (advancedMaterial)
-        MaterialFrost(
-          enabled: true,
-          blur: materialBlur.clamp(0.0, 30.0),
-          opacity: materialOpacity.clamp(0.0, 1.0),
-        ),
     ],
   ).withAppShapes.withAppSurfaces.withAppTypography;
   _appThemes[brightness] = (inputs: inputs, theme: theme);

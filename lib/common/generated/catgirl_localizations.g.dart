@@ -708,25 +708,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get sidebar => catgirlizeTitle(base.sidebar, localeName);
 
   @override
-  String get backgroundBlur => catgirlizeTitle(base.backgroundBlur, localeName);
-
-  @override
-  String get advancedMaterial =>
-      catgirlizeTitle(base.advancedMaterial, localeName);
-
-  @override
-  String get advancedMaterialDesc =>
-      catgirlize(base.advancedMaterialDesc, localeName);
-
-  @override
-  String get advancedMaterialOpacity =>
-      catgirlizeTitle(base.advancedMaterialOpacity, localeName);
-
-  @override
-  String get advancedMaterialBlur =>
-      catgirlizeTitle(base.advancedMaterialBlur, localeName);
-
-  @override
   String get sidebarBlurDesc => catgirlize(base.sidebarBlurDesc, localeName);
 
   @override
@@ -1495,39 +1476,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get colorStyle => catgirlizeTitle(base.colorStyle, localeName);
 
   @override
-  String get background => catgirlizeTitle(base.background, localeName);
-
-  @override
-  String get backgroundEnabled =>
-      catgirlizeTitle(base.backgroundEnabled, localeName);
-
-  @override
-  String get backgroundFitMode =>
-      catgirlizeTitle(base.backgroundFitMode, localeName);
-
-  @override
-  String get backgroundFitFill =>
-      catgirlizeTitle(base.backgroundFitFill, localeName);
-
-  @override
-  String get backgroundFitStretch =>
-      catgirlizeTitle(base.backgroundFitStretch, localeName);
-
-  @override
-  String get backgroundFitFit =>
-      catgirlizeTitle(base.backgroundFitFit, localeName);
-
-  @override
-  String get backgroundDesc => catgirlize(base.backgroundDesc, localeName);
-
-  @override
-  String get backgroundImage =>
-      catgirlizeTitle(base.backgroundImage, localeName);
-
-  @override
-  String get backgroundPick => catgirlizeTitle(base.backgroundPick, localeName);
-
-  @override
   String get grid => catgirlizeTitle(base.grid, localeName);
 
   @override
@@ -1544,6 +1492,9 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get brightness => catgirlizeTitle(base.brightness, localeName);
+
+  @override
+  String get backgroundBlur => catgirlizeTitle(base.backgroundBlur, localeName);
 
   @override
   String get hex => catgirlizeTitle(base.hex, localeName);

@@ -1,6 +1,5 @@
 import 'package:fl_clash/ui/drag_back.dart';
 import 'package:fl_clash/ui/surface.dart';
-import 'package:fl_clash/ui/wallpaper.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -43,13 +42,8 @@ mixin SharedXPageRouteMixin<T> on PageRoute<T>, DragBackRouteMixin<T> {
     Widget child,
   ) {
     final surface = SurfaceLevel.page.colorOf(ColorScheme.of(context));
-    final wallpaper = Wallpaper.visibleOf(context);
-    final backdrop = Wallpaper.backdropOf(context);
-    // Every page clears its fill for the wallpaper; a pushed page paints the
-    // configured backdrop itself so it never shows the page underneath.
-    final routeColor = wallpaper ? Colors.transparent : surface;
     final dragging = isDragBackActive;
-    final transition = dragBackDetector(
+    return dragBackDetector(
       dragBackSlide(
         context,
         animation,
@@ -58,27 +52,17 @@ mixin SharedXPageRouteMixin<T> on PageRoute<T>, DragBackRouteMixin<T> {
           secondaryAnimation: dragging
               ? kAlwaysDismissedAnimation
               : secondaryAnimation,
-          color: routeColor,
+          color: surface,
           slide: SharedXPageTransition.pageSlide,
           overSettledPage: _overSettledPage,
           uncoveredByGesture: navigator!.userGestureInProgress,
           child: ColoredBox(
-            color: backdropOf(routeColor, dragging: dragging),
+            color: backdropOf(surface, dragging: dragging),
             child: child,
           ),
         ),
       ),
     );
-    if (!isFirst && backdrop != null) {
-      return Stack(
-        fit: StackFit.expand,
-        children: [
-          Positioned.fill(child: backdrop),
-          transition,
-        ],
-      );
-    }
-    return transition;
   }
 }
 

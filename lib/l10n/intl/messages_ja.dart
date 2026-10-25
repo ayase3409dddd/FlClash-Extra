@@ -261,14 +261,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "詳細設定には、ネットワーク、DNS、追加ルール、スクリプトがあります。",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage("高級マテリアル"),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("マテリアルのぼかし"),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "不透明なUIをすりガラスに。透明度とぼかしを調整できます。",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
-      "マテリアルの透明度",
-    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("暗号化されたプロファイル"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 秘密鍵"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(
@@ -318,18 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoUpdate": MessageLookupByLibrary.simpleMessage("自動更新"),
     "autoUpdateInterval": MessageLookupByLibrary.simpleMessage("自動更新間隔"),
     "back": MessageLookupByLibrary.simpleMessage("戻る"),
-    "background": MessageLookupByLibrary.simpleMessage("背景"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage("背景のぼかし"),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "インターフェースの背後に画像を表示します。明るさとぼかしで読みやすさを保ちます。",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("有効"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("埋める"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("合わせる"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage("背景の合わせ方"),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("引き伸ばす"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage("背景画像"),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("画像を選択"),
     "backup": MessageLookupByLibrary.simpleMessage("バックアップ"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage("バックアップと復元"),
     "backupFromNewerVersion": MessageLookupByLibrary.simpleMessage(

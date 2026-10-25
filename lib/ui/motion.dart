@@ -8,7 +8,7 @@ const fadeTabCurve = Curves.easeInOut;
 
 /// The slide between tabs eases in and out without the late, slow crawl of a
 /// pure ease-out; the middle stays even and the settle is short.
-const slideTabCurve = Cubic(0.25, 0.1, 0.25, 1);
+const slideTabCurve = Cubic(0.33, 0.08, 0.2, 1);
 
 const minTabAnimationSpeed = 0.5;
 const maxTabAnimationSpeed = 2.0;

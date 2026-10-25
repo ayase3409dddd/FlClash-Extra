@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:fl_clash/common/background_image.dart';
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/models/models.dart';
@@ -13,7 +12,6 @@ import 'package:fl_clash/views/theme_preview.dart';
 import 'package:fl_clash/widgets/widgets.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart' as p;
 
 class ThemeView extends StatelessWidget {
   const ThemeView({super.key});
@@ -37,15 +35,11 @@ class ThemeView extends StatelessWidget {
           const SizedBox(height: 16),
           const _PrimaryColorItem(),
           const SizedBox(height: 16),
-          const _BackgroundItem(),
-          const SizedBox(height: 16),
           const _NavigationBarItem(),
           const SizedBox(height: 16),
           const _TabAnimationItem(),
           const SizedBox(height: 16),
           const _LiquidGlassItem(),
-          const SizedBox(height: 16),
-          const _AdvancedMaterialItem(),
           const SizedBox(height: 16),
           if (system.isMacOS || system.isWindows) ...const [
             _SidebarBlurItem(),
@@ -939,211 +933,6 @@ class _TabAnimationSpeedItemState
   }
 }
 
-class _BackgroundItem extends ConsumerWidget {
-  const _BackgroundItem();
-
-  Future<void> _pick(BuildContext context, WidgetRef ref) async {
-    final appLocalizations = context.appLocalizations;
-    final notifier = ref.read(appSettingProvider.notifier);
-    final oldPath = ref.read(appSettingProvider).backgroundImagePath;
-    try {
-      final path = await pickBackgroundImage();
-      if (path == null) {
-        return;
-      }
-      await deleteBackgroundImage(oldPath);
-      notifier.update(
-        (state) =>
-            state.copyWith(backgroundEnabled: true, backgroundImagePath: path),
-      );
-    } catch (error) {
-      if (!context.mounted) {
-        return;
-      }
-      context.showNotifier(
-        userFacingErrorMessage(error, appLocalizations),
-        level: MessageLevel.error,
-      );
-    }
-  }
-
-  Future<void> _remove(WidgetRef ref) async {
-    final notifier = ref.read(appSettingProvider.notifier);
-    final path = ref.read(appSettingProvider).backgroundImagePath;
-    try {
-      await deleteBackgroundImage(path);
-    } catch (error) {
-      commonPrint.log(
-        'delete background image: $error',
-        logLevel: LogLevel.warning,
-      );
-    }
-    notifier.update((state) => state.copyWith(backgroundImagePath: null));
-  }
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final appLocalizations = context.appLocalizations;
-    final enabled = ref.watch(
-      appSettingProvider.select((state) => state.backgroundEnabled),
-    );
-    final path = ref.watch(
-      appSettingProvider.select((state) => state.backgroundImagePath),
-    );
-    final fitMode = ref.watch(
-      appSettingProvider.select((state) => state.backgroundFitMode),
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        InfoHeader(
-          info: Info(
-            label: appLocalizations.background,
-            glyph: AppGlyphs.photos,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: generateSection(
-            items: [
-              ListItem.toggle(
-                title: Text(appLocalizations.backgroundEnabled),
-                subtitle: Text(appLocalizations.backgroundDesc),
-                value: enabled,
-                onChanged: (value) {
-                  ref
-                      .read(appSettingProvider.notifier)
-                      .update(
-                        (state) => state.copyWith(backgroundEnabled: value),
-                      );
-                },
-              ),
-              if (enabled)
-                ListItem(
-                  title: Text(appLocalizations.backgroundImage),
-                  subtitle: Text(
-                    path == null ? appLocalizations.none : p.basename(path),
-                  ),
-                  trailing: const GlyphIcon(AppGlyphs.photos),
-                  onTap: () => _pick(context, ref),
-                ),
-              if (enabled && path != null)
-                ListItem(
-                  leading: const GlyphIcon(AppGlyphs.delete),
-                  title: Text(appLocalizations.remove),
-                  onTap: () => _remove(ref),
-                ),
-              if (enabled)
-                ListItem<BackgroundFitMode>.options(
-                  title: Text(appLocalizations.backgroundFitMode),
-                  options: BackgroundFitMode.values,
-                  value: fitMode,
-                  textBuilder: (mode) => switch (mode) {
-                    BackgroundFitMode.fill =>
-                      appLocalizations.backgroundFitFill,
-                    BackgroundFitMode.stretch =>
-                      appLocalizations.backgroundFitStretch,
-                    BackgroundFitMode.fit => appLocalizations.backgroundFitFit,
-                  },
-                  onChanged: (value) {
-                    ref
-                        .read(appSettingProvider.notifier)
-                        .update(
-                          (state) => state.copyWith(backgroundFitMode: value),
-                        );
-                  },
-                ),
-            ],
-          ),
-        ),
-        if (enabled) ...[
-          const _BackgroundBrightnessItem(),
-          const _BackgroundBlurItem(),
-        ],
-      ],
-    );
-  }
-}
-
-class _BackgroundBrightnessItem extends ConsumerStatefulWidget {
-  const _BackgroundBrightnessItem();
-
-  @override
-  ConsumerState<_BackgroundBrightnessItem> createState() =>
-      _BackgroundBrightnessItemState();
-}
-
-class _BackgroundBrightnessItemState
-    extends ConsumerState<_BackgroundBrightnessItem> {
-  double? _draft;
-
-  void _update(double value) {
-    setState(() => _draft = null);
-    ref
-        .read(appSettingProvider.notifier)
-        .update((state) => state.copyWith(backgroundBrightness: value));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final stored = ref.watch(
-      appSettingProvider.select((state) => state.backgroundBrightness),
-    );
-    final value = (_draft ?? stored).clamp(0.0, 1.0).toDouble();
-    return _ThemeSliderCard(
-      label: context.appLocalizations.brightness,
-      valueLabel: '${(value * 100).round()}%',
-      sliderKey: const ValueKey('background-brightness-slider'),
-      min: 0,
-      max: 1,
-      divisions: 20,
-      value: value,
-      onChanged: (value) => setState(() => _draft = value),
-      onChangeEnd: _update,
-    );
-  }
-}
-
-class _BackgroundBlurItem extends ConsumerStatefulWidget {
-  const _BackgroundBlurItem();
-
-  @override
-  ConsumerState<_BackgroundBlurItem> createState() =>
-      _BackgroundBlurItemState();
-}
-
-class _BackgroundBlurItemState extends ConsumerState<_BackgroundBlurItem> {
-  static const _maxBlur = 30.0;
-
-  double? _draft;
-
-  void _update(double value) {
-    setState(() => _draft = null);
-    ref
-        .read(appSettingProvider.notifier)
-        .update((state) => state.copyWith(backgroundBlur: value));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final stored = ref.watch(
-      appSettingProvider.select((state) => state.backgroundBlur),
-    );
-    final value = (_draft ?? stored).clamp(0.0, _maxBlur).toDouble();
-    return _ThemeSliderCard(
-      label: context.appLocalizations.backgroundBlur,
-      valueLabel: '${(value / _maxBlur * 100).round()}%',
-      sliderKey: const ValueKey('background-blur-slider'),
-      min: 0,
-      max: _maxBlur,
-      divisions: 30,
-      value: value,
-      onChanged: (value) => setState(() => _draft = value),
-      onChangeEnd: _update,
-    );
-  }
-}
-
 class _TabAnimationItem extends ConsumerWidget {
   const _TabAnimationItem();
 
@@ -1248,124 +1037,6 @@ class _LiquidGlassItem extends ConsumerWidget {
             .read(themeSettingProvider.notifier)
             .update((state) => state.copyWith(liquidGlass: value));
       },
-    );
-  }
-}
-
-class _AdvancedMaterialItem extends ConsumerWidget {
-  const _AdvancedMaterialItem();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final appLocalizations = context.appLocalizations;
-    final enabled = ref.watch(
-      appSettingProvider.select((state) => state.advancedMaterialEnabled),
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: generateSection(
-            items: [
-              ListItem.toggle(
-                title: Text(appLocalizations.advancedMaterial),
-                subtitle: Text(appLocalizations.advancedMaterialDesc),
-                value: enabled,
-                onChanged: (value) {
-                  ref
-                      .read(appSettingProvider.notifier)
-                      .update(
-                        (state) =>
-                            state.copyWith(advancedMaterialEnabled: value),
-                      );
-                },
-              ),
-            ],
-          ),
-        ),
-        if (enabled) ...[
-          const _MaterialOpacityItem(),
-          const _MaterialBlurItem(),
-        ],
-      ],
-    );
-  }
-}
-
-class _MaterialOpacityItem extends ConsumerStatefulWidget {
-  const _MaterialOpacityItem();
-
-  @override
-  ConsumerState<_MaterialOpacityItem> createState() =>
-      _MaterialOpacityItemState();
-}
-
-class _MaterialOpacityItemState extends ConsumerState<_MaterialOpacityItem> {
-  double? _draft;
-
-  void _update(double value) {
-    setState(() => _draft = null);
-    ref
-        .read(appSettingProvider.notifier)
-        .update((state) => state.copyWith(advancedMaterialOpacity: value));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final stored = ref.watch(
-      appSettingProvider.select((state) => state.advancedMaterialOpacity),
-    );
-    final value = (_draft ?? stored).clamp(0.0, 1.0).toDouble();
-    return _ThemeSliderCard(
-      label: context.appLocalizations.advancedMaterialOpacity,
-      valueLabel: '${(value * 100).round()}%',
-      sliderKey: const ValueKey('material-opacity-slider'),
-      min: 0,
-      max: 1,
-      divisions: 20,
-      value: value,
-      onChanged: (value) => setState(() => _draft = value),
-      onChangeEnd: _update,
-    );
-  }
-}
-
-class _MaterialBlurItem extends ConsumerStatefulWidget {
-  const _MaterialBlurItem();
-
-  @override
-  ConsumerState<_MaterialBlurItem> createState() => _MaterialBlurItemState();
-}
-
-class _MaterialBlurItemState extends ConsumerState<_MaterialBlurItem> {
-  static const _maxBlur = 30.0;
-
-  double? _draft;
-
-  void _update(double value) {
-    setState(() => _draft = null);
-    ref
-        .read(appSettingProvider.notifier)
-        .update((state) => state.copyWith(advancedMaterialBlur: value));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final stored = ref.watch(
-      appSettingProvider.select((state) => state.advancedMaterialBlur),
-    );
-    final value = (_draft ?? stored).clamp(0.0, _maxBlur).toDouble();
-    return _ThemeSliderCard(
-      label: context.appLocalizations.advancedMaterialBlur,
-      valueLabel: '${(value / _maxBlur * 100).round()}%',
-      sliderKey: const ValueKey('material-blur-slider'),
-      min: 0,
-      max: _maxBlur,
-      divisions: 30,
-      value: value,
-      onChanged: (value) => setState(() => _draft = value),
-      onChangeEnd: _update,
     );
   }
 }

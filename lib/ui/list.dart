@@ -20,7 +20,6 @@ import 'package:material_ui/material_ui.dart';
 
 import 'button.dart';
 import 'card.dart';
-import 'frosted.dart';
 import 'navigation_dock.dart';
 import 'open_container.dart';
 import 'popup.dart';
@@ -590,19 +589,16 @@ class ListSectionGap extends StatelessWidget {
 
 /// A section's rows alone, for a group under a header its caller lays out.
 Widget generateGroup(Iterable<Widget> items) {
-  return Frosted(
-    shape: AppShape.all(AppCorner.xl),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        ...items.mapIndexed<Widget>(
-          (index, item) => ItemPositionProvider(
-            position: ItemPosition.get(index, items.length),
-            child: item,
-          ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      ...items.mapIndexed<Widget>(
+        (index, item) => ItemPositionProvider(
+          position: ItemPosition.get(index, items.length),
+          child: item,
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }
 

@@ -13,7 +13,6 @@ import 'package:fl_clash/ui/shape.dart';
 import 'package:fl_clash/ui/surface.dart';
 import 'package:fl_clash/ui/typography.dart';
 import 'package:fl_clash/ui/view_scope.dart';
-import 'package:fl_clash/ui/wallpaper.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/physics.dart';
@@ -747,11 +746,7 @@ class CommonScaffoldState extends State<CommonScaffold>
     return FloatingHeader(
       backgroundColor:
           widget.backgroundColor ??
-          (Wallpaper.visibleOf(context)
-              ? SurfaceLevel.page
-                    .colorOf(context.colorScheme)
-                    .withValues(alpha: 0.8)
-              : SurfaceLevel.page.colorOf(context.colorScheme)),
+          SurfaceLevel.page.colorOf(context.colorScheme),
       fadeStart: top / (top + pageToolbarHeight),
       overhang: _headerOverhang,
       child: appBar,
@@ -979,20 +974,14 @@ class CommonScaffoldState extends State<CommonScaffold>
                   ),
           ),
           resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
-          backgroundColor:
-              widget.backgroundColor ??
-              (Wallpaper.visibleOf(context) ? Colors.transparent : null),
+          backgroundColor: widget.backgroundColor,
         ),
       );
     }
     final sheetBody = FloatingHeaderBody(
       backgroundColor:
           widget.backgroundColor ??
-          (Wallpaper.visibleOf(context)
-              ? SurfaceLevel.page
-                    .colorOf(context.colorScheme)
-                    .withValues(alpha: 0.8)
-              : SurfaceLevel.page.colorOf(context.colorScheme)),
+          SurfaceLevel.page.colorOf(context.colorScheme),
       header: SheetToolBar(appBar: appBar, dragHandle: form.hasDragHandle),
       footer: form.dockedSearch == null || _sorting
           ? null
@@ -1016,9 +1005,7 @@ class CommonScaffoldState extends State<CommonScaffold>
         child: Scaffold(
           body: footed,
           resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
-          backgroundColor:
-              widget.backgroundColor ??
-              (Wallpaper.visibleOf(context) ? Colors.transparent : null),
+          backgroundColor: widget.backgroundColor,
         ),
       );
     }

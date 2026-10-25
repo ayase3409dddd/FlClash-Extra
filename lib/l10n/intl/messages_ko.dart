@@ -260,12 +260,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "고급 구성에는 네트워크, DNS, 추가한 규칙, 스크립트가 포함됩니다.",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage("고급 소재"),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("소재 흐림"),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "불투명한 UI를 프로스트 글라스로 바꾸고 투명도와 흐림을 조절합니다.",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage("소재 투명도"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("암호화된 프로필"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 비밀 키"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(
@@ -313,18 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "autoUpdate": MessageLookupByLibrary.simpleMessage("자동 업데이트"),
     "autoUpdateInterval": MessageLookupByLibrary.simpleMessage("자동 업데이트 간격"),
     "back": MessageLookupByLibrary.simpleMessage("뒤로"),
-    "background": MessageLookupByLibrary.simpleMessage("배경"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage("배경 흐림"),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "인터페이스 뒤에 사진을 표시합니다. 밝기와 흐림으로 가독성을 유지합니다.",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("사용"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("채우기"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("맞추기"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage("배경 맞춤"),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("늘이기"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage("배경 이미지"),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("이미지 선택"),
     "backup": MessageLookupByLibrary.simpleMessage("백업"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage("백업 및 복원"),
     "backupFromNewerVersion": MessageLookupByLibrary.simpleMessage(

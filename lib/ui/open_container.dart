@@ -2,7 +2,6 @@ import 'package:fl_clash/ui/deferred_push.dart';
 import 'package:fl_clash/ui/drag_back.dart';
 import 'package:fl_clash/ui/keyboard_inset_hold.dart';
 import 'package:fl_clash/ui/surface.dart';
-import 'package:fl_clash/ui/wallpaper.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
@@ -313,8 +312,6 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
   ) {
     final theme = Theme.of(context);
     final surface = SurfaceLevel.page.colorOf(theme.colorScheme);
-    final wallpaper = Wallpaper.visibleOf(context);
-    final routeSurface = wallpaper ? Colors.transparent : surface;
     final open = FadeTransition(
       opacity: _openOpacity,
       child: RepaintBoundary(
@@ -330,14 +327,14 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
         ),
       ),
     );
-    final container = ListenableBuilder(
+    return ListenableBuilder(
       listenable: _closedChanges,
       builder: (BuildContext context, Widget? open) {
         return _ContainerTransition(
           route: this,
-          closedColor: closedColor ?? routeSurface,
-          openColor: routeSurface,
-          settledColor: wallpaper ? Colors.transparent : theme.canvasColor,
+          closedColor: closedColor ?? surface,
+          openColor: surface,
+          settledColor: theme.canvasColor,
           closed: _hostsClosed.value
               ? IgnorePointer(
                   child: ExcludeFocus(
@@ -361,17 +358,6 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
         );
       },
       child: open,
-    );
-    final backdrop = isFirst ? null : Wallpaper.backdropOf(context);
-    if (backdrop == null) {
-      return container;
-    }
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Positioned.fill(child: backdrop),
-        container,
-      ],
     );
   }
 

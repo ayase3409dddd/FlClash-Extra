@@ -312,18 +312,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "La configuración avanzada incluye la red, el DNS, las reglas añadidas y los scripts.",
     ),
-    "advancedMaterial": MessageLookupByLibrary.simpleMessage(
-      "Material avanzado",
-    ),
-    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
-      "Desenfoque del material",
-    ),
-    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Convierte las superficies opacas en vidrio esmerilado; ajusta su transparencia y desenfoque.",
-    ),
-    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
-      "Transparencia del material",
-    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Perfil cifrado",
     ),
@@ -399,22 +387,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Intervalo de actualización automática",
     ),
     "back": MessageLookupByLibrary.simpleMessage("Atrás"),
-    "background": MessageLookupByLibrary.simpleMessage("Fondo"),
     "backgroundBlur": MessageLookupByLibrary.simpleMessage(
-      "Desenfoque del fondo",
+      "Desenfoque de fondo",
     ),
-    "backgroundDesc": MessageLookupByLibrary.simpleMessage(
-      "Coloca una imagen detrás de la interfaz; el brillo y el desenfoque mantienen la legibilidad.",
-    ),
-    "backgroundEnabled": MessageLookupByLibrary.simpleMessage("Activado"),
-    "backgroundFitFill": MessageLookupByLibrary.simpleMessage("Rellenar"),
-    "backgroundFitFit": MessageLookupByLibrary.simpleMessage("Ajustar"),
-    "backgroundFitMode": MessageLookupByLibrary.simpleMessage(
-      "Ajuste del fondo",
-    ),
-    "backgroundFitStretch": MessageLookupByLibrary.simpleMessage("Estirar"),
-    "backgroundImage": MessageLookupByLibrary.simpleMessage("Imagen de fondo"),
-    "backgroundPick": MessageLookupByLibrary.simpleMessage("Elegir imagen"),
     "backup": MessageLookupByLibrary.simpleMessage("Copia de seguridad"),
     "backupAndRestore": MessageLookupByLibrary.simpleMessage(
       "Copia de seguridad y restauración",

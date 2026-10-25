@@ -114,35 +114,15 @@ class AppEnvManager extends ConsumerWidget {
 
   const AppEnvManager({super.key, required this.child});
 
-  /// The corner ribbon a build carries, or null for none. Release builds on the
-  /// stable and pre channels are unbannered: the version already tells users
-  /// which channel they installed, and the pre ribbon read as a defect.
-  @visibleForTesting
-  static String? bannerFor({
-    required bool safeMode,
-    required bool isDebug,
-    required String appEnv,
-  }) {
+  String? _bannerMessage({required bool safeMode}) {
     if (safeMode) {
       return 'SAFE MODE';
     }
-    if (appEnv == 'stable') {
+    if (!globalState.isPre) {
       return null;
     }
-    if (isDebug) {
-      return 'DEBUG';
-    }
-    if (appEnv == 'pre') {
-      return null;
-    }
-    return appEnv.toUpperCase();
+    return kDebugMode ? 'DEBUG' : globalState.appEnv.toUpperCase();
   }
-
-  String? _bannerMessage({required bool safeMode}) => bannerFor(
-    safeMode: safeMode,
-    isDebug: kDebugMode,
-    appEnv: globalState.appEnv,
-  );
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -250,9 +230,7 @@ class AppSidebarContainer extends ConsumerWidget {
     final hasSidebar = viewMode != ViewMode.mobile;
     final isLtr = Directionality.of(context) == TextDirection.ltr;
     return Container(
-      color: backdropOpacity != null || Wallpaper.visibleOf(context)
-          ? Colors.transparent
-          : page,
+      color: backdropOpacity != null ? Colors.transparent : page,
       child: Row(
         children: [
           AnimatedVisibility.sidebar(
