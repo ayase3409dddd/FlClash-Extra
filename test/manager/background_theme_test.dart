@@ -46,5 +46,14 @@ void main() {
     expect(theme.colorScheme.surface.a, 1.0);
     expect(theme.colorScheme.surfaceContainer.a, 1.0);
     expect(theme.scaffoldBackgroundColor.a, 1.0);
+
+    container.read(appSettingProvider.notifier).value = const AppSettingProps(
+      advancedMaterialEnabled: true,
+    );
+    await tester.pump();
+
+    // Frosted material is the only setting that makes the scheme translucent.
+    expect(theme.colorScheme.surface.a, lessThan(1.0));
+    expect(theme.colorScheme.surfaceContainer.a, lessThan(1.0));
   });
 }

@@ -38,12 +38,35 @@ Widget _closeButtonIcon(BuildContext context) =>
 /// A rebuilt ThemeData never equals the last, and ThemeCrossFade fades on that.
 final _appThemes = <Brightness, ({Object inputs, ThemeData theme})>{};
 
+/// Shows the frosted backdrop through the surfaces without washing out text.
+const _frostedSurfaceAlpha = 0.84;
+
+ColorScheme _frostedSurfaces(ColorScheme scheme) {
+  Color frosted(Color color) => color.withValues(alpha: _frostedSurfaceAlpha);
+  return scheme.copyWith(
+    surface: frosted(scheme.surface),
+    surfaceDim: frosted(scheme.surfaceDim),
+    surfaceBright: frosted(scheme.surfaceBright),
+    surfaceContainerLowest: frosted(scheme.surfaceContainerLowest),
+    surfaceContainerLow: frosted(scheme.surfaceContainerLow),
+    surfaceContainer: frosted(scheme.surfaceContainer),
+    surfaceContainerHigh: frosted(scheme.surfaceContainerHigh),
+    surfaceContainerHighest: frosted(scheme.surfaceContainerHighest),
+  );
+}
+
 ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final locale = ref.watch(appSettingProvider.select((state) => state.locale));
   final fontFamily = ref.watch(
     themeSettingProvider.select((state) => state.fontFamily),
   );
-  final colorScheme = ref.watch(genColorSchemeProvider(brightness));
+  final advancedMaterial = ref.watch(
+    appSettingProvider.select((state) => state.advancedMaterialEnabled),
+  );
+  final opaqueColorScheme = ref.watch(genColorSchemeProvider(brightness));
+  final colorScheme = advancedMaterial
+      ? _frostedSurfaces(opaqueColorScheme)
+      : opaqueColorScheme;
   final locales = [
     ?getLocaleForString(locale),
     ...WidgetsBinding.instance.platformDispatcher.locales,
@@ -51,6 +74,7 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final inputs = (
     platform: defaultTargetPlatform,
     fontFamily: fontFamily,
+    advancedMaterial: advancedMaterial,
     colorScheme: colorScheme,
     locales: locales.join(','),
   );
@@ -60,6 +84,9 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   ) when cached == inputs) {
     return theme;
   }
+  final elevated = advancedMaterial
+      ? _frostedSurfaces(opaqueColorScheme.elevated)
+      : opaqueColorScheme.elevated;
   final theme = ThemeData(
     useMaterial3: true,
     pageTransitionsTheme: _pageTransitionsTheme,
@@ -72,8 +99,7 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
       fontFamily: fontFamily,
     ),
     extensions: [
-      if (brightness == Brightness.dark)
-        ElevatedColorScheme(colorScheme.elevated),
+      if (brightness == Brightness.dark) ElevatedColorScheme(elevated),
     ],
   ).withAppShapes.withAppSurfaces.withAppTypography;
   _appThemes[brightness] = (inputs: inputs, theme: theme);

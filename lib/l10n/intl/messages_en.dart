@@ -299,6 +299,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "Advanced configuration holds network, DNS, added rules, and scripts.",
     ),
+    "advancedMaterial": MessageLookupByLibrary.simpleMessage(
+      "Advanced material",
+    ),
+    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
+      "Material blur",
+    ),
+    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
+      "Turns the opaque surfaces into frosted glass; tune how much they dim and blur.",
+    ),
+    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("Material dim"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Encrypted profile",
     ),

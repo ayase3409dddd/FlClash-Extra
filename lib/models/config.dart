@@ -275,6 +275,11 @@ abstract class AppSettingProps with _$AppSettingProps {
 
     /// Blurs the background picture, in logical pixels.
     @Default(0.0) double backgroundBlur,
+
+    /// Frosted-glass surfaces instead of the flat opaque ones.
+    @Default(false) bool advancedMaterialEnabled,
+    @Default(0.3) double advancedMaterialDim,
+    @Default(12.0) double advancedMaterialBlur,
     @Default(true) bool autoCheckUpdate,
     @Default(true)
     @JsonKey(readValue: _readSidebarExpanded)

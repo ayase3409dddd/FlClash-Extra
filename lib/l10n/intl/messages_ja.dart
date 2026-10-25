@@ -261,6 +261,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "詳細設定には、ネットワーク、DNS、追加ルール、スクリプトがあります。",
     ),
+    "advancedMaterial": MessageLookupByLibrary.simpleMessage("高級マテリアル"),
+    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("マテリアルのぼかし"),
+    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
+      "不透明なUIをすりガラスに。暗さとぼかしを調整できます。",
+    ),
+    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("マテリアルの暗さ"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("暗号化されたプロファイル"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 秘密鍵"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

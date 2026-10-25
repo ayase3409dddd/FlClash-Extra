@@ -463,6 +463,25 @@ void main() {
     });
   });
 
+  group('advanced material', () {
+    testWidgets('toggles the frosted material and exposes its sliders', (
+      tester,
+    ) async {
+      await pumpThemeView(tester);
+      AppSettingProps readSetting() => container.read(appSettingProvider);
+
+      expect(readSetting().advancedMaterialEnabled, isFalse);
+      await tester.tap(find.text('Advanced material'));
+      await tester.pumpAndSettle();
+      expect(readSetting().advancedMaterialEnabled, isTrue);
+      expect(find.byKey(const ValueKey('material-dim-slider')), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('material-blur-slider')),
+        findsOneWidget,
+      );
+    });
+  });
+
   group('font family', () {
     setUp(() {
       final reader = systemFontFamiliesReader;

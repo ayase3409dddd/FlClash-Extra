@@ -1661,6 +1661,46 @@ class AppLocalizations {
     );
   }
 
+  /// `Advanced material`
+  String get advancedMaterial {
+    return Intl.message(
+      'Advanced material',
+      name: 'advancedMaterial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turns the opaque surfaces into frosted glass; tune how much they dim and blur.`
+  String get advancedMaterialDesc {
+    return Intl.message(
+      'Turns the opaque surfaces into frosted glass; tune how much they dim and blur.',
+      name: 'advancedMaterialDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Material dim`
+  String get advancedMaterialDim {
+    return Intl.message(
+      'Material dim',
+      name: 'advancedMaterialDim',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Material blur`
+  String get advancedMaterialBlur {
+    return Intl.message(
+      'Material blur',
+      name: 'advancedMaterialBlur',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Background blur lets the desktop behind the window show through the sidebar.`
   String get sidebarBlurDesc {
     return Intl.message(

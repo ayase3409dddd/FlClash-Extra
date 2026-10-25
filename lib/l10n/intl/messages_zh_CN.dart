@@ -256,6 +256,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "进阶配置包含网络、DNS、附加规则与脚本。",
     ),
+    "advancedMaterial": MessageLookupByLibrary.simpleMessage("高级材质"),
+    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("材质模糊"),
+    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
+      "将不透明的界面换成磨砂玻璃，可调节压暗与模糊程度。",
+    ),
+    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("材质压暗"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("配置已加密"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 私钥"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

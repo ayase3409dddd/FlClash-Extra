@@ -160,13 +160,6 @@ class ApplicationState extends ConsumerState<Application> {
           appSettingProvider.select((state) => state.catgirlMode),
         );
         catgirlModeEnabled = catgirlMode;
-        final backgroundVisible = ref.watch(
-          appSettingProvider.select(
-            (state) =>
-                state.backgroundEnabled &&
-                (state.backgroundImagePath?.isNotEmpty ?? false),
-          ),
-        );
         final themeProps = ref.watch(themeSettingProvider);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -179,18 +172,15 @@ class ApplicationState extends ConsumerState<Application> {
           ],
           builder: (context, child) {
             return AppBackground(
-              child: Wallpaper(
-                visible: backgroundVisible,
-                child: ThemeCrossFade(
-                  child: buildManagerStack(
-                    isDesktop: system.isDesktop,
-                    onConnectivityChanged: _handleConnectivityChanged,
-                    terminateSignals: _terminateSignals,
-                    child: RemoteFocusAdapter(
-                      enabled: system.isTV,
-                      floatingKeyboard: app?.floatingKeyboard,
-                      child: child!,
-                    ),
+              child: ThemeCrossFade(
+                child: buildManagerStack(
+                  isDesktop: system.isDesktop,
+                  onConnectivityChanged: _handleConnectivityChanged,
+                  terminateSignals: _terminateSignals,
+                  child: RemoteFocusAdapter(
+                    enabled: system.isTV,
+                    floatingKeyboard: app?.floatingKeyboard,
+                    child: child!,
                   ),
                 ),
               ),

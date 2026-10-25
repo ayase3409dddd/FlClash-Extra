@@ -699,6 +699,21 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get backgroundBlur => catgirlize(base.backgroundBlur, localeName);
 
   @override
+  String get advancedMaterial => catgirlize(base.advancedMaterial, localeName);
+
+  @override
+  String get advancedMaterialDesc =>
+      catgirlize(base.advancedMaterialDesc, localeName);
+
+  @override
+  String get advancedMaterialDim =>
+      catgirlize(base.advancedMaterialDim, localeName);
+
+  @override
+  String get advancedMaterialBlur =>
+      catgirlize(base.advancedMaterialBlur, localeName);
+
+  @override
   String get sidebarBlurDesc => catgirlize(base.sidebarBlurDesc, localeName);
 
   @override

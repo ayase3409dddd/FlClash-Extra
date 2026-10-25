@@ -60,6 +60,10 @@ _AppSettingProps _$AppSettingPropsFromJson(
   backgroundBrightness:
       (json['backgroundBrightness'] as num?)?.toDouble() ?? 0.35,
   backgroundBlur: (json['backgroundBlur'] as num?)?.toDouble() ?? 0.0,
+  advancedMaterialEnabled: json['advancedMaterialEnabled'] as bool? ?? false,
+  advancedMaterialDim: (json['advancedMaterialDim'] as num?)?.toDouble() ?? 0.3,
+  advancedMaterialBlur:
+      (json['advancedMaterialBlur'] as num?)?.toDouble() ?? 12.0,
   autoCheckUpdate: json['autoCheckUpdate'] as bool? ?? true,
   sidebarExpanded:
       _readSidebarExpanded(json, 'sidebarExpanded') as bool? ?? true,
@@ -140,6 +144,9 @@ Map<String, dynamic> _$AppSettingPropsToJson(
   'backgroundFitMode': _$BackgroundFitModeEnumMap[instance.backgroundFitMode]!,
   'backgroundBrightness': instance.backgroundBrightness,
   'backgroundBlur': instance.backgroundBlur,
+  'advancedMaterialEnabled': instance.advancedMaterialEnabled,
+  'advancedMaterialDim': instance.advancedMaterialDim,
+  'advancedMaterialBlur': instance.advancedMaterialBlur,
   'autoCheckUpdate': instance.autoCheckUpdate,
   'sidebarExpanded': instance.sidebarExpanded,
   'acceptedDisclaimerVersion': instance.acceptedDisclaimerVersion,

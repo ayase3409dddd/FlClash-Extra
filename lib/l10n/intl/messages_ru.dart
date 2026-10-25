@@ -303,6 +303,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "Расширенная конфигурация включает сеть, DNS, добавленные правила и скрипты.",
     ),
+    "advancedMaterial": MessageLookupByLibrary.simpleMessage(
+      "Продвинутый материал",
+    ),
+    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage(
+      "Размытие материала",
+    ),
+    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
+      "Превращает непрозрачные поверхности в матовое стекло; настройте затемнение и размытие.",
+    ),
+    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage(
+      "Затемнение материала",
+    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Зашифрованный профиль",
     ),

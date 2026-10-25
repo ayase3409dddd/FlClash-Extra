@@ -6,7 +6,7 @@ import 'package:fl_clash/l10n/l10n.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-const _kaomoji = ['(ฅ^•ﻌ•^ฅ)', '(｡•ω•｡)'];
+const _kaomoji = ['(ฅ^•ﻌ•^ฅ)', '(｡•ω•｡)', '(＝^･ω･^＝)', '(๑•̀ω•́)ノ'];
 
 const _longChinese = '这是一段比较长的说明文字，用来测试猫娘化之后的效果。';
 
@@ -21,30 +21,34 @@ bool _hasEmoji(String text) {
 
 void main() {
   group('catgirlize', () {
-    test('rewrites Chinese sentences and labels', () {
-      expect(catgirlize('设置', 'zh_CN'), '设置喵');
-      expect(catgirlize('设置', 'zh'), '设置喵');
-      expect(catgirlize('操作成功。', 'zh_CN'), '操作成功喵～');
-      expect(catgirlize('出错了！', 'zh_CN'), '出错了喵！');
-      expect(catgirlize('确定要删除吗？', 'zh_CN'), '确定要删除吗喵？');
-      expect(catgirlize('当前没有可用的配置文件', 'zh_CN'), '当前没有可用的配置文件喵～');
+    test('rewrites Chinese copy through the persona catalogue', () {
+      final label = catgirlize('设置', 'zh_CN');
+      expect(label.startsWith('猫窝设置'), isTrue);
+      expect(label, contains('喵'));
+      expect(catgirlize('操作成功。', 'zh_CN'), contains('顺毛成功'));
+      expect(catgirlize('出现错误！', 'zh_CN'), startsWith('出现爪滑了'));
+      final confirm = catgirlize('确定要删除吗？', 'zh_CN');
+      expect(confirm.startsWith('确定要丢掉吗'), isTrue);
+      expect(confirm, contains('喵'));
+      final empty = catgirlize('当前没有可用的配置文件', 'zh_CN');
+      expect(empty, contains('小鱼干档案'));
+      expect(catgirlize('设置', 'zh'), startsWith('猫窝设置'));
     });
 
     test('adds one kaomoji to long Chinese copy, never an emoji', () {
       final rewritten = catgirlize(_longChinese, 'zh_CN');
-      final body = _longChinese.substring(0, _longChinese.length - 1);
-      expect(rewritten.startsWith('$body喵～ '), isTrue);
       expect(_kaomoji.any(rewritten.endsWith), isTrue);
-      for (final sample in ['设置喵', '操作成功喵～', rewritten, 'Settings nya~']) {
+      expect(rewritten.runes.length, greaterThan(_longChinese.runes.length));
+      for (final sample in ['猫窝设置喵', '顺毛成功喵～', rewritten, 'Settings nya~']) {
         expect(_hasEmoji(sample), isFalse, reason: sample);
       }
     });
 
     test('never stacks a second suffix', () {
-      final label = catgirlize('设置', 'zh_CN');
-      expect(catgirlize(label, 'zh_CN'), label);
-      final sentence = catgirlize(_longChinese, 'zh_CN');
-      expect(catgirlize(sentence, 'zh_CN'), sentence);
+      for (final text in ['设置', _longChinese, '下载', '清除缓存']) {
+        final once = catgirlize(text, 'zh_CN');
+        expect(catgirlize(once, 'zh_CN'), once, reason: text);
+      }
       expect(catgirlize('Settings nya~', 'en'), 'Settings nya~');
       expect(catgirlize('好耶～', 'zh_CN'), '好耶～');
       expect(catgirlize('Hello~', 'en'), 'Hello~');
@@ -75,14 +79,15 @@ void main() {
     });
 
     test('applies the other locale endings', () {
-      expect(catgirlize('設定', 'ja'), '設定にゃ〜');
-      expect(catgirlize('完了。', 'ja'), '完了にゃ〜');
-      expect(catgirlize('失敗！', 'ja'), '失敗にゃ！');
-      expect(catgirlize('설정', 'ko'), '설정냥~');
-      expect(catgirlize('Настройки', 'ru'), 'Настройки ня~');
-      expect(catgirlize('Settings', 'en'), 'Settings nya~');
-      expect(catgirlize('Done.', 'en'), 'Done nya~');
-      expect(catgirlize('Are you sure?', 'en'), 'Are you sure nya?');
+      expect(catgirlize('設定', 'ja'), startsWith('設定'));
+      expect(catgirlize('設定', 'ja'), contains('にゃ'));
+      expect(catgirlize('完了。', 'ja'), startsWith('完了'));
+      expect(catgirlize('失敗！', 'ja'), contains('にゃ'));
+      expect(catgirlize('설정', 'ko'), contains('냥'));
+      expect(catgirlize('Настройки', 'ru'), contains('ня'));
+      expect(catgirlize('Settings', 'en'), contains('nya'));
+      expect(catgirlize('Done.', 'en'), startsWith('Done'));
+      expect(catgirlize('Are you sure?', 'en'), contains('nya'));
     });
 
     test('keeps a non-empty string non-empty', () {

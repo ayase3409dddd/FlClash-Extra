@@ -260,6 +260,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedConfigDesc": MessageLookupByLibrary.simpleMessage(
       "고급 구성에는 네트워크, DNS, 추가한 규칙, 스크립트가 포함됩니다.",
     ),
+    "advancedMaterial": MessageLookupByLibrary.simpleMessage("고급 소재"),
+    "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("소재 흐림"),
+    "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
+      "불투명한 UI를 프로스트 글라스로 바꾸고 어둡기와 흐림을 조절합니다.",
+    ),
+    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("소재 어둡기"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("암호화된 프로필"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 비밀 키"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

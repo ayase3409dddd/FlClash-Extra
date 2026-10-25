@@ -43,7 +43,9 @@ mixin SharedXPageRouteMixin<T> on PageRoute<T>, DragBackRouteMixin<T> {
     Widget child,
   ) {
     final surface = SurfaceLevel.page.colorOf(ColorScheme.of(context));
-    final routeColor = Wallpaper.visibleOf(context)
+    // Only the tab page lets the wallpaper through; pushed pages keep a solid
+    // mask, or their content would show the page underneath.
+    final routeColor = Wallpaper.visibleOf(context) && isFirst
         ? Colors.transparent
         : surface;
     final dragging = isDragBackActive;

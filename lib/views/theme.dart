@@ -45,6 +45,8 @@ class ThemeView extends StatelessWidget {
           const SizedBox(height: 16),
           const _LiquidGlassItem(),
           const SizedBox(height: 16),
+          const _AdvancedMaterialItem(),
+          const SizedBox(height: 16),
           if (system.isMacOS || system.isWindows) ...const [
             _SidebarBlurItem(),
             SizedBox(height: 16),
@@ -1246,6 +1248,120 @@ class _LiquidGlassItem extends ConsumerWidget {
             .read(themeSettingProvider.notifier)
             .update((state) => state.copyWith(liquidGlass: value));
       },
+    );
+  }
+}
+
+class _AdvancedMaterialItem extends ConsumerWidget {
+  const _AdvancedMaterialItem();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appLocalizations = context.appLocalizations;
+    final enabled = ref.watch(
+      appSettingProvider.select((state) => state.advancedMaterialEnabled),
+    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: generateSection(
+            items: [
+              ListItem.toggle(
+                title: Text(appLocalizations.advancedMaterial),
+                subtitle: Text(appLocalizations.advancedMaterialDesc),
+                value: enabled,
+                onChanged: (value) {
+                  ref
+                      .read(appSettingProvider.notifier)
+                      .update(
+                        (state) =>
+                            state.copyWith(advancedMaterialEnabled: value),
+                      );
+                },
+              ),
+            ],
+          ),
+        ),
+        if (enabled) ...[const _MaterialDimItem(), const _MaterialBlurItem()],
+      ],
+    );
+  }
+}
+
+class _MaterialDimItem extends ConsumerStatefulWidget {
+  const _MaterialDimItem();
+
+  @override
+  ConsumerState<_MaterialDimItem> createState() => _MaterialDimItemState();
+}
+
+class _MaterialDimItemState extends ConsumerState<_MaterialDimItem> {
+  double? _draft;
+
+  void _update(double value) {
+    setState(() => _draft = null);
+    ref
+        .read(appSettingProvider.notifier)
+        .update((state) => state.copyWith(advancedMaterialDim: value));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final stored = ref.watch(
+      appSettingProvider.select((state) => state.advancedMaterialDim),
+    );
+    final value = (_draft ?? stored).clamp(0.0, 1.0).toDouble();
+    return _ThemeSliderCard(
+      label: context.appLocalizations.advancedMaterialDim,
+      valueLabel: '${(value * 100).round()}%',
+      sliderKey: const ValueKey('material-dim-slider'),
+      min: 0,
+      max: 1,
+      divisions: 20,
+      value: value,
+      onChanged: (value) => setState(() => _draft = value),
+      onChangeEnd: _update,
+    );
+  }
+}
+
+class _MaterialBlurItem extends ConsumerStatefulWidget {
+  const _MaterialBlurItem();
+
+  @override
+  ConsumerState<_MaterialBlurItem> createState() => _MaterialBlurItemState();
+}
+
+class _MaterialBlurItemState extends ConsumerState<_MaterialBlurItem> {
+  static const _maxBlur = 30.0;
+
+  double? _draft;
+
+  void _update(double value) {
+    setState(() => _draft = null);
+    ref
+        .read(appSettingProvider.notifier)
+        .update((state) => state.copyWith(advancedMaterialBlur: value));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final stored = ref.watch(
+      appSettingProvider.select((state) => state.advancedMaterialBlur),
+    );
+    final value = (_draft ?? stored).clamp(0.0, _maxBlur).toDouble();
+    return _ThemeSliderCard(
+      label: context.appLocalizations.advancedMaterialBlur,
+      valueLabel: '${(value / _maxBlur * 100).round()}%',
+      sliderKey: const ValueKey('material-blur-slider'),
+      min: 0,
+      max: _maxBlur,
+      divisions: 30,
+      value: value,
+      onChanged: (value) => setState(() => _draft = value),
+      onChangeEnd: _update,
     );
   }
 }

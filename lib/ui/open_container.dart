@@ -313,9 +313,8 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
   ) {
     final theme = Theme.of(context);
     final surface = SurfaceLevel.page.colorOf(theme.colorScheme);
-    final routeSurface = Wallpaper.visibleOf(context)
-        ? Colors.transparent
-        : surface;
+    final wallpaper = Wallpaper.visibleOf(context) && isFirst;
+    final routeSurface = wallpaper ? Colors.transparent : surface;
     final open = FadeTransition(
       opacity: _openOpacity,
       child: RepaintBoundary(
@@ -338,9 +337,7 @@ class _OpenContainerRoute<T> extends ModalRoute<T>
           route: this,
           closedColor: closedColor ?? routeSurface,
           openColor: routeSurface,
-          settledColor: Wallpaper.visibleOf(context)
-              ? Colors.transparent
-              : theme.canvasColor,
+          settledColor: wallpaper ? Colors.transparent : theme.canvasColor,
           closed: _hostsClosed.value
               ? IgnorePointer(
                   child: ExcludeFocus(
