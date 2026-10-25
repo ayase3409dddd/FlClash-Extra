@@ -310,10 +310,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Размытие материала",
     ),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Превращает непрозрачные поверхности в матовое стекло; настройте затемнение и размытие.",
+      "Превращает непрозрачные поверхности в матовое стекло; настройте прозрачность и размытие.",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage(
-      "Затемнение материала",
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
+      "Прозрачность материала",
     ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Зашифрованный профиль",

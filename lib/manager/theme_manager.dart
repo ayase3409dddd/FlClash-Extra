@@ -38,29 +38,6 @@ Widget _closeButtonIcon(BuildContext context) =>
 /// A rebuilt ThemeData never equals the last, and ThemeCrossFade fades on that.
 final _appThemes = <Brightness, ({Object inputs, ThemeData theme})>{};
 
-/// Shows the frosted backdrop through the surfaces without washing out text.
-const _frostedSurfaceMaxAlpha = 0.9;
-
-const _frostedSurfaceMinAlpha = 0.55;
-
-ColorScheme _frostedSurfaces(ColorScheme scheme, double dim) {
-  final alpha = (_frostedSurfaceMaxAlpha - dim * 0.35).clamp(
-    _frostedSurfaceMinAlpha,
-    1.0,
-  );
-  Color frosted(Color color) => color.withValues(alpha: alpha);
-  return scheme.copyWith(
-    surface: frosted(scheme.surface),
-    surfaceDim: frosted(scheme.surfaceDim),
-    surfaceBright: frosted(scheme.surfaceBright),
-    surfaceContainerLowest: frosted(scheme.surfaceContainerLowest),
-    surfaceContainerLow: frosted(scheme.surfaceContainerLow),
-    surfaceContainer: frosted(scheme.surfaceContainer),
-    surfaceContainerHigh: frosted(scheme.surfaceContainerHigh),
-    surfaceContainerHighest: frosted(scheme.surfaceContainerHighest),
-  );
-}
-
 ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final locale = ref.watch(appSettingProvider.select((state) => state.locale));
   final fontFamily = ref.watch(
@@ -69,16 +46,18 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   final advancedMaterial = ref.watch(
     appSettingProvider.select((state) => state.advancedMaterialEnabled),
   );
-  final materialDim = ref.watch(
-    appSettingProvider.select((state) => state.advancedMaterialDim),
+  final materialOpacity = ref.watch(
+    appSettingProvider.select((state) => state.advancedMaterialOpacity),
   );
   final materialBlur = ref.watch(
     appSettingProvider.select((state) => state.advancedMaterialBlur),
   );
-  final opaqueColorScheme = ref.watch(genColorSchemeProvider(brightness));
-  final colorScheme = advancedMaterial
-      ? _frostedSurfaces(opaqueColorScheme, materialDim)
-      : opaqueColorScheme;
+  // The material is a surface treatment: the scheme and every liquid-glass
+  // component keep their colors, only the surface levels turn translucent.
+  SurfaceLevel.materialOpacity = advancedMaterial
+      ? materialOpacity.clamp(0.0, 1.0)
+      : 0;
+  final colorScheme = ref.watch(genColorSchemeProvider(brightness));
   final locales = [
     ?getLocaleForString(locale),
     ...WidgetsBinding.instance.platformDispatcher.locales,
@@ -87,7 +66,7 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
     platform: defaultTargetPlatform,
     fontFamily: fontFamily,
     advancedMaterial: advancedMaterial,
-    materialDim: materialDim,
+    materialOpacity: materialOpacity,
     materialBlur: materialBlur,
     colorScheme: colorScheme,
     locales: locales.join(','),
@@ -98,9 +77,6 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
   ) when cached == inputs) {
     return theme;
   }
-  final elevated = advancedMaterial
-      ? _frostedSurfaces(opaqueColorScheme.elevated, materialDim)
-      : opaqueColorScheme.elevated;
   final theme = ThemeData(
     useMaterial3: true,
     pageTransitionsTheme: _pageTransitionsTheme,
@@ -113,12 +89,13 @@ ThemeData watchAppTheme(WidgetRef ref, Brightness brightness) {
       fontFamily: fontFamily,
     ),
     extensions: [
-      if (brightness == Brightness.dark) ElevatedColorScheme(elevated),
+      if (brightness == Brightness.dark)
+        ElevatedColorScheme(colorScheme.elevated),
       if (advancedMaterial)
         MaterialFrost(
           enabled: true,
           blur: materialBlur.clamp(0.0, 30.0),
-          dim: materialDim.clamp(0.0, 1.0),
+          opacity: materialOpacity.clamp(0.0, 1.0),
         ),
     ],
   ).withAppShapes.withAppSurfaces.withAppTypography;

@@ -1284,39 +1284,43 @@ class _AdvancedMaterialItem extends ConsumerWidget {
             ],
           ),
         ),
-        if (enabled) ...[const _MaterialDimItem(), const _MaterialBlurItem()],
+        if (enabled) ...[
+          const _MaterialOpacityItem(),
+          const _MaterialBlurItem(),
+        ],
       ],
     );
   }
 }
 
-class _MaterialDimItem extends ConsumerStatefulWidget {
-  const _MaterialDimItem();
+class _MaterialOpacityItem extends ConsumerStatefulWidget {
+  const _MaterialOpacityItem();
 
   @override
-  ConsumerState<_MaterialDimItem> createState() => _MaterialDimItemState();
+  ConsumerState<_MaterialOpacityItem> createState() =>
+      _MaterialOpacityItemState();
 }
 
-class _MaterialDimItemState extends ConsumerState<_MaterialDimItem> {
+class _MaterialOpacityItemState extends ConsumerState<_MaterialOpacityItem> {
   double? _draft;
 
   void _update(double value) {
     setState(() => _draft = null);
     ref
         .read(appSettingProvider.notifier)
-        .update((state) => state.copyWith(advancedMaterialDim: value));
+        .update((state) => state.copyWith(advancedMaterialOpacity: value));
   }
 
   @override
   Widget build(BuildContext context) {
     final stored = ref.watch(
-      appSettingProvider.select((state) => state.advancedMaterialDim),
+      appSettingProvider.select((state) => state.advancedMaterialOpacity),
     );
     final value = (_draft ?? stored).clamp(0.0, 1.0).toDouble();
     return _ThemeSliderCard(
-      label: context.appLocalizations.advancedMaterialDim,
+      label: context.appLocalizations.advancedMaterialOpacity,
       valueLabel: '${(value * 100).round()}%',
-      sliderKey: const ValueKey('material-dim-slider'),
+      sliderKey: const ValueKey('material-opacity-slider'),
       min: 0,
       max: 1,
       divisions: 20,

@@ -18,11 +18,11 @@ BoxFit _fitOf(BackgroundFitMode mode) => switch (mode) {
   BackgroundFitMode.fit => BoxFit.contain,
 };
 
-/// Paints the wallpaper, or the frosted material backdrop, behind [child].
+/// Paints the wallpaper set in the theme settings behind [child].
 ///
-/// It owns the fade as well: page surfaces clear their fill through a
-/// [Wallpaper] while the backdrop is on its way in or out, and the fade curve
-/// is eased rather than linear.
+/// Only the background settings live here: the advanced material is a surface
+/// treatment of its own. The fade keeps page surfaces clear through a
+/// [Wallpaper] while it runs, and eases rather than switching.
 class AppBackground extends ConsumerStatefulWidget {
   const AppBackground({super.key, required this.child});
 
@@ -63,62 +63,38 @@ class _AppBackgroundState extends ConsumerState<AppBackground>
     }
   }
 
-  Widget _backdrop(
-    BuildContext context, {
-    required bool imageVisible,
-    required bool advanced,
-    required String? path,
+  Widget _layer({
+    required String path,
     required BackgroundFitMode fit,
-    required double imageDim,
-    required double materialDim,
+    required double dim,
     required double blur,
   }) {
-    final scheme = Theme.of(context).colorScheme;
-    final image = imageVisible && path != null && path.isNotEmpty
-        ? File(path)
-        : null;
-    final picture = image != null && image.existsSync()
-        ? Image.file(
-            image,
-            key: ValueKey<String>(path!),
-            fit: _fitOf(fit),
-            gaplessPlayback: true,
-            errorBuilder: (_, _, _) => const SizedBox.shrink(),
-          )
-        : DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  scheme.primary.withValues(alpha: 0.55),
-                  scheme.surfaceContainerHighest,
-                  scheme.tertiary.withValues(alpha: 0.4),
-                ],
-              ),
-            ),
-          );
-    final dim = clampDouble(imageDim + materialDim, 0, 0.92);
     return Stack(
       fit: StackFit.expand,
       children: [
-        ColoredBox(color: scheme.surface),
-        picture,
-        if (blur > 0 && advanced)
-          ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-              child: const SizedBox.expand(),
-            ),
+        FadeTransition(
+          opacity: _fade,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.file(
+                File(path),
+                key: ValueKey<String>(path),
+                fit: _fitOf(fit),
+                gaplessPlayback: true,
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
+              ),
+              ColoredBox(color: Colors.black.withValues(alpha: dim)),
+              if (blur > 0)
+                ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+                    child: const SizedBox.expand(),
+                  ),
+                ),
+            ],
           ),
-        ColoredBox(color: Colors.black.withValues(alpha: dim)),
-        if (blur > 0 && !advanced)
-          ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-              child: const SizedBox.expand(),
-            ),
-          ),
+        ),
       ],
     );
   }
@@ -133,52 +109,26 @@ class _AppBackgroundState extends ConsumerState<AppBackground>
           fit: state.backgroundFitMode,
           brightness: state.backgroundBrightness,
           blur: state.backgroundBlur,
-          advanced: state.advancedMaterialEnabled,
-          materialDim: state.advancedMaterialDim,
-          materialBlur: state.advancedMaterialBlur,
         ),
       ),
     );
     final path = setting.path;
-    final imageVisible = setting.enabled && path != null && path.isNotEmpty;
-    final advanced = setting.advanced;
-    final target = imageVisible || advanced;
-    _setTarget(target);
+    _setTarget(setting.enabled && path != null && path.isNotEmpty);
     final showing = _target || _controller.isAnimating || _controller.value > 0;
-    if (!showing) {
+    if (!showing || path == null || path.isEmpty || !File(path).existsSync()) {
       return widget.child;
     }
-    if (imageVisible && !File(path).existsSync()) {
-      final backdrop = ColoredBox(color: Theme.of(context).colorScheme.surface);
-      return Stack(
-        fit: StackFit.expand,
-        children: [
-          backdrop,
-          Wallpaper(visible: _target, backdrop: backdrop, child: widget.child),
-        ],
-      );
-    }
-    final backdrop = _backdrop(
-      context,
-      imageVisible: imageVisible,
-      advanced: advanced,
-      path: path,
-      fit: setting.fit,
-      imageDim: imageVisible
-          ? clampDouble(setting.brightness, 0, 1) * _maxDimStrength
-          : 0,
-      materialDim: advanced ? clampDouble(setting.materialDim, 0, 1) * 0.35 : 0,
-      blur: clampDouble(setting.blur, 0, _maxBlurSigma),
+    final dim = clampDouble(setting.brightness, 0, 1) * _maxDimStrength;
+    final blur = clampDouble(setting.blur, 0, _maxBlurSigma);
+    final backdrop = ColoredBox(
+      color: Theme.of(context).colorScheme.surface,
+      child: _layer(path: path, fit: setting.fit, dim: dim, blur: blur),
     );
     return Stack(
       fit: StackFit.expand,
       children: [
-        Positioned.fill(
-          child: IgnorePointer(
-            child: FadeTransition(opacity: _fade, child: backdrop),
-          ),
-        ),
-        Wallpaper(visible: _target, backdrop: backdrop, child: widget.child),
+        Positioned.fill(child: IgnorePointer(child: backdrop)),
+        Wallpaper(visible: showing, backdrop: backdrop, child: widget.child),
       ],
     );
   }

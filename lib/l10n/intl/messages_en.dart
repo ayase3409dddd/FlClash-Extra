@@ -306,9 +306,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Material blur",
     ),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Turns the opaque surfaces into frosted glass; tune how much they dim and blur.",
+      "Turns the opaque surfaces into frosted glass; tune its transparency and blur.",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("Material dim"),
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
+      "Material transparency",
+    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Encrypted profile",
     ),

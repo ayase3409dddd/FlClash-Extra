@@ -259,9 +259,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedMaterial": MessageLookupByLibrary.simpleMessage("高级材质"),
     "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("材质模糊"),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "将不透明的界面换成磨砂玻璃，可调节压暗与模糊程度。",
+      "将不透明的界面换成磨砂玻璃，可调节透明度与模糊程度。",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("材质压暗"),
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage("材质透明度"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("配置已加密"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 私钥"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

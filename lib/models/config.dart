@@ -278,7 +278,7 @@ abstract class AppSettingProps with _$AppSettingProps {
 
     /// Frosted-glass surfaces instead of the flat opaque ones.
     @Default(false) bool advancedMaterialEnabled,
-    @Default(0.3) double advancedMaterialDim,
+    @Default(0.35) double advancedMaterialOpacity,
     @Default(12.0) double advancedMaterialBlur,
     @Default(true) bool autoCheckUpdate,
     @Default(true)

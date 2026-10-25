@@ -61,7 +61,8 @@ _AppSettingProps _$AppSettingPropsFromJson(
       (json['backgroundBrightness'] as num?)?.toDouble() ?? 0.35,
   backgroundBlur: (json['backgroundBlur'] as num?)?.toDouble() ?? 0.0,
   advancedMaterialEnabled: json['advancedMaterialEnabled'] as bool? ?? false,
-  advancedMaterialDim: (json['advancedMaterialDim'] as num?)?.toDouble() ?? 0.3,
+  advancedMaterialOpacity:
+      (json['advancedMaterialOpacity'] as num?)?.toDouble() ?? 0.35,
   advancedMaterialBlur:
       (json['advancedMaterialBlur'] as num?)?.toDouble() ?? 12.0,
   autoCheckUpdate: json['autoCheckUpdate'] as bool? ?? true,
@@ -145,7 +146,7 @@ Map<String, dynamic> _$AppSettingPropsToJson(
   'backgroundBrightness': instance.backgroundBrightness,
   'backgroundBlur': instance.backgroundBlur,
   'advancedMaterialEnabled': instance.advancedMaterialEnabled,
-  'advancedMaterialDim': instance.advancedMaterialDim,
+  'advancedMaterialOpacity': instance.advancedMaterialOpacity,
   'advancedMaterialBlur': instance.advancedMaterialBlur,
   'autoCheckUpdate': instance.autoCheckUpdate,
   'sidebarExpanded': instance.sidebarExpanded,

@@ -8,22 +8,24 @@ class MaterialFrost extends ThemeExtension<MaterialFrost> {
   const MaterialFrost({
     required this.enabled,
     required this.blur,
-    required this.dim,
+    required this.opacity,
   });
 
   final bool enabled;
   final double blur;
-  final double dim;
+
+  /// How see-through the frosted surface is, 0 to 1.
+  final double opacity;
 
   static MaterialFrost? of(BuildContext context) =>
       Theme.of(context).extension<MaterialFrost>();
 
   @override
-  MaterialFrost copyWith({bool? enabled, double? blur, double? dim}) =>
+  MaterialFrost copyWith({bool? enabled, double? blur, double? opacity}) =>
       MaterialFrost(
         enabled: enabled ?? this.enabled,
         blur: blur ?? this.blur,
-        dim: dim ?? this.dim,
+        opacity: opacity ?? this.opacity,
       );
 
   @override
@@ -34,33 +36,71 @@ class MaterialFrost extends ThemeExtension<MaterialFrost> {
     return MaterialFrost(
       enabled: t < 0.5 ? enabled : other.enabled,
       blur: lerpDouble(blur, other.blur, t)!,
-      dim: lerpDouble(dim, other.dim, t)!,
+      opacity: lerpDouble(opacity, other.opacity, t)!,
     );
   }
 }
 
-/// Blurs what lies behind [child] while the surface above it stays
-/// translucent, frosting any card drawn through it.
+/// Blurs what lies behind [child] and lays a glass sheen under it, frosting
+/// any card drawn through it. Liquid-glass widgets do not use this.
 class Frosted extends StatelessWidget {
-  const Frosted({super.key, required this.shape, required this.child});
+  const Frosted({
+    super.key,
+    required this.shape,
+    required this.child,
+    this.force = false,
+  });
 
   final ShapeBorder shape;
   final Widget child;
+
+  /// Frosts even inside another [Frosted], for a small piece that sits on a
+  /// card and should read as glass of its own.
+  final bool force;
 
   @override
   Widget build(BuildContext context) {
     final frost = MaterialFrost.of(context);
     final nested =
         context.dependOnInheritedWidgetOfExactType<_FrostedScope>() != null;
-    if (frost == null || !frost.enabled || frost.blur <= 0 || nested) {
+    if (frost == null ||
+        !frost.enabled ||
+        frost.blur <= 0 ||
+        (nested && !force)) {
       return child;
     }
     return _FrostedScope(
       child: ClipPath(
         clipper: ShapeBorderClipper(shape: shape),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: frost.blur, sigmaY: frost.blur),
-          child: child,
+        child: Stack(
+          fit: StackFit.passthrough,
+          children: [
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: frost.blur,
+                  sigmaY: frost.blur,
+                ),
+                child: const SizedBox.expand(),
+              ),
+            ),
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.white.withValues(alpha: 0.1),
+                      Colors.transparent,
+                      Colors.white.withValues(alpha: 0.04),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            child,
+          ],
         ),
       ),
     );

@@ -9,6 +9,10 @@ enum SurfaceLevel {
   block,
   inset;
 
+  /// Set by the theme manager while the advanced material is on: 0 keeps the
+  /// levels opaque, otherwise it is how see-through the frosted levels are.
+  static double materialOpacity = 0;
+
   static SurfaceLevel floatingOf(ColorScheme colorScheme) =>
       colorScheme.brightness == Brightness.dark ? block : card;
 
@@ -20,13 +24,19 @@ enum SurfaceLevel {
 
   Color colorOf(ColorScheme colorScheme) {
     final dark = colorScheme.brightness == Brightness.dark;
-    return switch (this) {
+    final color = switch (this) {
       page => dark ? colorScheme.surface : colorScheme.surfaceContainer,
       card => dark ? colorScheme.surfaceContainer : colorScheme.surfaceBright,
       block =>
         dark ? colorScheme.surfaceContainerHigh : colorScheme.surfaceContainer,
       inset => colorScheme.surfaceContainerHighest,
     };
+    if (materialOpacity <= 0) {
+      return color;
+    }
+    return color.withValues(
+      alpha: (1 - materialOpacity * 0.6).clamp(0.35, 0.95),
+    );
   }
 }
 

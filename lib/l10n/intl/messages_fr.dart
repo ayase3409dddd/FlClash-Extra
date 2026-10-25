@@ -320,10 +320,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Flou du matériau",
     ),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Transforme les surfaces opaques en verre dépoli ; réglez l\'assombrissement et le flou.",
+      "Transforme les surfaces opaques en verre dépoli ; réglez sa transparence et son flou.",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage(
-      "Assombrissement du matériau",
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
+      "Transparence du matériau",
     ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Profil chiffré",

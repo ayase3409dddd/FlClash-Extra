@@ -1,6 +1,7 @@
 import 'package:fl_clash/manager/theme_manager.dart';
 import 'package:fl_clash/models/models.dart';
 import 'package:fl_clash/providers/config.dart';
+import 'package:fl_clash/ui/surface.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
@@ -49,11 +50,18 @@ void main() {
 
     container.read(appSettingProvider.notifier).value = const AppSettingProps(
       advancedMaterialEnabled: true,
+      advancedMaterialOpacity: 0.5,
     );
     await tester.pump();
 
-    // Frosted material is the only setting that makes the scheme translucent.
-    expect(theme.colorScheme.surface.a, lessThan(1.0));
-    expect(theme.colorScheme.surfaceContainer.a, lessThan(1.0));
+    // The material is a surface treatment: the scheme, and with it every
+    // liquid-glass component, stays opaque; only the levels turn translucent.
+    expect(theme.colorScheme.surface.a, 1.0);
+    expect(theme.colorScheme.surfaceContainer.a, 1.0);
+    expect(SurfaceLevel.card.colorOf(theme.colorScheme).a, lessThan(1.0));
+
+    container.read(appSettingProvider.notifier).value = const AppSettingProps();
+    await tester.pump();
+    expect(SurfaceLevel.card.colorOf(theme.colorScheme).a, 1.0);
   });
 }

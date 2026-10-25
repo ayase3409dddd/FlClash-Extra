@@ -264,9 +264,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedMaterial": MessageLookupByLibrary.simpleMessage("高級マテリアル"),
     "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("マテリアルのぼかし"),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "不透明なUIをすりガラスに。暗さとぼかしを調整できます。",
+      "不透明なUIをすりガラスに。透明度とぼかしを調整できます。",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("マテリアルの暗さ"),
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
+      "マテリアルの透明度",
+    ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("暗号化されたプロファイル"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 秘密鍵"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

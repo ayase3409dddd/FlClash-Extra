@@ -319,10 +319,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Desenfoque del material",
     ),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "Convierte las superficies opacas en vidrio esmerilado; ajusta el oscurecimiento y el desenfoque.",
+      "Convierte las superficies opacas en vidrio esmerilado; ajusta su transparencia y desenfoque.",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage(
-      "Oscurecimiento del material",
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage(
+      "Transparencia del material",
     ),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage(
       "Perfil cifrado",

@@ -719,8 +719,8 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.advancedMaterialDesc, localeName);
 
   @override
-  String get advancedMaterialDim =>
-      catgirlizeTitle(base.advancedMaterialDim, localeName);
+  String get advancedMaterialOpacity =>
+      catgirlizeTitle(base.advancedMaterialOpacity, localeName);
 
   @override
   String get advancedMaterialBlur =>

@@ -474,7 +474,10 @@ void main() {
       await tester.tap(find.text('Advanced material'));
       await tester.pumpAndSettle();
       expect(readSetting().advancedMaterialEnabled, isTrue);
-      expect(find.byKey(const ValueKey('material-dim-slider')), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('material-opacity-slider')),
+        findsOneWidget,
+      );
       expect(
         find.byKey(const ValueKey('material-blur-slider')),
         findsOneWidget,

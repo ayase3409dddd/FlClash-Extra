@@ -263,9 +263,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "advancedMaterial": MessageLookupByLibrary.simpleMessage("고급 소재"),
     "advancedMaterialBlur": MessageLookupByLibrary.simpleMessage("소재 흐림"),
     "advancedMaterialDesc": MessageLookupByLibrary.simpleMessage(
-      "불투명한 UI를 프로스트 글라스로 바꾸고 어둡기와 흐림을 조절합니다.",
+      "불투명한 UI를 프로스트 글라스로 바꾸고 투명도와 흐림을 조절합니다.",
     ),
-    "advancedMaterialDim": MessageLookupByLibrary.simpleMessage("소재 어둡기"),
+    "advancedMaterialOpacity": MessageLookupByLibrary.simpleMessage("소재 투명도"),
     "ageEncryptedProfile": MessageLookupByLibrary.simpleMessage("암호화된 프로필"),
     "ageSecretKey": MessageLookupByLibrary.simpleMessage("age 비밀 키"),
     "ageSecretKeyRequiredTip": MessageLookupByLibrary.simpleMessage(

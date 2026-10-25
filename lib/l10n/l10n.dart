@@ -1671,21 +1671,21 @@ class AppLocalizations {
     );
   }
 
-  /// `Turns the opaque surfaces into frosted glass; tune how much they dim and blur.`
+  /// `Turns the opaque surfaces into frosted glass; tune its transparency and blur.`
   String get advancedMaterialDesc {
     return Intl.message(
-      'Turns the opaque surfaces into frosted glass; tune how much they dim and blur.',
+      'Turns the opaque surfaces into frosted glass; tune its transparency and blur.',
       name: 'advancedMaterialDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Material dim`
-  String get advancedMaterialDim {
+  /// `Material transparency`
+  String get advancedMaterialOpacity {
     return Intl.message(
-      'Material dim',
-      name: 'advancedMaterialDim',
+      'Material transparency',
+      name: 'advancedMaterialOpacity',
       desc: '',
       args: [],
     );
