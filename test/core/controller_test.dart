@@ -17,6 +17,7 @@ void main() {
   late CoreController controller;
 
   setUpAll(() {
+    registerFallbackValue(Duration.zero);
     registerFallbackValue(
       const SetupParams(selectedMap: {}, testUrl: 'http://x.com'),
     );
@@ -207,13 +208,20 @@ void main() {
     });
 
     test('watchRoute delegates to interface', () async {
-      const snapshot = RouteSnapshot(
-        coreEpoch: 3,
-        picksVersion: 1,
-        picks: {'Proxy': 'HK-01'},
-      );
+      const snapshot = RouteSnapshot(coreEpoch: 3, routeVersion: 1);
       when(() => mock.watchRoute(true)).thenAnswer((_) async => snapshot);
       expect(await controller.watchRoute(true), snapshot);
+    });
+
+    test('checkRoutes delegates to interface', () async {
+      const params = CheckRoutesParams(
+        routes: [
+          [RouteHit(host: 'example.com:443', exit: 'HK-01')],
+        ],
+      );
+      const check = RouteCheck(coreEpoch: 3, routeVersion: 2, held: [true]);
+      when(() => mock.checkRoutes(params)).thenAnswer((_) async => check);
+      expect(await controller.checkRoutes(params), check);
     });
   });
 
@@ -308,10 +316,14 @@ void main() {
 
   group('misc methods', () {
     test('getDelay delegates structured delay', () async {
-      when(() => mock.asyncTestDelay(any(), any())).thenAnswer(
+      when(() => mock.asyncTestDelay(any(), any(), any())).thenAnswer(
         (_) async => const Delay(name: 'P1', value: 100, url: 'test.com'),
       );
-      final result = await controller.getDelay('test.com', 'P1');
+      final result = await controller.getDelay(
+        'test.com',
+        'P1',
+        const Duration(seconds: 1),
+      );
       expect(result?.name, 'P1');
       expect(result?.value, 100);
     });

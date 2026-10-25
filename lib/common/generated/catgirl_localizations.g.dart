@@ -97,14 +97,7 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get serviceManage => catgirlize(base.serviceManage, localeName);
 
   @override
-  String get serviceCheck => catgirlize(base.serviceCheck, localeName);
-
-  @override
   String get serviceCheckAll => catgirlize(base.serviceCheckAll, localeName);
-
-  @override
-  String serviceCheckedAt(Object time) =>
-      catgirlize(base.serviceCheckedAt(time), localeName);
 
   @override
   String get upload => catgirlize(base.upload, localeName);
@@ -256,13 +249,7 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get link => catgirlize(base.link, localeName);
 
   @override
-  String get linkDesc => catgirlize(base.linkDesc, localeName);
-
-  @override
   String get file => catgirlize(base.file, localeName);
-
-  @override
-  String get fileDesc => catgirlize(base.fileDesc, localeName);
 
   @override
   String get name => catgirlize(base.name, localeName);
@@ -321,6 +308,45 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get importFromLink => catgirlize(base.importFromLink, localeName);
 
   @override
+  String get sendFromPhone => catgirlize(base.sendFromPhone, localeName);
+
+  @override
+  String get sendFromPhoneTip => catgirlize(base.sendFromPhoneTip, localeName);
+
+  @override
+  String get sendFromPhoneNoNetwork =>
+      catgirlize(base.sendFromPhoneNoNetwork, localeName);
+
+  @override
+  String get sendFromPhonePermissionDenied =>
+      catgirlize(base.sendFromPhonePermissionDenied, localeName);
+
+  @override
+  String get sendFromPhonePageTitle =>
+      catgirlize(base.sendFromPhonePageTitle, localeName);
+
+  @override
+  String get sendFromPhonePageHint =>
+      catgirlize(base.sendFromPhonePageHint, localeName);
+
+  @override
+  String get send => catgirlize(base.send, localeName);
+
+  @override
+  String get sendFromPhonePageSent =>
+      catgirlize(base.sendFromPhonePageSent, localeName);
+
+  @override
+  String get sendFromPhoneConfirmTitle =>
+      catgirlize(base.sendFromPhoneConfirmTitle, localeName);
+
+  @override
+  String get shareQrcodeTip => catgirlize(base.shareQrcodeTip, localeName);
+
+  @override
+  String get qrcodeTooLongTip => catgirlize(base.qrcodeTooLongTip, localeName);
+
+  @override
   String get submit => catgirlize(base.submit, localeName);
 
   @override
@@ -362,7 +388,8 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.accessControlDisabledDesc, localeName);
 
   @override
-  String get selected => catgirlize(base.selected, localeName);
+  String accessControlSelectedCount(num count) =>
+      catgirlize(base.accessControlSelectedCount(count), localeName);
 
   @override
   String get port => catgirlize(base.port, localeName);
@@ -598,6 +625,9 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get testUrl => catgirlize(base.testUrl, localeName);
 
   @override
+  String get delayTestTimeout => catgirlize(base.delayTestTimeout, localeName);
+
+  @override
   String get sync => catgirlize(base.sync, localeName);
 
   @override
@@ -663,7 +693,10 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get pureBlackMode => catgirlize(base.pureBlackMode, localeName);
 
   @override
-  String get sidebarBlur => catgirlize(base.sidebarBlur, localeName);
+  String get sidebar => catgirlize(base.sidebar, localeName);
+
+  @override
+  String get backgroundBlur => catgirlize(base.backgroundBlur, localeName);
 
   @override
   String get sidebarBlurDesc => catgirlize(base.sidebarBlurDesc, localeName);
@@ -1158,10 +1191,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
       catgirlize(base.hideTimeoutProxies, localeName);
 
   @override
-  String get hideTimeoutProxiesDesc =>
-      catgirlize(base.hideTimeoutProxiesDesc, localeName);
-
-  @override
   String get stackMode => catgirlize(base.stackMode, localeName);
 
   @override
@@ -1351,6 +1380,12 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get saveChanges => catgirlize(base.saveChanges, localeName);
 
   @override
+  String get applyNow => catgirlize(base.applyNow, localeName);
+
+  @override
+  String get applied => catgirlize(base.applied, localeName);
+
+  @override
   String get cannotSave => catgirlize(base.cannotSave, localeName);
 
   @override
@@ -1442,9 +1477,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get backgroundPick => catgirlize(base.backgroundPick, localeName);
-
-  @override
-  String get backgroundBlur => catgirlize(base.backgroundBlur, localeName);
 
   @override
   String get grid => catgirlize(base.grid, localeName);
@@ -1863,10 +1895,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get noLongerRemind => catgirlize(base.noLongerRemind, localeName);
 
   @override
-  String get accessControlSettings =>
-      catgirlize(base.accessControlSettings, localeName);
-
-  @override
   String get turnOn => catgirlize(base.turnOn, localeName);
 
   @override
@@ -1888,10 +1916,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
 
   @override
   String get customProfile => catgirlize(base.customProfile, localeName);
-
-  @override
-  String get customProfileDesc =>
-      catgirlize(base.customProfileDesc, localeName);
 
   @override
   String get customProfileResources =>
@@ -1916,6 +1940,9 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   @override
   String get networkHostLookupError =>
       catgirlize(base.networkHostLookupError, localeName);
+
+  @override
+  String get monochromeIcon => catgirlize(base.monochromeIcon, localeName);
 
   @override
   String get networkConnectionError =>
@@ -2934,6 +2961,10 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get tunOverrideDesc => catgirlize(base.tunOverrideDesc, localeName);
 
   @override
+  String get generalOverrideDesc =>
+      catgirlize(base.generalOverrideDesc, localeName);
+
+  @override
   String get profileTunSettingsDesc =>
       catgirlize(base.profileTunSettingsDesc, localeName);
 
@@ -3032,6 +3063,18 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get pluginHost => catgirlize(base.pluginHost, localeName);
 
   @override
+  String get pluginPath => catgirlize(base.pluginPath, localeName);
+
+  @override
+  String get pluginUsername => catgirlize(base.pluginUsername, localeName);
+
+  @override
+  String get pluginPassword => catgirlize(base.pluginPassword, localeName);
+
+  @override
+  String get pluginCipher => catgirlize(base.pluginCipher, localeName);
+
+  @override
   String get privateKey => catgirlize(base.privateKey, localeName);
 
   @override
@@ -3082,6 +3125,13 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   @override
   String get clientFingerprint =>
       catgirlize(base.clientFingerprint, localeName);
+
+  @override
+  String get requestHeaders => catgirlize(base.requestHeaders, localeName);
+
+  @override
+  String transportHeaders(Object transport) =>
+      catgirlize(base.transportHeaders(transport), localeName);
 
   @override
   String get required => catgirlize(base.required, localeName);
@@ -3233,4 +3283,32 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   @override
   String get allReferencedProxyProviders =>
       catgirlize(base.allReferencedProxyProviders, localeName);
+
+  @override
+  String get clearDnsCache => catgirlize(base.clearDnsCache, localeName);
+
+  @override
+  String get dnsCacheCleared => catgirlize(base.dnsCacheCleared, localeName);
+
+  @override
+  String get clearDnsCacheFailed =>
+      catgirlize(base.clearDnsCacheFailed, localeName);
+
+  @override
+  String get select => catgirlize(base.select, localeName);
+
+  @override
+  String get preferred => catgirlize(base.preferred, localeName);
+
+  @override
+  String get addToLocalProxies =>
+      catgirlize(base.addToLocalProxies, localeName);
+
+  @override
+  String addedToLocalProxies(Object name) =>
+      catgirlize(base.addedToLocalProxies(name), localeName);
+
+  @override
+  String alreadyInLocalProxies(Object name) =>
+      catgirlize(base.alreadyInLocalProxies(name), localeName);
 }

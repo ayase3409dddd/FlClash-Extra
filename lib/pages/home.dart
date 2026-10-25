@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/manager/app_manager.dart';
@@ -69,7 +71,7 @@ class _HomeShell extends ConsumerWidget {
     return switch (pageLabel) {
       PageLabel.dashboard => _startAction(context, ref),
       PageLabel.proxies => _proxiesAction(context, ref),
-      PageLabel.profiles => _profilesAction(context),
+      PageLabel.profiles => _profilesAction(context, ref),
       PageLabel.tools => _toolsAction(context),
       _ => null,
     };
@@ -123,13 +125,28 @@ class _HomeShell extends ConsumerWidget {
     );
   }
 
-  NavigationDockAction _profilesAction(BuildContext context) {
+  NavigationDockAction _profilesAction(BuildContext context, WidgetRef ref) {
     final appLocalizations = context.appLocalizations;
     return NavigationDockAction(
       glyph: AppGlyphs.addCircle,
       tooltip: appLocalizations.addProfile,
       onPressed: () {
-        showAddProfilePage(context);
+        final size = MediaQuery.sizeOf(context);
+        final navigator = Navigator.of(context);
+        final anchor = Offset(size.width - 60, size.height - 96);
+        unawaited(
+          navigator.push(
+            CommonPopupRoute<void>(
+              barrierLabel: MaterialLocalizations.of(
+                context,
+              ).modalBarrierDismissLabel,
+              placement: PopupPlacement.belowPoint,
+              anchorOf: () => anchor & Size.zero,
+              builder: (_) =>
+                  CommonPopupMenu(items: addProfileMenuItemsOf(context, ref)),
+            ),
+          ),
+        );
       },
     );
   }

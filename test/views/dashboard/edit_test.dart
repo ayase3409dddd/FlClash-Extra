@@ -303,6 +303,17 @@ void main() {
     await teardown(tester);
   });
 
+  testWidgets('editing leaves done as the only way out in the bar', (
+    tester,
+  ) async {
+    await pumpEditor(tester);
+
+    expect(find.byTooltip('Done'), findsOneWidget);
+    expect(find.byTooltip('Back'), findsNothing);
+
+    await teardown(tester);
+  });
+
   testWidgets('editing keeps the cards where they stood, state and all', (
     tester,
   ) async {
@@ -367,7 +378,7 @@ void main() {
   });
 
   testWidgets('a narrow desktop window edits its cards in the card column, '
-      'dragged at once', (tester) async {
+      'held and dragged with a mouse too', (tester) async {
     seed(const [
       DashboardWidget.currentOutbound,
       DashboardWidget.networkTakeover,
@@ -392,6 +403,7 @@ void main() {
       tester.getCenter(card),
       kind: PointerDeviceKind.mouse,
     );
+    await tester.pump(kLongPressTimeout + const Duration(milliseconds: 50));
     for (var step = 0; step < 4; step++) {
       await gesture.moveBy(Offset(0, -rise / 4));
       await tester.pump(const Duration(milliseconds: 100));

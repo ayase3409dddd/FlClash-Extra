@@ -106,7 +106,7 @@ void main() {
     await tester.pump();
 
     expect(find.text(currentAppLocalizations.status), findsOneWidget);
-    await tester.tap(find.byType(Switch).last);
+    await tester.tap(find.byType(CommonSwitch).last);
     await tester.pump();
     expect(config().sniffer.enable, isTrue);
 
@@ -193,7 +193,7 @@ void main() {
     final popped = await editor.onPop!(
       context,
       currentAppLocalizations.sniffer,
-      'sniff:\n  http:\n    ports: [80]\n',
+      const EditorContent.text('sniff:\n  http:\n    ports: [80]\n'),
     );
     expect(popped, isTrue);
     expect(config().snifferOverrideKeys, {SnifferOverrideKey.sniffHttp});

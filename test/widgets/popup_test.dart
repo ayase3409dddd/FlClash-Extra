@@ -425,6 +425,83 @@ void main() {
     expect(find.byGlyph(AppGlyphs.check), findsOneWidget);
   });
 
+  testWidgets('a subtitle stands under its label, capped menu or not', (
+    tester,
+  ) async {
+    for (final maxVisibleItems in [null, 7]) {
+      final open = await pumpMenu(tester, [
+        const CommonPopupMenuItem(
+          label: 'Access',
+          subtitle: 'Selected 2',
+          checked: true,
+        ),
+        const CommonPopupMenuItem(label: 'Plain'),
+      ], maxVisibleItems: maxVisibleItems);
+      open();
+      await tester.pumpAndSettle();
+
+      final label = tester.getRect(find.text('Access'));
+      final subtitle = tester.getRect(find.text('Selected 2'));
+      expect(subtitle.top, greaterThanOrEqualTo(label.bottom));
+      expect(subtitle.left, label.left);
+      expect(
+        tester.getRect(find.text('Plain')).top,
+        greaterThanOrEqualTo(subtitle.bottom),
+      );
+
+      await tester.tapAt(Offset.zero);
+      await tester.pumpAndSettle();
+    }
+  });
+
+  testWidgets('a section sets its items apart under its title', (tester) async {
+    final taps = <String>[];
+    final open = await pumpMenu(tester, [
+      CommonPopupMenuItem(
+        label: 'On',
+        checked: true,
+        section: const CommonPopupMenuSection(title: 'Power'),
+        onPressed: () => taps.add('On'),
+      ),
+      CommonPopupMenuItem(label: 'Off', onPressed: () => taps.add('Off')),
+      CommonPopupMenuItem(
+        label: 'Settings',
+        section: const CommonPopupMenuSection(),
+        onPressed: () => taps.add('Settings'),
+      ),
+    ], maxVisibleItems: 7);
+    open();
+    await tester.pumpAndSettle();
+
+    final dividers = find.descendant(
+      of: find.byType(CommonPopupMenu),
+      matching: find.byType(Divider),
+    );
+    expect(dividers, findsOneWidget);
+    final title = tester.getRect(find.text('Power'));
+    final on = tester.getRect(find.text('On'));
+    final divider = tester.getRect(dividers);
+    expect(title.bottom, lessThanOrEqualTo(on.top));
+    expect(title.left, on.left);
+    expect(
+      divider.top,
+      greaterThanOrEqualTo(tester.getRect(find.text('Off')).bottom),
+    );
+    expect(
+      divider.bottom,
+      lessThanOrEqualTo(tester.getRect(find.text('Settings')).top),
+    );
+
+    await tester.tap(find.text('Power'));
+    await tester.pumpAndSettle();
+    expect(taps, isEmpty);
+    expect(find.byType(CommonPopupMenu), findsOneWidget);
+
+    await tester.tap(find.text('Off'));
+    await tester.pumpAndSettle();
+    expect(taps, ['Off']);
+  });
+
   testWidgets('the popup grows out of its anchor and closes back into it', (
     tester,
   ) async {
@@ -1039,6 +1116,41 @@ void main() {
 
     await tester.pumpAndSettle();
     expect(picked, ['two']);
+  });
+
+  testWidgets('a menu picked from as it opens takes its whole return', (
+    tester,
+  ) async {
+    final picked = await pumpButtonMenu(tester);
+    await tester.tap(find.text('menu'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    await tester.tap(find.text('two'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    expect(find.byType(CommonPopupMenu), findsOneWidget);
+    expect(picked, isEmpty);
+
+    await tester.pumpAndSettle();
+    expect(picked, ['two']);
+  });
+
+  testWidgets('a menu closed mid-opening in a window laid out to nothing '
+      'returns without painting', (tester) async {
+    await pumpButtonMenu(tester);
+    await tester.tap(find.text('menu'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 120));
+
+    final menu = tester.element(find.byType(CommonPopupMenu));
+    tester.view.physicalSize = Size.zero;
+    addTearDown(tester.view.resetPhysicalSize);
+    await tester.pump();
+    Navigator.of(menu).pop();
+    await tester.pumpAndSettle();
+
+    expect(find.byType(CommonPopupMenu), findsNothing);
   });
 
   testWidgets('a pick from a popup at a point runs at once', (tester) async {
@@ -2064,5 +2176,57 @@ void main() {
     await tester.tapAt(Offset.zero);
     await tester.pump();
     expect(bare(), isTrue);
+  });
+
+  testWidgets('a menu returns its open sub menu alone into the button', (
+    tester,
+  ) async {
+    final open = await pumpMenu(tester, [
+      const CommonPopupMenuItem(label: 'first'),
+      const CommonPopupMenuItem(
+        label: 'parent',
+        subItems: [CommonPopupMenuItem(label: 'child')],
+      ),
+    ]);
+    final morph = find.byWidgetPredicate(
+      (widget) => widget.runtimeType.toString() == '_PopupMorph',
+    );
+    double opacityOf(Finder card) => tester
+        .widget<Opacity>(
+          find.ancestor(of: card, matching: find.byType(Opacity)).first,
+        )
+        .opacity;
+    Rect platter() {
+      Rect? shadow;
+      expect(
+        tester.renderObject(morph),
+        paints..everything((method, arguments) {
+          if (method == #drawRSuperellipse) {
+            shadow ??= (arguments.first as RSuperellipse).outerRect;
+          }
+          return true;
+        }),
+      );
+      return shadow!.shift(
+        -menuShadows(const ColorScheme.light()).single.offset,
+      );
+    }
+
+    open();
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('parent'));
+    await tester.pumpAndSettle();
+    final subMenu = tester
+        .getRect(surfaces.last)
+        .shift(-tester.getTopLeft(morph));
+    expect(subMenu.size, isNot(tester.getSize(morph)));
+
+    await tester.tapAt(Offset.zero);
+    await tester.pump();
+
+    expect(opacityOf(surfaces.first), 0);
+    expect(opacityOf(surfaces.last), 1);
+    expect(platter(), rectMoreOrLessEquals(subMenu));
+    await tester.pumpAndSettle();
   });
 }

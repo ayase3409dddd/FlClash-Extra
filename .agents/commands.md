@@ -120,6 +120,7 @@ Generated output paths, configured in `build.yaml`:
 - `lib/models/generated/*.g.dart`, `*.freezed.dart`.
 - `lib/providers/generated/*.g.dart`.
 - `lib/database/generated/*.g.dart`.
+- `lib/ui/generated/*.freezed.dart`.
 
 Tray and Windows app icons are generated, not hand-edited. `assets_source/images/icon/*.svg` is
 the source of truth; the script needs `rsvg-convert` (librsvg) on `PATH`:
@@ -130,12 +131,14 @@ dart run tool/generate_status_icons.dart
 
 It writes the tray PNGs with Flutter `2.0x/`–`4.0x/` resolution variants to `assets/images/tray/unix/`,
 multi-size tray `.ico` files to `assets/images/tray/windows/`, and `windows/runner/resources/app_icon.ico`
-from `assets/images/icon.png`. macOS draws its menu bar icon as a template, so it skips the ringed color
-icons, whose logo shrinks to a small glyph once only alpha shows: `status_1` renders the bare logo from
-`assets_source/images/icon/glyph.svg` and `status_4` reuses `status_4.svg`, both recolored to black into
-`assets/images/tray/macos/`; the sources keep their colors. `glyph.svg` is also the geometry of the Android notification drawables
+from `assets/images/icon.png`. `status_1`–`status_3` are the logo glyph alone and tell stopped, running and TUN
+apart only by color, so they carry no rings or shadow. macOS draws its menu bar icon as a template by default,
+where color is lost: `status_1` renders the bare logo from `assets_source/images/icon/glyph.svg` and `status_4`
+reuses `status_4.svg`, both recolored to black into `assets/images/tray/macos/`; the sources keep their colors.
+With the tray menu's monochrome icon turned off, macOS loads the color PNGs from `assets/images/tray/unix/`.
+`glyph.svg` is also the geometry of the Android notification drawables
 `android/service/src/main/res/drawable/ic.xml` and `ic_service.xml`; change them together. `pubspec.yaml` declares the three tray directories with `platforms:` so each
-build only bundles the format its tray loads; a new status icon needs a source SVG and an entry in the
+build only bundles the formats its tray loads; a new status icon needs a source SVG and an entry in the
 script's `statusIconNames`, nothing in `pubspec.yaml`.
 
 ## Testing
@@ -339,14 +342,14 @@ flutter pub get
 dart format --output=none --set-exit-if-changed lib test tool plugins setup.dart
 flutter analyze --no-fatal-infos
 dart run tool/changelog.dart verify   # main and tags only
-flutter test --reporter expanded --coverage
+dart run tool/test.dart -- --reporter expanded --coverage
 dart run tool/check_coverage.dart coverage/lcov.info 75
 ```
 
 `tool/hooks/` holds the scripts the git hooks run, and `tool/hooks/test.sh` runs every `*_test.sh` beside them, so a
 new hook script needs only its test file next to it, not a workflow step.
 
-Run `flutter analyze` before committing; CI fails on anything it reports.
+Run `flutter analyze --no-fatal-infos` before committing; CI runs the same command and fails on a warning or error.
 
 Release builds run only for `v*` tag pushes; pull requests trigger nothing.
 Root analysis excludes `plugins/**`, and root tests do not discover nested

@@ -189,15 +189,20 @@ void main() {
     fail('$name never offered the edit entry');
   }
 
+  String? shownText(WidgetTester tester) =>
+      tester.state<EditorViewState>(find.byType(EditorView)).controller?.text;
+
+  Finder editorShowing(bool Function(String text) matches) =>
+      find.byElementPredicate((element) {
+        final state = element is StatefulElement ? element.state : null;
+        final text = state is EditorViewState ? state.controller?.text : null;
+        return text != null && matches(text);
+      });
+
   Future<EditorPage> openEditor(WidgetTester tester, String name) async {
     await openMenuWithEdit(tester, name);
     await tester.tap(find.text(currentAppLocalizations.edit));
-    await pumpUntil(
-      tester,
-      find.byWidgetPredicate(
-        (widget) => widget is EditorView && widget.content?.isNotEmpty == true,
-      ),
-    );
+    await pumpUntil(tester, editorShowing((text) => text.isNotEmpty));
     return tester.widget<EditorPage>(find.byType(EditorPage));
   }
 
@@ -299,6 +304,73 @@ void main() {
     expect(tester.takeException(), null);
   });
 
+  testWidgets('a provider with a traffic quota shows its usage below the name '
+      'and moves the count beside it', (tester) async {
+    final container = containerFor(tester, [
+      _provider(
+        'metered',
+        count: 128,
+        subscriptionInfo: const SubscriptionInfo(
+          upload: 1024,
+          download: 2048,
+          total: 1073741824,
+        ),
+      ),
+      _provider('unmetered', subscriptionInfo: const SubscriptionInfo()),
+    ]);
+    await pump(tester, container);
+
+    final l10n = currentAppLocalizations;
+    Finder rowOf(String name) => find.ancestor(
+      of: find.text(name),
+      matching: find.byType(DecorationListItem),
+    );
+    final metered = rowOf('metered');
+    final usage = find.descendant(
+      of: metered,
+      matching: find.text('3KB / 1GB'),
+    );
+    final meter = find.descendant(
+      of: metered,
+      matching: find.byType(LinearProgressIndicator),
+    );
+    expect(
+      find.descendant(
+        of: metered,
+        matching: find.widgetWithText(TonalChip, '128'),
+      ),
+      findsOne,
+    );
+    expect(find.text(l10n.proxiesCount(128, '128')), findsNothing);
+    expect(
+      tester.getTopLeft(usage).dy,
+      greaterThanOrEqualTo(tester.getBottomLeft(find.text('metered')).dy),
+    );
+    expect(
+      tester.getTopLeft(meter).dy,
+      greaterThanOrEqualTo(tester.getBottomLeft(usage).dy),
+    );
+    expect(
+      tester.widget<LinearProgressIndicator>(meter).value,
+      3072 / 1073741824,
+    );
+
+    final unmetered = rowOf('unmetered');
+    expect(
+      find.descendant(
+        of: unmetered,
+        matching: find.text(l10n.proxiesCount(3, '3')),
+      ),
+      findsOne,
+    );
+    expect(
+      find.descendant(of: unmetered, matching: find.byType(TonalChip)),
+      findsNothing,
+    );
+    expect(find.byType(LinearProgressIndicator), findsOne);
+    expect(tester.takeException(), null);
+  });
+
   testWidgets('offers sync only for HTTP-backed providers', (tester) async {
     final container = containerFor(tester, [
       _provider('http-one'),
@@ -334,8 +406,6 @@ void main() {
     await pump(tester, container);
 
     final l10n = currentAppLocalizations;
-    expect(find.byType(SubscriptionInfoView), findsNothing);
-
     await openMenu(tester, 'with-subscription');
     expect(find.text(l10n.subscriptionInfo), findsOne);
     await closeMenu(tester);
@@ -555,15 +625,12 @@ void main() {
     await pump(tester, container);
 
     final editor = await openEditor(tester, 'editable');
-    expect(
-      tester.widget<EditorView>(find.byType(EditorView)).content,
-      'payload:\n  - old\n',
-    );
+    expect(shownText(tester), 'payload:\n  - old\n');
 
     editor.onSave!(
       tester.element(find.byType(EditorPage)),
       'editable',
-      'payload:\n  - new\n',
+      const EditorContent.text('payload:\n  - new\n'),
     );
     await pumpUntil(tester, find.byType(EditorPage), found: false);
 
@@ -589,9 +656,7 @@ void main() {
     await pump(tester, container);
     await openMenuWithEdit(tester, 'tapped');
     await closeMenu(tester);
-    final loaded = find.byWidgetPredicate(
-      (widget) => widget is EditorView && widget.content == 'payload:\n',
-    );
+    final loaded = editorShowing((text) => text == 'payload:\n');
 
     await tester.tap(find.text('without-file'));
     await tester.pumpAndSettle();
@@ -630,7 +695,7 @@ void main() {
     editor.onSave!(
       tester.element(find.byType(EditorPage)),
       'rejected',
-      'payload: broken\n',
+      const EditorContent.text('payload: broken\n'),
     );
     await pumpUntil(tester, find.text('invalid payload'));
 
@@ -652,9 +717,11 @@ void main() {
 
     final editor = await openEditor(tester, 'leaving');
     final context = tester.element(find.byType(EditorPage));
-    expect(await editor.onPop!(context, 'leaving', 'payload:\n'), isTrue);
-
-    final popped = editor.onPop!(context, 'leaving', 'payload: changed\n');
+    final popped = editor.onPop!(
+      context,
+      'leaving',
+      const EditorContent.text('payload: changed\n'),
+    );
     await pumpTransitions(tester);
     expect(find.text(currentAppLocalizations.saveChanges), findsOneWidget);
     await tester.tap(find.text(currentAppLocalizations.cancel));

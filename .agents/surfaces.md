@@ -19,7 +19,10 @@ it sits on, which `SurfaceScope` passes down the tree.
 
 Light mode alternates gray and paper: a near-white card on a gray page, a gray block in the card. The card is tone 98,
 not pure white, and the page tone 94: pure white beside a tinted gray made the white glare and the gray look soiled. Dark mode only
-lightens, because a darker step inside a lighter surface reads as a hole rather than a layer. `inset` is the floor;
+lightens, because a darker step inside a lighter surface reads as a hole rather than a layer, and it steps further:
+tones 6, 15, 21, 27 where light steps by 4, as iOS 27 sets its dark grouped card about 2.3 times as far off the page
+as its light one. At Material's dark tones a card stood barely clear of the page, and on pure black hardly at all.
+`inset` is the floor;
 nothing nests below it, so a design that needs a fifth level needs fewer containers instead.
 
 - A widget never picks its level at the call site. `CommonCard` and the other shared surfaces read
@@ -27,10 +30,9 @@ nothing nests below it, so a design that needs a fifth level needs fewer contain
   inside a card. A branch on `isInBottomSheet` or on where a widget is placed to choose its fill is the bug this
   replaces.
 - Sheets are `page` level, like a page, so a section looks the same in a sheet and in a page. In dark mode a sheet
-  presents a level up, as iOS presents a sheet on its elevated backgrounds: `ColorScheme.elevated` lifts every
-  surface role by the step from `page` to `card`, so the sheet's page takes the tone of the cards it covers and every
-  level inside it follows. Under pure black the sheet takes the plain dark scheme instead, which is the same step up
-  and keeps the seed's tint that a lift from black would lose. `ElevatedColorScheme` carries the result and the sheet
+  presents a level up, as iOS presents a sheet on its elevated backgrounds: `ColorScheme.elevated` moves every level
+  up one, so the sheet's page takes the tone of the cards it covers, its cards the tone of a block, and its blocks
+  the tone of an inset, under pure black too. `ElevatedColorScheme` carries the result and the sheet
   routes apply it through `ElevatedSurfaceTheme`; a sheet opened from a sheet keeps the same lift. A scrim barely
   darkens a dark page, so a dark sheet at the page's own tone read as more of the page rather than a layer over it,
   a covered sheet's peek vanished, and on black the edge and corners went with it. Light mode keeps its levels,
@@ -42,11 +44,14 @@ nothing nests below it, so a design that needs a fifth level needs fewer contain
   blurred shadow each costs raster time for no extra layering. A render object that paints a shadow itself draws it
   with `drawRSuperellipse`, as `ShapeDecoration` does: Impeller blurs a superellipse in one analytic pass, but a path
   through an offscreen Gaussian blur on every frame, which made the shadows the largest raster cost of an opening menu.
+  A shadow is black at an opacity, so one measured on iOS darkens FlClash's surfaces as it darkens iOS's own: the
+  surfaces differ from iOS's too little to call for retuning, and over the dark page, which is not black, a shadow
+  shows where iOS's would not.
 
 ## The Seeded Scheme
 
 `seededColorScheme` in `lib/ui/color.dart` builds every app scheme: Material's scheme for the seed and the
-`ColorStyle` picked in the theme settings, with three groups of roles replaced. Everything else stays Material,
+`ColorStyle` picked in the theme settings, with four groups of roles replaced. Everything else stays Material,
 including `toPureBlack` applied after it.
 
 The four styles each change something a reader sees at once. Material's nine variants mostly moved secondary and
@@ -76,6 +81,13 @@ tertiary, which the app barely shows, so most of them looked alike once surfaces
   its system colors, within 50 to 75, and puts dark text on it above 60. Material sets primary at tone 40 and 80 for
   any seed, which turned iOS blue into navy in light and a pastel in dark. `soft` and `monochrome` keep Material's
   primary, since moving away from the seed is what they are for.
+- **Dark spreads its levels and lifts its titles.** `surfaceContainer`, `surfaceContainerHigh`, and
+  `surfaceContainerHighest` sit at tones 15, 21, and 27, not Material's 12, 17, and 22, for the steps under Levels.
+  `onSurface` sits at 97, not 90, which left a dark title about an eighth weaker than a light one; iOS 27 gives `label`
+  the same contrast in both modes. Dark `onSurfaceVariant`, `outline`, and the accent already fall off from light about
+  as iOS 27's `secondaryLabel`, `tertiaryLabel`, and `systemBlue` do. Weigh text across the modes with APCA: WCAG's
+  ratio overrates light text on a dark surface and points the other way. Dark Liquid Glass keeps the tint it was
+  fitted to iOS 27 with, Material's old `surfaceContainerHighest`, seven tones over the card (`_darkGlassTint`).
 
 ## State
 
@@ -111,7 +123,8 @@ Color marks the one item that differs, never the structure around it.
 - **Marks** that only identify, a country badge, a group or service icon, a source avatar, sit on a neutral well with
   `onSurfaceVariant`.
 - `primaryContainer`, `secondaryContainer`, and `tertiaryContainer` are neither surface nor selection fills. Keep
-  them out of cards, rows, marks, and navigation indicators.
+  them out of cards, rows, marks, and navigation indicators. The code editor's completion popup is the one exception:
+  it fills the highlighted suggestion with `primaryContainer` (`lib/features/editor/completion_popup.dart`).
 
 ## Borders That Stay
 
@@ -125,16 +138,17 @@ Color marks the one item that differs, never the structure around it.
   UIAlertController sets them: as wide as the buttons, in their fill, with their text in line with the title and the
   label as the placeholder (`CommonDialog.hasFields`); a field under a filled block of text in an alert takes the
   block's width and corner instead. The custom color's hex field, because its card holds only fills, the color
-  previews, where an outline was the one stroked thing. Search fields are filled pills. A sheet's docked search,
-  because the list scrolls under it: it floats like the dock, with the floating fill and the dock's shadow, or the
-  dock's glass. The editor's find bar, because its fields sit in a row of filled pill buttons: they take the buttons'
-  fill, one level above the bar. All of these stroke only while focused. Any other field, one standing alone on a page,
-  is outlined, with the floating label notched into the stroke: `ThemeData.withAppShapes` gives every input
-  `AppShape.input`, so call sites leave `border` unset. A lone field is never filled: here a fill means structure, so
-  one read as one more card or row, and in light mode the hover overlay brought it down to the page's own tone. No
-  field counts its characters, as none does on iOS or macOS; a length limit holds through its formatter. Material
-  strokes a filled field's whole outline in `onSurfaceVariant`, which ringed the pill brighter than anything else in a
-  dark sheet.
+  previews, where an outline was the one stroked thing. All of these stroke only while focused. Search fields are filled
+  pills on the `GooSurface` they share with the buttons beside them, and ring only focus a key or a remote moved there,
+  as cards do: a tap leaves focus to the caret, as on iOS. A docked search, a sheet's or a pushed phone page's, because
+  the list scrolls under it: it floats like the dock, with the floating fill and the dock's shadow, or the dock's glass.
+  The editor's find bar, because its fields sit in a row of filled pill buttons: they take the buttons' fill, one level
+  above the bar. Any other field, one standing alone on a page, is outlined, with the floating label notched into the
+  stroke: `ThemeData.withAppShapes` gives every input `AppShape.input`, so call sites leave `border` unset. A lone field
+  is never filled: here a fill means structure, so one read as one more card or row, and in light mode the hover overlay
+  brought it down to the page's own tone. No field counts its characters, as none does on iOS or macOS; a length limit
+  holds through its formatter. Material strokes a filled field's whole outline in `onSurfaceVariant`, which ringed the
+  pill brighter than anything else in a dark sheet.
 - **Window chrome**: the desktop sidebar's inner edge and the title bar's bottom edge draw a divider where they meet
   the content. The chrome fill alone left the edge to a four-tone step, which read as a smudge rather than a boundary.
 
@@ -162,7 +176,7 @@ twice as much on the dark page as on the light one and carried the seed's tint.
   The selected destination keeps its neutral fill and primary bar, which already marks it with color.
 - The mobile dock and the docked navigation bar are floats; their indicator is a neutral platter one level above
   them, and the selected destination's content takes primary, as iOS's tab bar marks its selection.
-- With Liquid Glass on (Theme settings), the dock, the buttons of a page's bar, a sheet's docked search, popup
+- With Liquid Glass on (Theme settings), the dock, the buttons of a page's bar, a docked search, popup
   menus, and alerts are glass from `lib/ui/liquid_glass.dart` instead of a fill, and the dock's platter takes the
   secondary hue and chroma at tone 90, or at tone 4 in dark, which sinks it below the bar as iOS 27 does.
 - The proxies page's group tabs are compact choice chips, the current group in the chosen segment's solid `primary`.

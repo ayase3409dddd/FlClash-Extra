@@ -10,19 +10,18 @@ Future<List<String>> _pumpBar(
   WidgetTester tester, {
   bool hasSearch = false,
   String? primary,
-  bool primaryLoading = false,
-  bool foldPrimary = false,
+  Set<String> loading = const {},
   List<String> icons = const [],
   List<String> menuItems = const [],
   List<String> selection = const [],
 }) async {
   final taps = <String>[];
-  IconButtonData action(String label, {bool isLoading = false}) {
+  IconButtonData action(String label) {
     return IconButtonData(
       glyph: AppGlyphs.add,
       onPressed: () => taps.add(label),
       tooltip: label,
-      isLoading: isLoading,
+      isLoading: loading.contains(label),
     );
   }
 
@@ -32,11 +31,8 @@ Future<List<String>> _pumpBar(
       child: CommonScaffold(
         title: 'Page',
         searchState: hasSearch ? AppBarSearchState(onSearch: (_) {}) : null,
-        primaryAction: primary == null
-            ? null
-            : action(primary, isLoading: primaryLoading),
+        primaryAction: primary == null ? null : action(primary),
         iconActions: [for (final label in icons) action(label)],
-        foldPrimaryAction: foldPrimary,
         selectionActions: [for (final label in selection) action(label)],
         menuItems: [
           for (final label in menuItems)
@@ -55,6 +51,13 @@ Finder _inBar(Finder finder) =>
 List<String> _barButtons(WidgetTester tester) => [
   for (final button in tester.widgetList<IconButton>(
     _inBar(find.byType(IconButton)),
+  ))
+    button.tooltip ?? '',
+];
+
+List<String> _shownButtons(WidgetTester tester) => [
+  for (final button in tester.widgetList<IconButton>(
+    find.byType(IconButton).hitTestable(),
   ))
     button.tooltip ?? '',
 ];
@@ -155,28 +158,25 @@ void main() {
     ]);
   });
 
-  testWidgets('a bar that folds its primary action keeps icons in sight', (
-    tester,
-  ) async {
+  testWidgets('a running action folds in disabled', (tester) async {
     final taps = await _pumpBar(
       tester,
       primary: 'Add',
-      primaryLoading: true,
-      foldPrimary: true,
       icons: ['Update', 'Sort', 'Filter'],
+      loading: {'Filter'},
     );
 
-    expect(_barButtons(tester), ['Update', 'Sort', 'More']);
+    expect(_barButtons(tester), ['Add', 'Update', 'More']);
 
     await _openMenu(tester);
     expect(_menuLabels(tester, ['Add', 'Update', 'Sort', 'Filter']), [
-      'Add',
+      'Sort',
       'Filter',
     ]);
 
-    await tester.tap(find.text('Add'));
+    await tester.tap(find.text('Filter'));
     await tester.pumpAndSettle();
-    expect(taps, isEmpty, reason: 'a running action folds in disabled');
+    expect(taps, isEmpty);
   });
 
   testWidgets('a selection keeps its actions grouped beside the search', (
@@ -207,11 +207,9 @@ void main() {
 
     await tester.tap(_inBar(find.byTooltip('Search')));
     await tester.pumpAndSettle();
-    expect(
-      _barButtons(tester),
-      containsAllInOrder(['Clear search', 'Delete', 'Select all']),
-    );
-    expect(_inBar(find.byGlyph(AppGlyphs.more)), findsNothing);
+    expect(_shownButtons(tester), ['Delete', 'Select all', 'Cancel']);
+    expect(_inGroup('Delete'), findsOneWidget);
+    expect(find.byGlyph(AppGlyphs.more), findsNothing);
 
     await tester.tap(find.byTooltip('Select all'));
     expect(taps, ['Select all']);
@@ -226,30 +224,27 @@ void main() {
       selection: ['Delete', 'Select all', 'Copy'],
     );
 
-    void expectSplit(String lead) {
-      expect(
-        _barButtons(tester),
-        containsAllInOrder([lead, 'Delete', 'Select all', 'Copy']),
-      );
+    void expectSplit(List<String> buttons) {
+      expect(_shownButtons(tester), buttons);
       expect(_inGroup('Delete'), findsOneWidget);
       expect(_inGroup('Select all'), findsOneWidget);
       expect(_inGroup('Copy'), findsNothing);
-      expect(_inBar(find.byGlyph(AppGlyphs.more)), findsNothing);
+      expect(find.byGlyph(AppGlyphs.more), findsNothing);
     }
 
-    expectSplit('Search');
+    expectSplit(['Search', 'Delete', 'Select all', 'Copy']);
 
     await tester.tap(_inBar(find.byTooltip('Search')));
     await tester.pumpAndSettle();
-    expectSplit('Clear search');
+    expectSplit(['Delete', 'Select all', 'Copy', 'Cancel']);
   });
 
   for (final (type, buttons) in [
-    (SheetType.bottomSheet, ['Delay test', 'Close']),
-    (SheetType.sideSheet, ['Search', 'Delay test', 'Close']),
+    (SheetType.bottomSheet, ['Close', 'Delay test']),
+    (SheetType.sideSheet, ['Close', 'Search', 'Delay test']),
   ]) {
-    testWidgets('a ${type.name} groups its primary action with its close '
-        'button', (tester) async {
+    testWidgets('a ${type.name} leads with its close button, primary action '
+        'or not', (tester) async {
       await tester.pumpWidget(
         TestApp(
           wrapInProviderScope: true,
@@ -270,11 +265,7 @@ void main() {
       );
 
       expect(_barButtons(tester), buttons);
-      expect(
-        _inGroup('Close').evaluate().single,
-        _inGroup('Delay test').evaluate().single,
-      );
-      expect(_inGroup('Search'), findsNothing);
+      expect(_inGroup('Close'), findsNothing);
     });
   }
 

@@ -45,8 +45,9 @@ class _AddedRulesViewState extends ConsumerState<AddedRulesView> {
   void _handleQuickActions() {
     showSheet<void>(
       context: context,
-      builder: (_) =>
-          RulePresetSheet(onAdd: ref.read(globalRulesProvider.notifier).putAll),
+      builder: (_) => RulePresetSheet(
+        onAdd: (rules) => ref.read(globalRulesProvider.notifier).putAll(rules),
+      ),
     );
   }
 
@@ -170,7 +171,9 @@ class _AddedRulesViewState extends ConsumerState<AddedRulesView> {
                         ),
                     itemExtent: ruleItemHeight,
                     itemCount: rules.length,
-                    onReorderItem: ref.read(globalRulesProvider.notifier).order,
+                    onReorderItem: (oldIndex, newIndex) => ref
+                        .read(globalRulesProvider.notifier)
+                        .order(oldIndex, newIndex),
                   ),
           ),
         ),
@@ -182,7 +185,7 @@ class _AddedRulesViewState extends ConsumerState<AddedRulesView> {
     16,
     context.contentTopPadding,
     16,
-    16 + BottomInsetScope.of(context),
+    16 + context.bottomInset,
   );
 
   Widget _buildRuleItem(List<Rule> rules, int index, Set<dynamic> selected) {
