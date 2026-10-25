@@ -460,9 +460,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enregistrement impossible",
     ),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("Mode fille-chat"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "Réécrit les textes de l\'interface (notes comprises) dans un style fille-chat. Kaomojis uniquement, sans emoji.",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "Échec du changement de proxy ; la sélection précédente a été rétablie",
     ),

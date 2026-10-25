@@ -451,7 +451,6 @@
   "softStyle": "Suave",
   "developerMode": "Modo desarrollador",
   "catgirlMode": "Modo chica gato",
-  "catgirlModeDesc": "Reescribe los textos de la interfaz (incluidas las notas) con estilo de chica gato. Solo kaomojis, sin emoji.",
   "developerModeEnableTip": "El modo desarrollador está activado.",
   "messageTest": "Prueba de mensaje",
   "messageTestTip": "Esto es un mensaje.",

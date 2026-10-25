@@ -3621,16 +3621,6 @@ class AppLocalizations {
     );
   }
 
-  /// `Rewrites interface copy, notes included, in a catgirl style. Kaomoji only, no emoji.`
-  String get catgirlModeDesc {
-    return Intl.message(
-      'Rewrites interface copy, notes included, in a catgirl style. Kaomoji only, no emoji.',
-      name: 'catgirlModeDesc',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Developer mode is enabled.`
   String get developerModeEnableTip {
     return Intl.message(

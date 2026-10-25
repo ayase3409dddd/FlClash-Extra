@@ -451,7 +451,6 @@
   "softStyle": "Doux",
   "developerMode": "Mode développeur",
   "catgirlMode": "Mode fille-chat",
-  "catgirlModeDesc": "Réécrit les textes de l'interface (notes comprises) dans un style fille-chat. Kaomojis uniquement, sans emoji.",
   "developerModeEnableTip": "Le mode développeur est activé.",
   "messageTest": "Test de message",
   "messageTestTip": "Ceci est un message.",

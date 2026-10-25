@@ -472,7 +472,7 @@ class _HomePageViewState extends ConsumerState<_HomePageView> {
     await _pageController.animateToPage(
       index,
       duration: tabAnimationDurationOf(
-        fade ? fadeTabDuration : kTabScrollDuration,
+        fade ? fadeTabDuration : slideTabDuration,
         appSetting.tabAnimationSpeed,
       ),
       curve: fade ? fadeTabCurve : slideTabCurve,

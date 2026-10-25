@@ -451,7 +451,6 @@
   "softStyle": "ソフト",
   "developerMode": "開発者モード",
   "catgirlMode": "猫娘モード",
-  "catgirlModeDesc": "インターフェースの文言（注釈を含む）を猫娘風にします。顔文字のみで絵文字は使いません。",
   "developerModeEnableTip": "開発者モードが有効になりました。",
   "messageTest": "メッセージテスト",
   "messageTestTip": "これはメッセージです。",

@@ -1519,9 +1519,6 @@ mixin CatgirlLocalizationOverrides on AppLocalizations {
   String get catgirlMode => catgirlizeTitle(base.catgirlMode, localeName);
 
   @override
-  String get catgirlModeDesc => catgirlize(base.catgirlModeDesc, localeName);
-
-  @override
   String get developerModeEnableTip =>
       catgirlize(base.developerModeEnableTip, localeName);
 

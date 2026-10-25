@@ -450,7 +450,6 @@ class GeneralView extends ConsumerWidget {
                 update: (state, value) => state.copyWith(catgirlMode: value),
               ),
             ],
-            footer: appLocalizations.catgirlModeDesc,
           ),
         ],
       ),

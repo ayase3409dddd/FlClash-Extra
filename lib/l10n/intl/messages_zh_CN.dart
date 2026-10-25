@@ -345,9 +345,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("取消全选"),
     "cannotSave": MessageLookupByLibrary.simpleMessage("无法保存"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("猫娘模式"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "将界面文案（含注释）切换为猫娘风格，仅使用颜文字，不含 emoji。",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "切换代理失败，已恢复上一次的选择",
     ),

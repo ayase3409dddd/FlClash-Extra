@@ -426,9 +426,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("Deselect all"),
     "cannotSave": MessageLookupByLibrary.simpleMessage("Can\'t save"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("Catgirl mode"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "Rewrites interface copy, notes included, in a catgirl style. Kaomoji only, no emoji.",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "Failed to switch proxy; the previous selection has been restored",
     ),

@@ -451,7 +451,6 @@
   "softStyle": "Soft",
   "developerMode": "Developer mode",
   "catgirlMode": "Catgirl mode",
-  "catgirlModeDesc": "Rewrites interface copy, notes included, in a catgirl style. Kaomoji only, no emoji.",
   "developerModeEnableTip": "Developer mode is enabled.",
   "messageTest": "Message test",
   "messageTestTip": "This is a message.",

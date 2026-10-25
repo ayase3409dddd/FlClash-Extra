@@ -442,9 +442,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("Снять выделение"),
     "cannotSave": MessageLookupByLibrary.simpleMessage("Не удалось сохранить"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("Режим кошкодевочки"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "Переписывает тексты интерфейса (включая примечания) в стиле кошкодевочки. Только каомодзи, без эмодзи.",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "Не удалось переключить прокси; восстановлен предыдущий выбор",
     ),

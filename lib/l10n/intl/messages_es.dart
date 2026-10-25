@@ -461,9 +461,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cannotSave": MessageLookupByLibrary.simpleMessage("No se puede guardar"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("Modo chica gato"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "Reescribe los textos de la interfaz (incluidas las notas) con estilo de chica gato. Solo kaomojis, sin emoji.",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "No se pudo cambiar de proxy; se ha restaurado la selección anterior",
     ),

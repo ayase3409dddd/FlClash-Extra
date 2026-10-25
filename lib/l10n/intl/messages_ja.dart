@@ -368,9 +368,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("すべて選択解除"),
     "cannotSave": MessageLookupByLibrary.simpleMessage("保存できません"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("猫娘モード"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "インターフェースの文言（注釈を含む）を猫娘風にします。顔文字のみで絵文字は使いません。",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "プロキシの切り替えに失敗したため、前回の選択に戻しました",
     ),

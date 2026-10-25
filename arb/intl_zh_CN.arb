@@ -451,7 +451,6 @@
   "softStyle": "柔和",
   "developerMode": "开发者模式",
   "catgirlMode": "猫娘模式",
-  "catgirlModeDesc": "将界面文案（含注释）切换为猫娘风格，仅使用颜文字，不含 emoji。",
   "developerModeEnableTip": "开发者模式已启用。",
   "messageTest": "消息测试",
   "messageTestTip": "这是一条消息。",

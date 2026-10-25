@@ -359,9 +359,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("모두 선택 해제"),
     "cannotSave": MessageLookupByLibrary.simpleMessage("저장할 수 없음"),
     "catgirlMode": MessageLookupByLibrary.simpleMessage("냥냥 모드"),
-    "catgirlModeDesc": MessageLookupByLibrary.simpleMessage(
-      "인터페이스 문구(주석 포함)를 냥냥 스타일로 바꿉니다. 얼굴문자만 사용하고 이모지는 쓰지 않습니다.",
-    ),
     "changeProxyFailedTip": MessageLookupByLibrary.simpleMessage(
       "프록시를 전환하지 못해 이전 선택을 복원했습니다",
     ),

@@ -118,7 +118,7 @@ class _ThemeLivePreviewState extends ConsumerState<ThemeLivePreview>
 
   late final AnimationController _slide = AnimationController(
     vsync: this,
-    duration: kTabScrollDuration,
+    duration: slideTabDuration,
   );
   late final CurvedAnimation _slideCurve = CurvedAnimation(
     parent: _slide,
@@ -143,7 +143,7 @@ class _ThemeLivePreviewState extends ConsumerState<ThemeLivePreview>
     final appSetting = ref.read(appSettingProvider);
     final fade = appSetting.tabAnimation == TabAnimation.fade;
     _slide.duration = tabAnimationDurationOf(
-      fade ? fadeTabDuration : kTabScrollDuration,
+      fade ? fadeTabDuration : slideTabDuration,
       appSetting.tabAnimationSpeed,
     );
     _slideCurve.curve = fade ? fadeTabCurve : slideTabCurve;

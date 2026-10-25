@@ -6,9 +6,10 @@ import 'package:flutter/physics.dart';
 const fadeTabDuration = Duration(milliseconds: 220);
 const fadeTabCurve = Curves.easeInOut;
 
-/// The slide between tabs eases in and out without the late, slow crawl of a
-/// pure ease-out; the middle stays even and the settle is short.
-const slideTabCurve = Cubic(0.33, 0.08, 0.2, 1);
+/// The slide starts quickly and settles long and gently, so the second half
+/// of the move stays calm; the base duration is a little longer than M3's.
+const slideTabDuration = Duration(milliseconds: 380);
+const slideTabCurve = Cubic(0.2, 0.45, 0.25, 1);
 
 const minTabAnimationSpeed = 0.5;
 const maxTabAnimationSpeed = 2.0;

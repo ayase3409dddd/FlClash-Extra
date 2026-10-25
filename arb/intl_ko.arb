@@ -451,7 +451,6 @@
   "softStyle": "부드러움",
   "developerMode": "개발자 모드",
   "catgirlMode": "냥냥 모드",
-  "catgirlModeDesc": "인터페이스 문구(주석 포함)를 냥냥 스타일로 바꿉니다. 얼굴문자만 사용하고 이모지는 쓰지 않습니다.",
   "developerModeEnableTip": "개발자 모드가 켜졌습니다.",
   "messageTest": "메시지 테스트",
   "messageTestTip": "이것은 메시지입니다.",
